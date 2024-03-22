@@ -10,12 +10,13 @@ const Registro = () => {
         <div className="container-main">
             <div className="container-1">
                 <div className="logo-grande">
-
+                </div>
+                <div className="perros">
                 </div>
             </div>
 
             <div className="container-2">
-                <div className="custom-shape-divider-top"></div>
+
                 <img id="logo-pawsly" src={logo_pawsly} alt="Mi SVG feliz"/>
                 <div className="title">Regístrate</div>
                 <div className="section-text">
@@ -57,7 +58,10 @@ const Registro = () => {
                 </div>
                 <div className="custom-shape-divider-bottom-1710964365">
                 </div>
+
             </div>
+            
+
         </div>
     );
 };

@@ -7,31 +7,67 @@ body {
 }
 
 
-.logo-grande{
-    width: 100px;
-    height: 100px;
-    margin: 0 0 0 0;
-    position: relative;
-    background-image: url('../statics/wave-mobile.svg');
+.logo-grande {
+    width: 0;
+    height: 0;
+    position: relative; /* Agrega posicionamiento relativo */
+    z-index: -2; /* Asegúrate de que .logo-grande esté detrás de .perros */
+    @media only screen and (min-width: 1023px) {
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-width: 368px;
+        min-height: 375px;
+        margin: 0;
+        background-image: url('../statics/pawsly_grade.svg');
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 35%;
+    }
 }
-.container-main{
+
+.perros {
+    width: 0;
+    height: 0;
+    position: absolute; /* Agrega posicionamiento absoluto */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Asegúrate de que .perros esté delante de .logo-grande */
+    @media only screen and (min-width: 1023px) {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-width: 666px;
+        min-height: 570px;
+        margin: 0;
+        background-image: url('../statics/perros.svg');
+        top: 55%;
+        left: 33%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.container-main {
     margin: 0 auto;
     width: 100%;
+    display: flex;
+    justify-content: center; /* Agrega esta línea para centrar horizontalmente */
 
 }
-.container-1{
+
+.container-1 {
+
     visibility: hidden;
     @media only screen and (min-width: 1023px) {
-        margin: 0 auto;
         visibility: visible;
-        width: calc(100% - 354px);
+        width: 100%; /* Ajusta el ancho al 100% */
         height: 100vh;
-        position: relative;
-        background-color: yellow;
+        position: absolute;
     }
-
 }
-.container-2{
+
+.container-2 {
     max-width: 322px;
     margin: 0 auto 0 auto;
     @media only screen and (min-width: 1023px) {
@@ -40,6 +76,9 @@ body {
         margin: 0 0 0 auto;
     }
 }
+
+
+
 /* Logo styling */
 #logo-pawsly {
     margin: 128px auto 0 auto;
