@@ -8,14 +8,37 @@ const Registro = () => {
 
     return (
         <div className="container-main">
+            <div className="wave-container-top">
+                <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="wave-svg-top">
+                    <defs>
+                        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#3E51FF"/>
+                            <stop offset="100%" stopColor="#252F99"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M160.36,-5.41 C-10.84,150.67 200.28,108.72 70.08,211.48 L0.00,210.00 L0.00,0.00 Z"/>
+                </svg>
+            </div>
             <div className="container-1">
-                <div className="logo-grande">
+                <div className="big-logo">
                 </div>
-                <div className="perros">
+                <div className="dogs">
                 </div>
             </div>
 
             <div className="container-2">
+                <div className="wave-top">
+                    <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="drop">
+                        <defs>
+                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="15%" stop-color="#3E51FF"/>
+                                <stop offset="100%" stop-color="#252F99"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M245.77,-3.44 C376.12,120.89 376.12,120.89 500.00,49.98 L500.00,0.00 L338.88,-6.39 Z"
+                              style={{stroke: 'none', fill: 'url(#wave-gradient)'}}/>
+                    </svg>
+                </div>
 
                 <img id="logo-pawsly" src={logo_pawsly} alt="Mi SVG feliz"/>
                 <div className="title">Regístrate</div>
@@ -56,11 +79,21 @@ const Registro = () => {
                     <div className="logo-google logo"></div>
                     <div className="logo-facebook logo"></div>
                 </div>
-                <div className="custom-shape-divider-bottom-1710964365">
+                <div className="wave-container">
+                    <svg width="500" height="150" viewBox="0 0 500 150" preserveAspectRatio="none" className="wave-svg">
+                        <defs>
+                            <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="15%" stop-color="#3E51FF"/>
+                                <stop offset="100%" stop-color="#252F99"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,49.98 C201.75,-124.81 389.67,290.63 500,49.98 L500,150 L0,150 Z"/>
+                    </svg>
                 </div>
 
+
             </div>
-            
+
 
         </div>
     );

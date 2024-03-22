@@ -5,15 +5,30 @@ body {
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
 }
+.wave-container-top {
+    z-index: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    @media only screen and (max-width: 1023px) {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+
+.wave-svg-top {
+    height: 100%;
+    width: 100%;
+    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
+}
 
 
-.logo-grande {
+.big-logo {
     width: 0;
     height: 0;
     position: relative; /* Agrega posicionamiento relativo */
-    z-index: -2; /* Asegúrate de que .logo-grande esté detrás de .perros */
+    z-index: -2; /* Asegúrate de que .big-logo esté detrás de .perros */
     @media only screen and (min-width: 1023px) {
-
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
@@ -27,13 +42,13 @@ body {
     }
 }
 
-.perros {
+.dogs {
     width: 0;
     height: 0;
     position: absolute; /* Agrega posicionamiento absoluto */
     top: 0;
     left: 0;
-    z-index: -1; /* Asegúrate de que .perros esté delante de .logo-grande */
+    z-index: -1; /* Asegúrate de que .perros esté delante de .big-logo */
     @media only screen and (min-width: 1023px) {
         background-size: cover;
         background-repeat: no-repeat;
@@ -55,9 +70,23 @@ body {
     justify-content: center; /* Agrega esta línea para centrar horizontalmente */
 
 }
+.wave-top{
+    height: 180px;
+    overflow: hidden;
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.drop{
+    height: 100%;
+    width: 100%;
+    @media only screen and (min-width: 1023px) {
+        visibility: hidden;
+    }
+}
 
 .container-1 {
-
     visibility: hidden;
     @media only screen and (min-width: 1023px) {
         visibility: visible;
@@ -68,9 +97,12 @@ body {
 }
 
 .container-2 {
-    max-width: 322px;
     margin: 0 auto 0 auto;
+    @media only screen and (max-width: 1023px) {
+        width: 100%;
+    }
     @media only screen and (min-width: 1023px) {
+        width: 389px;
         padding-right: 16px;
         padding-left: 16px;
         margin: 0 0 0 auto;
@@ -81,7 +113,7 @@ body {
 
 /* Logo styling */
 #logo-pawsly {
-    margin: 128px auto 0 auto;
+    margin: 0 auto 0 auto;
     width: 61px;
     height: 82px;
 }
@@ -121,7 +153,7 @@ body {
     width: 293px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     text-indent: 40px;
 }
 
@@ -204,11 +236,11 @@ body {
     height: 48px;
     border-radius: 15px;
     background: linear-gradient(to right, #3E4EFF, #252F99);
-    margin: 24px auto 0px auto;
+    margin: 24px auto 0 auto;
     color: #FFFFFF;
     font-size: 16px;
     border: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .text-in {
@@ -238,42 +270,27 @@ body {
 }
 
 .logo-google {
-
     background-image: url('../statics/logo_google.svg');
     background-repeat: no-repeat;
-
 }
 
 .logo-facebook {
     background-image: url('../statics/logo_facebook.svg');
     background-repeat: no-repeat;
 }
-.custom-shape-divider-bottom-1710964365 {
-    position: fixed;
-    z-index: -1;
-    bottom: 0;
-    left: -50px;
-    width: 389px;
-    height: 123px; /* Ajusta la altura según tus necesidades */
-    overflow: hidden;
-    background-image: url('../statics/wave-mobile.svg'); /* Ruta de tu SVG */
-    background-size: cover; /* Ajusta el tamaño del SVG para cubrir completamente el elemento */
-    background-repeat: no-repeat; /* Evita que el SVG se repita */
-    background-position: center; /* Ajusta la posición del SVG */
-    visibility: hidden;
+
+.wave-container {
+    width: 100%; /* Ajusta el ancho del contenedor */
+    height: 150px; /* Establece la altura deseada */
+    overflow: hidden; /* Oculta el exceso de contenido */
+    @media only screen and (min-width: 1023px) {
+        visibility: hidden;
+    }
 }
-.custom-shape-divider-top {
-    visibility: hidden;
-    z-index: -1;
-    position: absolute;
-    transform: rotate(-165deg);
-    top: -30px;
-    left: 70px;
-    width: 389px;
-    height: 123px; /* Ajusta la altura según tus necesidades */
-    overflow: hidden;
-    background-image: url('../statics/wave-mobile.svg'); /* Ruta de tu SVG */
-    background-size: cover; /* Ajusta el tamaño del SVG para cubrir completamente el elemento */
-    background-repeat: no-repeat; /* Evita que el SVG se repita */
-    background-position: center top; /* Ajusta la posición del SVG */
+
+.wave-svg {
+    width: 100%; /* Ajusta el ancho del SVG al 100% del contenedor */
+    height: 100%; /* Ajusta la altura del SVG al 100% del contenedor */
+    fill: url(#wave-gradient); /* Aplica el gradiente lineal como fondo */
 }
+
