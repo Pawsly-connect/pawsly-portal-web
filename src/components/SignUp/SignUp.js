@@ -8,7 +8,7 @@ const Registro = () => {
 
     return (
         <div className="container-main">
-            <div className="wave-container-top">
+            <div className="wave-container-top-left">
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="wave-svg-top">
                     <defs>
                         <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -16,7 +16,7 @@ const Registro = () => {
                             <stop offset="100%" stopColor="#252F99"/>
                         </linearGradient>
                     </defs>
-                    <path d="M160.36,-5.41 C-10.84,150.67 200.28,108.72 70.08,211.48 L0.00,210.00 L0.00,0.00 Z"/>
+                    <path d="M150.36,-5.41 C-10.84,150.67 400.28,68.72 10.08,211.48 L0.00,210.00 L0.00,0.00 Z"/>
                 </svg>
             </div>
             <div className="container-1">

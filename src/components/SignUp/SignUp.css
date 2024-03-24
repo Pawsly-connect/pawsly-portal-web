@@ -21,13 +21,26 @@ body {
     width: 100%;
     fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
-
+.wave-container-top-left{
+    @media only screen and (max-width: 1023px) {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
+.wave-svg-top-left {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
+    z-index: 1;
+}
 
 .big-logo {
     width: 0;
     height: 0;
     position: relative; /* Agrega posicionamiento relativo */
-    z-index: -2; /* Asegúrate de que .big-logo esté detrás de .perros */
+    z-index: 1; /* Asegúrate de que .big-logo esté detrás de .perros */
     @media only screen and (min-width: 1023px) {
         background-size: cover;
         background-repeat: no-repeat;
@@ -48,7 +61,7 @@ body {
     position: absolute; /* Agrega posicionamiento absoluto */
     top: 0;
     left: 0;
-    z-index: -1; /* Asegúrate de que .perros esté delante de .big-logo */
+    z-index: 2; /* Asegúrate de que .perros esté delante de .big-logo */
     @media only screen and (min-width: 1023px) {
         background-size: cover;
         background-repeat: no-repeat;
