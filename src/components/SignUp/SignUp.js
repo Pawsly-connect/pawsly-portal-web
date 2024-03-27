@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { ReactComponent as WaveTopLeft } from "../statics/wave_top_left.svg";
+import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
+import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
 import "./SignUp.css";
 
 const Registro = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    city:"",
+    city: "",
     phoneNumber: "",
     username: "",
-    name:"",
-    confirmEmail: ""
+    name: "",
+    confirmEmail: "",
   });
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
   const [formErrors, setFormErrors] = useState({});
@@ -25,6 +28,10 @@ const Registro = () => {
     if (!formData.email || !emailPattern.test(formData.email)) {
       errors.email = "Correo electrónico inválido";
     }
+    if (formData.confirmEmail && formData.email !== formData.confirmEmail) {
+      errors.email = "Los correos electrónicos no coinciden";
+    }
+
     if (!formData.password || !passwordPattern.test(formData.password)) {
       errors.password = "Contraseña inválida";
     }
@@ -54,33 +61,28 @@ const Registro = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    const isEmailNotEmpty = value.trim() !== "";
-    setShowConfirmEmail(isEmailNotEmpty);
-    console.log(`${name} ${value} ${value.trim()}`);
+
+    if (name === "email") {
+      const isEmailNotEmpty = value.trim() !== "";
+      setShowConfirmEmail(isEmailNotEmpty);
+    }
+
+    if (name === "confirmEmail") {
+      const emailValue = formData.email.trim(); // Accede al valor del campo email desde el estado
+      const confirmEmailValue = value.trim(); // Accede al valor del campo confirmEmail desde el evento
+      setShowConfirmEmail(emailValue !== confirmEmailValue);
+      formErrors.email = true;
+    }
+    if (name === "name") {
+      let filteredValue = value.replace(/\d/g, "");
+      setFormData({ ...formData, [name]: filteredValue });
+    }
   };
 
   return (
     <div className="container-main">
       <div className="wave-container-top-left">
-        <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          className="wave-svg-top"
-        >
-          <defs>
-            <linearGradient
-              id="wave-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%"
-            >
-              <stop offset="0%" stopColor="#3E51FF" />
-              <stop offset="100%" stopColor="#252F99" />
-            </linearGradient>
-          </defs>
-          <path d="M150.36,-5.41 C-10.84,150.67 400.28,68.72 10.08,211.48 L0.00,210.00 L0.00,0.00 Z" />
-        </svg>
+        <WaveTopLeft />
       </div>
 
       <div className="container-1">
@@ -90,28 +92,7 @@ const Registro = () => {
 
       <div className="container-2">
         <div className="wave-top">
-          <svg
-            viewBox="0 0 500 150"
-            preserveAspectRatio="none"
-            className="drop"
-          >
-            <defs>
-              <linearGradient
-                id="wave-gradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="15%" stopColor="#3E51FF" />
-                <stop offset="100%" stopColor="#252F99" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M245.77,-3.44 C376.12,120.89 376.12,120.89 500.00,49.98 L500.00,0.00 L338.88,-6.39 Z"
-              style={{ stroke: "none", fill: "url(#wave-gradient)" }}
-            />
-          </svg>
+          <WaveTop />
         </div>
 
         <div id="logo-pawsly"></div>
@@ -131,19 +112,23 @@ const Registro = () => {
               placeholder="Correo"
               value={formData.email}
               onChange={handleChange}
+              maxLength={50}
             />
             {showConfirmEmail && (
-                <input
-                    type="text"
-                    id="confirmEmail"
-                    className="email"
-                    name="confirmEmail"
-                    placeholder="Confirme su correo"
-                    value={formData.confirmEmail}
-                    onChange={handleChange}
-                />
+              <input
+                type="text"
+                id="confirmEmail"
+                className="email"
+                name="confirmEmail"
+                placeholder="Confirme su correo"
+                value={formData.confirmEmail}
+                onChange={handleChange}
+                maxLength={50}
+              />
             )}
-
+            {formErrors.email && (
+              <div className="error">{formErrors.email}</div>
+            )}
             <input
               type="text"
               id="name"
@@ -151,6 +136,7 @@ const Registro = () => {
               placeholder="Nombre"
               value={formData.name}
               onChange={handleChange}
+              maxLength={90}
             />
             {formErrors.name && <div className="error">{formErrors.name}</div>}
 
@@ -213,27 +199,7 @@ const Registro = () => {
         </div>
 
         <div className="wave-container">
-          <svg
-            width="500"
-            height="150"
-            viewBox="0 0 500 150"
-            preserveAspectRatio="none"
-            className="wave-svg"
-          >
-            <defs>
-              <linearGradient
-                id="wave-gradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="15%" stopColor="#3E51FF" />
-                <stop offset="100%" stopColor="#252F99" />
-              </linearGradient>
-            </defs>
-            <path d="M0,49.98 C201.75,-124.81 389.67,290.63 500,49.98 L500,150 L0,150 Z" />
-          </svg>
+          <WaveBottom />
         </div>
       </div>
     </div>
