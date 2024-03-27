@@ -1,13 +1,11 @@
-
-import './App.css';
-import Registro from './components/SignUp/SignUp';
+import "./App.css";
+import Registro from "./components/SignUp/SignUp";
 
 function App() {
   return (
-      <div className="App">
-
-        <Registro/>
-      </div>
+    <div className="App">
+      <Registro />
+    </div>
   );
 }
 
