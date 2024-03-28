@@ -129,6 +129,7 @@ const Registro = () => {
               value={formData.email}
               onChange={handleChange}
               maxLength={50}
+              autocomplete="off"
             />
             {showConfirmEmail && (
               <input
