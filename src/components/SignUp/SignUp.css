@@ -42,13 +42,14 @@ body {
     position: relative; /* Agrega posicionamiento relativo */
     z-index: 1; /* Asegúrate de que .big-logo esté detrás de .perros */
     @media only screen and (min-width: 1023px) {
-        background-size: cover;
+
         background-repeat: no-repeat;
         background-position: center center;
         min-width: 368px;
         min-height: 375px;
         margin: 0;
-        background-image: url('../statics/pawsly_grade.svg');
+        background-image: url('../statics/pawsly_grade.png');
+        background-size: contain;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 53%;
@@ -84,7 +85,7 @@ body {
 
 }
 .wave-top{
-    height: 180px;
+    height: 70px;
     overflow: hidden;
     width: 100%;
     justify-content: flex-end;
@@ -131,13 +132,14 @@ body {
     height: 0;
     @media only screen and (max-width: 1023px) {
         margin: 0 auto 0 auto;
-        width: 61px;
-        height: 82px;
+        width: 80px;
+        height: 100px;
         padding-right: 16px;
         padding-left: 16px;
-        background-image: url('../statics/logo_pawsly.svg');
+        background-image: url('../statics/logo_pawsly.png');
         background-repeat: no-repeat;
         background-position: center center;
+        background-size: contain;
     }
 }
 
@@ -201,6 +203,21 @@ body {
     background-position: 8px center;
     background-size: 24px 23px;
 }
+.select-box {
+    /* Cambia la ruta de la imagen al directorio correcto */
+    background-size: 24px 23px;
+    min-width: 299px;
+    /* Asegúrate de que el fondo sea visible */
+    background-color: white; /* Puedes ajustar el color según tus necesidades */
+    /* Añade un poco de espacio a la izquierda para que el logotipo no se superponga con el texto */
+    padding-left: 40px;
+}
+.select-box .react-select__single-value {
+    background: url('../statics/house_icon.svg') no-repeat 8px center;
+    background-size: 24px 23px;
+    padding-left: 40px; /* Espacio para el logotipo */
+}
+
 
 #password {
     background-image: url('../statics/icon_key.svg');
@@ -320,4 +337,73 @@ body {
     color: blue;
     background-color: red;
 }
+#facebook {
+    background: #3b5998;
+    border-radius: 50%;
+    border-color: black;
+    height: 50px;
+    position: relative;
+    width: 50px;
+}
+
+#facebook:after {
+    color: #ffffff;
+    content: "f";
+    display: block;
+    font-family: Facebook Letter Faces, Arial, fantasy;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 6% 0 0 5%;
+}
+
+#facebook:hover {
+    -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+#google {
+    position: relative;
+    border-top: 10px solid #e34133;
+    border-right: 10px solid #4285f4;
+    border-bottom: 10px solid #34a853;
+    border-left: 10px solid #fbbc05;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+#google::before {
+    content: "";
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 10px;
+    background: #4285f4;
+}
+#google::after {
+    content: "";
+    z-index: 101;
+    position: absolute;
+    border-top: 20px solid transparent;
+    border-right: 24px solid #FFFFFF;
+    border-top-right-radius: 100%;
+    top: -10px;
+    right: -10px;
+    width: 0;
+    height: 0;
+}
+#google:hover {
+    -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
 

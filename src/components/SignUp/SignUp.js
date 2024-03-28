@@ -2,8 +2,23 @@ import React, { useState } from "react";
 import { ReactComponent as WaveTopLeft } from "../statics/wave_top_left.svg";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
+import houseIcon from "../statics/house_icon.svg";
+import departamentos_colombia from "../statics/departamentos_colombia.json";
+import Select from "react-select";
 import "./SignUp.css";
 
+const optionsSet = new Set();
+
+departamentos_colombia.forEach((item) => {
+  optionsSet.add(item.departamento);
+});
+
+const options = [...optionsSet].map((value) => ({
+  value,
+  label: value,
+}));
+const url_mientras =
+  "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
 const Registro = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -21,7 +36,7 @@ const Registro = () => {
     let errors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;\'?/>.<,])(?=.*[^\s]).{8,}$/;
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{":;'?/>.<,])(?=.*\s).{8,}$/;
     const phoneNumberPattern = /^\d{3}-\d{3}-\d{4}$/;
     const usernamePattern = /^[a-zA-Z0-9]{3,20}$/;
 
@@ -50,6 +65,7 @@ const Registro = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log(options);
     e.preventDefault();
     if (validateForm()) {
       console.log("Formulario válido. Datos enviados:", formData);
@@ -149,7 +165,31 @@ const Registro = () => {
               onChange={handleChange}
             />
             {formErrors.city && <div className="error">{formErrors.city}</div>}
+            {/**/}
+            <Select
+              className="select-box"
+              onChange={handleChange}
+              options={options}
+              isSearchable={true}
+              placeholder="Ciudad"
+              styles={{
+                control: (provided) => ({
+                  ...provided,
+                  background: "white",
+                  paddingLeft: "40px",
+                  border: "1px solid #ccc", // Añade un borde para mayor claridad
+                }),
+                singleValue: (provided) => ({
+                  ...provided,
+                  background: `url(${houseIcon}) no-repeat 8px center`,
+                  backgroundColor: "red",
+                  backgroundSize: "24px 23px",
+                  paddingLeft: "40px",
+                }),
+              }}
+            />
 
+            {/**/}
             <input
               type="password"
               id="password"
@@ -169,7 +209,7 @@ const Registro = () => {
               <div className="custom-checkbox"></div>
             </label>
 
-            <a id="term-text" href="#">
+            <a id="term-text" href={url_mientras}>
               ¿Aceptas nuestros{" "}
               <b>
                 terminos y <br /> condiciones
@@ -184,18 +224,18 @@ const Registro = () => {
         </form>
 
         <div className="text-in">
-          <a className="term-text-in" href="#">
+          <a className="term-text-in" href={url_mientras}>
             ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
-          <a className="term-text-in" href="#">
+          <a className="term-text-in" href={url_mientras}>
             <b>O ingresa con:</b>
           </a>
         </div>
 
         <div className="logos-in">
-          <div className="logo-google logo"></div>
-          <div className="logo-facebook logo"></div>
+          <div id="google"></div>
+          <div id="facebook"></div>
         </div>
 
         <div className="wave-container">
