@@ -130,6 +130,7 @@ const Registro = () => {
               onChange={handleChange}
               maxLength={50}
               autocomplete="off"
+              aria-autocomplete="none"
             />
             {showConfirmEmail && (
               <input
@@ -141,6 +142,8 @@ const Registro = () => {
                 value={formData.confirmEmail}
                 onChange={handleChange}
                 maxLength={50}
+                autocomplete="off"
+                aria-autocomplete="none"
               />
             )}
             {formErrors.email && (
@@ -154,6 +157,8 @@ const Registro = () => {
               value={formData.name}
               onChange={handleChange}
               maxLength={90}
+              autocomplete="off"
+              aria-autocomplete="none"
             />
             {formErrors.name && <div className="error">{formErrors.name}</div>}
 
@@ -164,6 +169,8 @@ const Registro = () => {
               placeholder="Ciudad"
               value={formData.city}
               onChange={handleChange}
+              autocomplete="off"
+              aria-autocomplete="none"
             />
             {formErrors.city && <div className="error">{formErrors.city}</div>}
             {/**/}
@@ -173,6 +180,8 @@ const Registro = () => {
               options={options}
               isSearchable={true}
               placeholder="Ciudad"
+              autocomplete="off"
+              aria-autocomplete="none"
               styles={{
                 control: (provided) => ({
                   ...provided,
@@ -198,6 +207,8 @@ const Registro = () => {
               placeholder="Contraseña"
               value={formData.password}
               onChange={handleChange}
+              autocomplete="off"
+              aria-autocomplete="none"
             />
             {formErrors.password && (
               <div className="error">{formErrors.password}</div>
