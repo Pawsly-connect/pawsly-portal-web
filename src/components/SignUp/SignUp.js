@@ -5,6 +5,7 @@ import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
 import houseIcon from "../statics/house_icon.svg";
 import departamentos_colombia from "../statics/departamentos_colombia.json";
 import Select from "react-select";
+import registerService from "./signUp.service";
 import "./SignUp.css";
 
 const optionsSet = new Set();
@@ -46,7 +47,6 @@ const Registro = () => {
     if (formData.confirmEmail && formData.email !== formData.confirmEmail) {
       errors.email = "Los correos electrónicos no coinciden";
     }
-
     if (!formData.password || !passwordPattern.test(formData.password)) {
       errors.password = "Contraseña inválida";
     }
@@ -64,11 +64,15 @@ const Registro = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    console.log(options);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Formulario válido. Datos enviados:", formData);
+      const request = await registerService(formData);
+      if (request.isError){
+        console.log("ERROR in request: ", request.response.data.msg)
+      }else{
+        console.log("Request successfully: ", request.response.data.msg)
+      }
     } else {
       console.log("Formulario inválido. Revise los campos.");
     }
