@@ -32,7 +32,7 @@ const Registro = () => {
   });
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const validateForm = () => {
     let errors = {};
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -81,22 +81,18 @@ const Registro = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
     if (name === "email") {
       const isEmailNotEmpty = value.trim() !== "";
       setShowConfirmEmail(isEmailNotEmpty);
-    }
-
-    if (name === "confirmEmail") {
-      const emailValue = formData.email.trim(); // Accede al valor del campo email desde el estado
-      const confirmEmailValue = value.trim(); // Accede al valor del campo confirmEmail desde el evento
-      setShowConfirmEmail(emailValue !== confirmEmailValue);
-      formErrors.email = true;
     }
     if (name === "name") {
       let filteredValue = value.replace(/\d/g, "");
       setFormData({ ...formData, [name]: filteredValue });
     }
+  };
+
+  const handleSelectChange = (selectedOption) => {
+    setFormData({ ...formData, city: selectedOption.value });
   };
 
   return (
@@ -126,6 +122,28 @@ const Registro = () => {
           <div className="text-inputs">
             <input
               type="text"
+              id="name"
+              name="name"
+              placeholder="Nombre"
+              value={formData.name}
+              onChange={handleChange}
+              maxLength={90}
+              autoComplete="off"
+              aria-autocomplete="none"
+            />
+            {formErrors.name && <div className="error">{formErrors.name}</div>}
+            <Select
+              name="city"
+              className="select-box"
+              onChange={handleSelectChange}
+              options={options}
+              isSearchable={true}
+              placeholder="Ciudad"
+              autoComplete="off"
+              aria-autocomplete="none"
+            />
+            <input
+              type="text"
               id="email"
               className="email"
               name="email"
@@ -133,7 +151,7 @@ const Registro = () => {
               value={formData.email}
               onChange={handleChange}
               maxLength={50}
-              autocomplete="off"
+              autoComplete="off"
               aria-autocomplete="none"
             />
             {showConfirmEmail && (
@@ -146,7 +164,7 @@ const Registro = () => {
                 value={formData.confirmEmail}
                 onChange={handleChange}
                 maxLength={50}
-                autocomplete="off"
+                autoComplete="off"
                 aria-autocomplete="none"
               />
             )}
@@ -154,64 +172,13 @@ const Registro = () => {
               <div className="error">{formErrors.email}</div>
             )}
             <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Nombre"
-              value={formData.name}
-              onChange={handleChange}
-              maxLength={90}
-              autocomplete="off"
-              aria-autocomplete="none"
-            />
-            {formErrors.name && <div className="error">{formErrors.name}</div>}
-
-            <input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="Ciudad"
-              value={formData.city}
-              onChange={handleChange}
-              autocomplete="off"
-              aria-autocomplete="none"
-            />
-            {formErrors.city && <div className="error">{formErrors.city}</div>}
-            {/**/}
-            <Select
-              className="select-box"
-              onChange={handleChange}
-              options={options}
-              isSearchable={true}
-              placeholder="Ciudad"
-              autocomplete="off"
-              aria-autocomplete="none"
-              styles={{
-                control: (provided) => ({
-                  ...provided,
-                  background: "white",
-                  paddingLeft: "40px",
-                  border: "1px solid #ccc", // Añade un borde para mayor claridad
-                }),
-                singleValue: (provided) => ({
-                  ...provided,
-                  background: `url(${houseIcon}) no-repeat 8px center`,
-                  backgroundColor: "red",
-                  backgroundSize: "24px 23px",
-                  paddingLeft: "40px",
-                }),
-              }}
-            />
-
-            {/**/}
-            <input
               type="password"
               id="password"
               name="password"
               placeholder="Contraseña"
               value={formData.password}
               onChange={handleChange}
-              autocomplete="off"
+              autoComplete="off"
               aria-autocomplete="none"
             />
             {formErrors.password && (
@@ -234,7 +201,12 @@ const Registro = () => {
             </a>
           </div>
 
-          <button id="button-create" type="submit">
+          <button
+            id="button-create"
+            type="submit"
+            className={isButtonDisabled ? "disabled" : ""}
+            disabled={isButtonDisabled}
+          >
             Crear Cuenta
           </button>
         </form>

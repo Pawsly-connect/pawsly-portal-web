@@ -4,6 +4,7 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
+    background-color: #F4F5FF;
 }
 .wave-container-top {
     z-index: 0;
@@ -171,6 +172,11 @@ body {
 .text-inputs > * {
     font-family: 'Roboto Slab', serif;
     margin-bottom: 16px;
+    font-size: 16px;
+
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
 }
 
 .text-inputs input {
@@ -204,18 +210,41 @@ body {
     background-size: 24px 23px;
 }
 .select-box {
-    /* Cambia la ruta de la imagen al directorio correcto */
-    background-size: 24px 23px;
-    min-width: 299px;
-    /* Asegúrate de que el fondo sea visible */
-    background-color: white; /* Puedes ajustar el color según tus necesidades */
-    /* Añade un poco de espacio a la izquierda para que el logotipo no se superponga con el texto */
-    padding-left: 40px;
+    width: 299px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
 }
-.select-box .react-select__single-value {
-    background: url('../statics/house_icon.svg') no-repeat 8px center;
-    background-size: 24px 23px;
-    padding-left: 40px; /* Espacio para el logotipo */
+.select-box{
+    height: 33px;
+}
+
+.select-box .css-13cymwt-control {
+    /* Ruta del logo */
+    background-size: 24px 23px; /* Tamaño del logo */
+    padding-bottom: 19px;
+    padding-left: 40px;
+    text-align: left;
+    font-family: 'Roboto Slab', serif;
+    height: 33px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background: #FFFFFF url('../statics/house_icon.svg') no-repeat 8px center;
+}
+
+.select-box .css-13cymwt-control .css-1fdsijx-ValueContainer .css-1dimb5e-singleValue{
+    margin: -9px 0 0 0;
+
+}
+
+.select-box .css-13cymwt-control .css-1jqq78o-placeholder{
+    margin: -9px 0 0 -4px !important;
+    font-size: 16px !important;
+
+}
+
+.select-box .css-13cymwt-control .css-qbdosj-Input input {
+    grid-area: unset !important;
+    min-width: unset !important;
+    margin: 0 !important;
 }
 
 
@@ -282,6 +311,10 @@ body {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+#button-create.disabled {
+    opacity: 0.5; /* Reduce la opacidad del botón desactivado */
+    cursor: not-allowed; /* Cambia el cursor cuando el botón está desactivado */
+}
 
 .text-in {
     margin: 32px auto 0 auto;
@@ -334,8 +367,7 @@ body {
     fill: url(#wave-gradient); /* Aplica el gradiente lineal como fondo */
 }
 .error{
-    color: blue;
-    background-color: red;
+    color: #ff0000;
 }
 #facebook {
     background: #3b5998;
