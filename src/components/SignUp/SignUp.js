@@ -21,7 +21,7 @@ const url_mientras =
 
 const maxLengthName = 90;
 const maxLengthEmail = 50;
-const maxLengthPassword = 8;
+const maxLengthPassword = 15;
 
 
 const Registro = () => {
@@ -42,43 +42,80 @@ const Registro = () => {
 
   const validateForm = () => {
     let errors = {};
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     console.log(formData);
     if (formData.name.trim() === ""){
       errors.name = "Por favor, escriba su nombre.";
     }
-    if (formData.email && !emailPattern.test(formData.email)) {
-      errors.email = "Correo electrónico inválido";
-    }
-    if (formData.email.trim() === ""){
-      errors.email = "Por favor, escriba su correo electrónico.";
-    }
-    if (formData.confirmEmail.trim() === ""){
-      errors.confirmEmail = "Por favor, escriba de nuevo su correo electrónico.";
-    }
-    if (formData.confirmEmail && formData.email !== formData.confirmEmail) {
-      errors.email = "Los correos electrónicos no coinciden";
-    }
-
-    if (formData.confirmPassword && formData.password !== formData.confirmPassword) {
-      errors.confirmPassword = "Las contraseñas no coinciden";
-    }
-
-    if (!formData.password || !passwordPattern.test(formData.password)) {
-      errors.password = "Contraseña inválida";
-    }
+    validateEmail();
+    validateConfirmEmail();
+    validatePassword();
+    validateConfirmPassword();
     if (formData.city.trim() ===""){
       errors.city = "Seleccione la ciudad";
     }
     if (!formData.checkBox) {
       errors.checkBox = "Por favor Acepte los terminos y condiciones";
     }
-    setFormErrors(errors);
+
+    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
     return Object.keys(errors).length === 0;
   };
+  const validateConfirmPassword = (password = formData.confirmPassword)=>{
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    let errors={confirmPassword:""};
+    if (password && password.trim() === ""){
+      errors.confirmPassword = "Por favor, confirme su contraseña.";
+    }
+    if(password && formData.password && password !== formData.password){
+      errors.confirmPassword = "Las contraseñas no coinciden";
+    }
+    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+  };
 
+  const validatePassword = (password = formData.password)=>{
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    let errors={password:""};
+    if (password.trim() === ""){
+      errors.password = "Por favor, cree su contraseña.";
+    }
+    if(password && formData.confirmPassword && password !== formData.confirmPassword){
+      errors.password = "Las contraseñas no coinciden";
+    }
+    if (!passwordPattern.test(password)) {
+      errors.password = "Contraseña inválida. Use Mayuscula, miniscula y debe tener un largo minimo de 8 caracteres.";
+    }
+    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+  };
 
+  const validateEmail = (email = formData.email)=>{
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors={email:""};
+    if (email && !emailPattern.test(email)) {
+      errors.email = "Correo electrónico inválido";
+    }
+    if (email.trim() === ""){
+      errors.email = "Por favor, escriba su correo electrónico.";
+    }
+    if(formData.confirmEmail && email !== formData.confirmEmail){
+      errors.email = "Los correos electrónicos no coinciden";
+    }
+    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+  }
+  const validateConfirmEmail = (email = formData.confirmEmail)=>{
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors={confirmEmail:""};
+    if (email && !emailPattern.test(email)) {
+      errors.confirmEmail = "Correo electrónico inválido";
+    }
+    if (email && email.trim() === ""){
+      errors.confirmEmail = "Por favor, escriba su correo electrónico.";
+    }
+    if(formData.email && email !== formData.email){
+      errors.confirmEmail = "Los correos electrónicos no coinciden";
+    }
+    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -95,8 +132,11 @@ const Registro = () => {
     if (name === "email") {
       const isEmailNotEmpty = value.trim() !== "";
       setShowConfirmEmail(isEmailNotEmpty);
+      validateEmail(value);
     }
-
+    if (name === "confirmEmail") {
+      validateConfirmEmail(value);
+    }
     if (name === "name") {
       let filteredValue = value.replace(/\d/g, "");
       setFormData({ ...formData, [name]: filteredValue });
@@ -104,7 +144,12 @@ const Registro = () => {
     if (name === "password"){
       const isPasswordNotEmpty = value.trim() !== "";
       setShowConfirmPassword(isPasswordNotEmpty);
+      validatePassword(value);
     }
+    if (name === "confirmPassword"){
+      validateConfirmPassword(value);
+    }
+
     if (name === "checkBox") {
       setFormData({...formData, [name]: checked});
       setChecked(checked);
@@ -185,6 +230,9 @@ const Registro = () => {
               autoComplete="off"
               aria-autocomplete="none"
             />
+            {formErrors.email && (
+                <div className="error">{formErrors.email}</div>
+            )}
             {showConfirmEmail && (
               <input
                 type="text"
@@ -201,8 +249,9 @@ const Registro = () => {
                 aria-autocomplete="none"
               />
             )}
-            {formErrors.email && (
-              <div className="error">{formErrors.email}</div>
+
+            {formErrors.confirmEmail && (
+                <div className="error">{formErrors.confirmEmail}</div>
             )}
             <input
               type="password"
