@@ -248,7 +248,7 @@ body {
 }
 
 
-#password {
+.password {
     background-image: url('../statics/icon_key.svg');
     background-repeat: no-repeat;
     background-position: 8px center;
