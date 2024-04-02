@@ -4,7 +4,7 @@ import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
 import departamentos_colombia from "../statics/departamentos_colombia.json";
 import Select from "react-select";
-import registerService from "../../service/SingUp/signUpService";
+import registerService from "../../service/SingUp/SignUpService";
 import "./SignUp.css";
 
 const optionsSet = new Set();
@@ -43,7 +43,6 @@ const Registro = () => {
 
   const validateForm = () => {
     let errors = {};
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     console.log(formData);
     if (formData.name.trim() === ""){
       errors.name = "Por favor, escriba su nombre.";
@@ -63,7 +62,6 @@ const Registro = () => {
     return Object.keys(errors).length === 0;
   };
   const validateConfirmPassword = (password = formData.confirmPassword)=>{
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     let errors={confirmPassword:""};
     if (password && password.trim() === ""){
       errors.confirmPassword = "Por favor, confirme su contraseña.";
@@ -102,6 +100,7 @@ const Registro = () => {
       errors.email = "Los correos electrónicos no coinciden";
     }
     setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+
   }
   const validateConfirmEmail = (email = formData.confirmEmail)=>{
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

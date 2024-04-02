@@ -5,7 +5,7 @@ async function registerService(formData){
         email: formData.email,
         password: formData.password,
         city: formData.city,
-        name: formData.userName
+        name: formData.name
     }).then((res) => {
         return {
             response: res,
