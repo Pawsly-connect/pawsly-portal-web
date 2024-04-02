@@ -2,6 +2,7 @@ import "./LogIn.css";
 import React, { useState } from "react";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import Select from "react-select";
+import registerService from "../../service/SingUp/SignUpService";
 const Ingreso = () => {
     const url_mientras =
         "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
@@ -12,39 +13,51 @@ const Ingreso = () => {
     const [formErrors, setFormErrors] = useState({});
     const maxLengthEmail = 50;
     const maxLengthPassword = 15;
-    const handleSubmit = async () => {
-        console.log("hola");
-    };
-    const validateEmail = (email = formData.email)=>{
-        let errors={email:""};
-        if (email.trim() === ""){
-            errors.email = "Por favor, escriba su correo electrónico.";
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const isFormValid = await validateForm();
+        if (isFormValid) {
+            console.log("Formulario válido");
+        } else {
+            console.log("Formulario inválido. Revise los campos.");
         }
-        setFormErrors(formErrors => ({ ...formErrors, ...errors }));
     };
 
-    const validatePassword = (password = formData.password)=>{
-        let errors={password:""};
-        if (password.trim() === ""){
-            errors.password = "Por favor, escriba su contraseña.";
+    const validateForm = async () => {
+        const isEmailValid = await validateEmail(formData.email);
+        const isPasswordValid = await validatePassword(formData.password);
+        return isEmailValid && isPasswordValid;
+    };
+
+    const validateEmail = async (email) => {
+        let emailError = "";
+        if (!email.trim()) {
+            emailError = "Por favor, escriba su correo electrónico.";
         }
-        setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+        setFormErrors((prevErrors) => ({ ...prevErrors, email: emailError }));
+        return !emailError;
+    };
+
+    const validatePassword = async (password) => {
+        let passwordError = "";
+        if (!password.trim()) {
+            passwordError = "Por favor, escriba su contraseña.";
+        }
+        setFormErrors((prevErrors) => ({ ...prevErrors, password: passwordError }));
+        return !passwordError;
     };
 
     const handleChange = (e) => {
-        const { name, value, checked } = e.target;
+        const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        console.log(`${name} ${value} ${checked} ${formData.checkBox}`);
         if (name === "email") {
-            const isEmailNotEmpty = value.trim() !== "";
             validateEmail(value);
         }
-        if (name === "password"){
-            const isPasswordNotEmpty = value.trim() !== "";
-
+        if (name === "password") {
             validatePassword(value);
         }
     };
+
     const handleCopy = (e) => {
         e.preventDefault();
         //console.log('Copiar está desactivado para este campo.');
@@ -80,6 +93,9 @@ const Ingreso = () => {
                             autoComplete="off"
                             aria-autocomplete="none"
                         />
+                        {formErrors.email && (
+                            <div className="error">{formErrors.email}</div>
+                        )}
                         <input
                             type="password"
                             className="password"
@@ -91,6 +107,9 @@ const Ingreso = () => {
                             autoComplete="off"
                             aria-autocomplete="none"
                         />
+                        {formErrors.password && (
+                            <div className="error">{formErrors.password}</div>
+                        )}
                     </div>
                     <button
                         id="button-in"
