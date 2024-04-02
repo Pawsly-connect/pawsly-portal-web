@@ -22,67 +22,12 @@ body {
     width: 100%;
     fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
-.wave-container-top-left{
-    @media only screen and (max-width: 1023px) {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
-}
-.wave-svg-top-left {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
-    z-index: 1;
-}
-
-.big-logo {
-    width: 0;
-    height: 0;
-    position: relative; /* Agrega posicionamiento relativo */
-    z-index: 1; /* Asegúrate de que .big-logo esté detrás de .perros */
-    @media only screen and (min-width: 1023px) {
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        min-width: 368px;
-        min-height: 375px;
-        margin: 0;
-        background-image: url('../statics/pawsly_grade.png');
-        background-size: contain;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 53%;
-    }
-}
-
-.dogs {
-    width: 0;
-    height: 0;
-    position: absolute; /* Agrega posicionamiento absoluto */
-    top: 0;
-    left: 0;
-    z-index: 2; /* Asegúrate de que .perros esté delante de .big-logo */
-    @media only screen and (min-width: 1023px) {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        min-width: 666px;
-        min-height: 570px;
-        margin: 0;
-        background-image: url('../statics/perros.svg');
-        top: 55%;
-        left: 52%;
-        transform: translate(-50%, -50%);
-    }
-}
-
 .container-main {
     margin: 0 auto;
     width: 100%;
     display: flex;
     justify-content: center; /* Agrega esta línea para centrar horizontalmente */
+    position: absolute;
 
 }
 .wave-top{
@@ -104,44 +49,23 @@ body {
 
 }
 
-.container-1 {
-    visibility: hidden;
-    @media only screen and (min-width: 1023px) {
-        visibility: visible;
-        min-width: calc(100vw - 421px); /* Ajusta el ancho al 100% */
-        height: 100vh;
-        position: absolute;
-        left: 0;
-    }
-}
-
 .container-2 {
     margin: 0 auto 0 auto;
-    @media only screen and (max-width: 1023px) {
-        width: 100%;
-    }
-    @media only screen and (min-width: 1023px) {
-        width: 389px;
-        padding-right: 16px;
-        padding-left: 16px;
-        margin: 0 0 0 auto;
-    }
+    width: 100%;
+    z-index: 2;
 }
 /* Logo styling */
 #logo-pawsly {
-    width: 0;
-    height: 0;
-    @media only screen and (max-width: 1023px) {
-        margin: 0 auto 0 auto;
-        width: 80px;
-        height: 100px;
-        padding-right: 16px;
-        padding-left: 16px;
-        background-image: url('../statics/logo_pawsly.png');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-    }
+    margin: 0 auto 0 auto;
+    width: 80px;
+    height: 100px;
+    padding-right: 16px;
+    padding-left: 16px;
+    background-image: url('../statics/logo_pawsly.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
 }
 
 /* Title styling */
@@ -188,63 +112,12 @@ body {
     text-indent: 40px;
 }
 
-/* Background images for input fields */
+
 .email {
     background-image: url('../statics/icon_correo.svg');
     background-repeat: no-repeat;
     background-position: 8px center;
     background-size: 24px 23px;
-}
-
-#name {
-    background-image: url('../statics/icon_person.svg');
-    background-repeat: no-repeat;
-    background-position: 8px center;
-    background-size: 24px 23px;
-}
-
-#city {
-    background-image: url('../statics/house_icon.svg');
-    background-repeat: no-repeat;
-    background-position: 8px center;
-    background-size: 24px 23px;
-}
-.select-box {
-    width: 299px;
-    background-repeat: no-repeat;
-    background-position: 8px center;
-}
-.select-box{
-    height: 33px;
-}
-
-.select-box .css-13cymwt-control {
-    /* Ruta del logo */
-    background-size: 24px 23px; /* Tamaño del logo */
-    padding-bottom: 19px;
-    padding-left: 40px;
-    text-align: left;
-    font-family: 'Roboto Slab', serif;
-    height: 33px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    background: #FFFFFF url('../statics/house_icon.svg') no-repeat 8px center;
-}
-
-.select-box .css-13cymwt-control .css-1fdsijx-ValueContainer .css-1dimb5e-singleValue{
-    margin: -9px 0 0 0;
-
-}
-
-.select-box .css-13cymwt-control .css-1jqq78o-placeholder{
-    margin: -9px 0 0 -4px !important;
-    font-size: 16px !important;
-
-}
-
-.select-box .css-13cymwt-control .css-qbdosj-Input input {
-    grid-area: unset !important;
-    min-width: unset !important;
-    margin: 0 !important;
 }
 
 
@@ -278,29 +151,7 @@ body {
 }
 
 
-#customCheckbox {
-    opacity: 0;
-    position: absolute;
-}
-
-.custom-checkbox {
-    display: inline-block;
-    background-size: cover;
-    border: 2px solid #3E4EFF;
-    border-radius: 5px;
-    width: 22px;
-    height: 22px;
-    margin-right: 24px;
-}
-
-
-#customCheckbox:checked + .custom-checkbox {
-    background-image: url('../statics/check_paw.svg');
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
-    background-position: center center;
-}
-#button-create{
+#button-in{
     width: 163px;
     height: 48px;
     border-radius: 15px;
@@ -311,7 +162,7 @@ body {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-#button-create.disabled {
+#button-in.disabled {
     opacity: 0.5; /* Reduce la opacidad del botón desactivado */
     cursor: not-allowed; /* Cambia el cursor cuando el botón está desactivado */
 }
@@ -433,6 +284,71 @@ body {
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     cursor: pointer;
 }
+.dogs-bottom {
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Espacia los elementos igualmente */
+    align-items: flex-start; /* Alinea los elementos al principio */
+    z-index: 1;
+    @media only screen and (min-width: 1023px) {
+        margin: -150px 0 0 0;
+    }
+
+}
+
+
+.dog-bottom-center{
+    min-width: 362px;
+    min-height: 156px;
+    background-image: url("../statics/dog_center.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: auto 0 0 0;
+
+}
+
+.dog-bottom-left{
+    margin: auto 0 0 0;
+    max-width: 251px;
+    max-height: 303px;
+    min-width: 200px;
+    min-height: 242px;
+    background-size: cover;
+    background-image: url("../statics/dog_bottom_left.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    @media only screen and (max-width: 971px) {
+        min-width: 0;
+        min-height: 0;
+        width: 0; /* Establece el ancho a cero */
+        height: 0; /* Establece la altura a cero */
+        padding: 0; /* Asegúrate de que no haya relleno */
+        margin: 0; /* Asegúrate de que no haya margen */
+        overflow: hidden; /* Oculta cualquier contenido visible */
+    }
+}
+.cat-bottom-right{
+    margin: auto 0 0 0;
+    max-width: 293px;
+    max-height: 374px;
+    min-width: 234px;
+    min-height: 299px;
+    background-size: contain;
+    background-image: url("../statics/cat_right.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    @media only screen and (max-width: 971px) {
+        min-width: 0;
+        min-height: 0;
+        width: 0; /* Establece el ancho a cero */
+        height: 0; /* Establece la altura a cero */
+        padding: 0; /* Asegúrate de que no haya relleno */
+        margin: 0; /* Asegúrate de que no haya margen */
+        overflow: hidden; /* Oculta cualquier contenido visible */
+    }
+}
+
+
 
 
 
