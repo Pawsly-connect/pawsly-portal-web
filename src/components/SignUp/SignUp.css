@@ -248,7 +248,7 @@ body {
 }
 
 
-#password {
+.password {
     background-image: url('../statics/icon_key.svg');
     background-repeat: no-repeat;
     background-position: 8px center;
@@ -368,6 +368,10 @@ body {
 }
 .error{
     color: #ff0000;
+    max-width: 299px;
+    text-align: justify;
+    padding-bottom: 8px;
+    margin: 0 auto;
 }
 #facebook {
     background: #3b5998;
