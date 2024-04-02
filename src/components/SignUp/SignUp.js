@@ -5,7 +5,7 @@ import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
 import houseIcon from "../statics/house_icon.svg";
 import departamentos_colombia from "../statics/departamentos_colombia.json";
 import Select from "react-select";
-import registerService from "./signUp.service";
+import registerService from "../../service/SingUp/signUpService";
 import "./SignUp.css";
 
 const optionsSet = new Set();
