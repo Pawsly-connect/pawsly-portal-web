@@ -1,8 +1,7 @@
 import "./LogIn.css";
 import React, { useState } from "react";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
-import Select from "react-select";
-import registerService from "../../service/SingUp/SignUpService";
+
 const Ingreso = () => {
     const url_mientras =
         "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
@@ -60,11 +59,9 @@ const Ingreso = () => {
 
     const handleCopy = (e) => {
         e.preventDefault();
-        //console.log('Copiar está desactivado para este campo.');
     };
     const handlePaste = (e) => {
         e.preventDefault();
-        //console.log('Pegar está desactivado para este campo.');
     };
 
     return (

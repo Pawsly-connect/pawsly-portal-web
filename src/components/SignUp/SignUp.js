@@ -74,6 +74,7 @@ const Registro = () => {
 
   const validatePassword = (password = formData.password)=>{
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const isValidPassword = !passwordPattern.test(password);
     let errors={password:""};
     if (password.trim() === ""){
       errors.password = "Por favor, cree su contraseña.";
@@ -81,7 +82,7 @@ const Registro = () => {
     if(password && formData.confirmPassword && password !== formData.confirmPassword){
       errors.password = "Las contraseñas no coinciden";
     }
-    if (!passwordPattern.test(password)) {
+    if (isValidPassword) {
       errors.password = "Contraseña inválida. Use Mayuscula, miniscula y debe tener un largo minimo de 8 caracteres.";
     }
     setFormErrors(formErrors => ({ ...formErrors, ...errors }));
