@@ -14,6 +14,6 @@ jobs:
             bucket-name: st-portal-web
             frontend-name: portal
             build-folder: build
-            distribution-id: ""
+            distribution-id: E1HXBINK0W5YKC
             version: $(jq -r '.version' package.json)
         secrets: inherit
