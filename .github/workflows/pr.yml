@@ -3,7 +3,7 @@ name: Deploy PROD
 on:
   push:
     branches:
-      - staging
+      - master
 
 jobs:
     deploy-prod:
