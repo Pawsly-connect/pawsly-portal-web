@@ -1,0 +1,22 @@
+<svg
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+        className="drop"
+>
+    <defs>
+        <linearGradient
+                id="wave-gradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+        >
+            <stop offset="15%" stopColor="#3E51FF" />
+            <stop offset="100%" stopColor="#252F99" />
+        </linearGradient>
+    </defs>
+    <path
+            d="M245.77,-3.44 C376.12,120.89 376.12,120.89 500.00,49.98 L500.00,0.00 L338.88,-6.39 Z"
+            style="stroke: none; fill: url(#wave-gradient);"
+    />
+</svg>
