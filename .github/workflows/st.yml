@@ -15,5 +15,5 @@ jobs:
             frontend-name: portal
             build-folder: build
             distribution-id: ""
-            version: $(node -p "require('./package.json').version")
+            version: $(jq -r '.version' package.json)
         secrets: inherit
