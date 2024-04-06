@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ReactComponent as WaveTopLeft } from "../statics/wave_top_left.svg";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
@@ -28,7 +28,7 @@ const Registro = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
   const [formErrors, setFormErrors] = useState({});
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButtonDisabled] = useState(false);
   const [isCheeked, setChecked] = useState(false);
   const [formData, setFormData] = useState({
       email: "",
