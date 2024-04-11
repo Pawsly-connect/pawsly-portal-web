@@ -8,22 +8,8 @@ body {
 
 
 }
-.wave-container-top {
-    z-index: 0;
-    min-height: 100vh;
-    overflow: hidden;
-    @media only screen and (max-width: 1023px) {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
-}
 
-.wave-svg-top {
-    height: 100%;
-    width: 100%;
-    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
-}
+
 .container-main {
     margin: 0 auto;
     width: 100%;
@@ -45,16 +31,21 @@ body {
 }
 
 .wave-top{
-    height: 70px;
+    height: 150px;
     overflow: hidden;
     width: 100%;
     justify-content: flex-end;
     display: flex;
-
     @media only screen and (min-width: 1023px) {
         visibility: hidden;
         height: 50px;
     }
+}
+
+.wave-svg-top {
+    min-height: 1500px;
+    width: 100%;
+    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
 
 .drop{
@@ -70,7 +61,7 @@ body {
     box-shadow: 0px 4px 500px rgba(0, 0, 0, 0.7); /* Agrega una sombra */
 }
 /* Logo styling */
-#logo-pawsly {
+.logopawsly {
     margin: 0 auto 0 auto;
     width: 80px;
     height: 100px;
@@ -166,7 +157,7 @@ body {
 }
 
 
-#button-in{
+.button-in{
     width: 163px;
     height: 48px;
     border-radius: 15px;
@@ -177,7 +168,7 @@ body {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-#button-in.disabled {
+.button-in.disabled {
     opacity: 0.5; /* Reduce la opacidad del botón desactivado */
     cursor: not-allowed; /* Cambia el cursor cuando el botón está desactivado */
 }
@@ -231,7 +222,7 @@ body {
     padding-bottom: 8px;
     margin: 0 auto;
 }
-#facebook {
+.facebook {
     background: #3b5998;
     border-radius: 50%;
     border-color: black;
@@ -240,7 +231,7 @@ body {
     width: 50px;
 }
 
-#facebook:after {
+.facebook:after {
     color: #ffffff;
     content: "f";
     display: block;
@@ -250,14 +241,14 @@ body {
     margin: 6% 0 0 5%;
 }
 
-#facebook:hover {
+.facebook:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     cursor: pointer;
 }
 
-#google {
+.google {
     position: relative;
     border-top: 10px solid #e34133;
     border-right: 10px solid #4285f4;
@@ -270,7 +261,7 @@ body {
     padding: 0;
 }
 
-#google::before {
+.google::before {
     content: "";
     z-index: 100;
     position: absolute;
@@ -281,7 +272,7 @@ body {
     height: 10px;
     background: #4285f4;
 }
-#google::after {
+.google::after {
     content: "";
     z-index: 101;
     position: absolute;
@@ -293,7 +284,7 @@ body {
     width: 0;
     height: 0;
 }
-#google:hover {
+.google:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);

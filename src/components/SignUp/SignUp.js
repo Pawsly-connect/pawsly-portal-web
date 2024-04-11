@@ -24,7 +24,6 @@ const maxLengthName = 90;
 const maxLengthEmail = 50;
 const maxLengthPassword = 15;
 
-
 const Registro = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
@@ -32,99 +31,103 @@ const Registro = () => {
   const [isButtonDisabled] = useState(false);
   const [isCheeked, setChecked] = useState(false);
   const [formData, setFormData] = useState({
-      email: "",
-      confirmEmail: "",
-      password: "",
-      confirmPassword: "",
-      city: "",
-      name: "",
-      checkBox: isCheeked,
-    });
+    email: "",
+    confirmEmail: "",
+    password: "",
+    confirmPassword: "",
+    city: "",
+    name: "",
+    checkBox: isCheeked,
+  });
 
   const validateForm = () => {
     let errors = {};
     console.log(formData);
-    if (formData.name.trim() === ""){
+    if (formData.name.trim() === "") {
       errors.name = "Por favor, escriba su nombre.";
     }
     validateEmail();
     validateConfirmEmail();
     validatePassword();
     validateConfirmPassword();
-    if (formData.city.trim() ===""){
+    if (formData.city.trim() === "") {
       errors.city = "Seleccione la ciudad";
     }
     if (!formData.checkBox) {
       errors.checkBox = "Por favor Acepte los terminos y condiciones";
     }
 
-    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
     return Object.keys(errors).length === 0;
   };
-  const validateConfirmPassword = (password = formData.confirmPassword)=>{
-    let errors={confirmPassword:""};
-    if (password && password.trim() === ""){
+  const validateConfirmPassword = (password = formData.confirmPassword) => {
+    let errors = { confirmPassword: "" };
+    if (password && password.trim() === "") {
       errors.confirmPassword = "Por favor, confirme su contraseña.";
     }
-    if(password && formData.password && password !== formData.password){
+    if (password && formData.password && password !== formData.password) {
       errors.confirmPassword = "Las contraseñas no coinciden";
     }
-    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
   };
 
-  const validatePassword = (password = formData.password)=>{
+  const validatePassword = (password = formData.password) => {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     const isValidPassword = !passwordPattern.test(password);
-    let errors={password:""};
-    if (password.trim() === ""){
+    let errors = { password: "" };
+    if (password.trim() === "") {
       errors.password = "Por favor, cree su contraseña.";
     }
-    if(password && formData.confirmPassword && password !== formData.confirmPassword){
+    if (
+      password &&
+      formData.confirmPassword &&
+      password !== formData.confirmPassword
+    ) {
       errors.password = "Las contraseñas no coinciden";
     }
     if (isValidPassword) {
-      errors.password = "Contraseña inválida. Use Mayuscula, miniscula y debe tener un largo minimo de 8 caracteres.";
+      errors.password =
+        "Contraseña inválida. Use Mayuscula, miniscula y debe tener un largo minimo de 8 caracteres.";
     }
-    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
   };
 
-  const validateEmail = (email = formData.email)=>{
+  const validateEmail = (email = formData.email) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errors={email:""};
+    let errors = { email: "" };
     if (email && !emailPattern.test(email)) {
       errors.email = "Correo electrónico inválido";
     }
-    if (email.trim() === ""){
+    if (email.trim() === "") {
       errors.email = "Por favor, escriba su correo electrónico.";
     }
-    if(formData.confirmEmail && email !== formData.confirmEmail){
+    if (formData.confirmEmail && email !== formData.confirmEmail) {
       errors.email = "Los correos electrónicos no coinciden";
     }
-    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
-
-  }
-  const validateConfirmEmail = (email = formData.confirmEmail)=>{
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+  };
+  const validateConfirmEmail = (email = formData.confirmEmail) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errors={confirmEmail:""};
+    let errors = { confirmEmail: "" };
     if (email && !emailPattern.test(email)) {
       errors.confirmEmail = "Correo electrónico inválido";
     }
-    if (email && email.trim() === ""){
+    if (email && email.trim() === "") {
       errors.confirmEmail = "Por favor, escriba su correo electrónico.";
     }
-    if(formData.email && email !== formData.email){
+    if (formData.email && email !== formData.email) {
       errors.confirmEmail = "Los correos electrónicos no coinciden";
     }
-    setFormErrors(formErrors => ({ ...formErrors, ...errors }));
-  }
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       const request = await registerService(formData);
-      if (request.isError){
-        console.log("ERROR in request: ", request.response.data.msg)
-      }else{
-        console.log("Request successfully: ", request.response.data.msg)
+      if (request.isError) {
+        console.log("ERROR in request: ", request.response.data.msg);
+      } else {
+        console.log("Request successfully: ", request.response.data.msg);
       }
     } else {
       console.log("Formulario inválido. Revise los campos.");
@@ -147,17 +150,17 @@ const Registro = () => {
       let filteredValue = value.replace(/\d/g, "");
       setFormData({ ...formData, [name]: filteredValue });
     }
-    if (name === "password"){
+    if (name === "password") {
       const isPasswordNotEmpty = value.trim() !== "";
       setShowConfirmPassword(isPasswordNotEmpty);
       validatePassword(value);
     }
-    if (name === "confirmPassword"){
+    if (name === "confirmPassword") {
       validateConfirmPassword(value);
     }
 
     if (name === "checkBox") {
-      setFormData({...formData, [name]: checked});
+      setFormData({ ...formData, [name]: checked });
       setChecked(checked);
     }
   };
@@ -175,7 +178,7 @@ const Registro = () => {
   };
 
   return (
-    <div className="container-main" >
+    <div className="container-main">
       <div className="wave-container-top-left">
         <WaveTopLeft />
       </div>
@@ -237,7 +240,7 @@ const Registro = () => {
               aria-autocomplete="none"
             />
             {formErrors.email && (
-                <div className="error">{formErrors.email}</div>
+              <div className="error">{formErrors.email}</div>
             )}
             {showConfirmEmail && (
               <input
@@ -257,7 +260,7 @@ const Registro = () => {
             )}
 
             {formErrors.confirmEmail && (
-                <div className="error">{formErrors.confirmEmail}</div>
+              <div className="error">{formErrors.confirmEmail}</div>
             )}
             <input
               type="password"
@@ -271,20 +274,20 @@ const Registro = () => {
               aria-autocomplete="none"
             />
             {formErrors.password && (
-                <div className="error">{formErrors.password}</div>
+              <div className="error">{formErrors.password}</div>
             )}
             {showConfirmPassword && (
-                <input
-                    type="password"
-                    className="password"
-                    name="confirmPassword"
-                    placeholder="Confirme su Contraseña"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    maxLength={maxLengthPassword}
-                    autoComplete="off"
-                    aria-autocomplete="none"
-                />
+              <input
+                type="password"
+                className="password"
+                name="confirmPassword"
+                placeholder="Confirme su Contraseña"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                maxLength={maxLengthPassword}
+                autoComplete="off"
+                aria-autocomplete="none"
+              />
             )}
             {formErrors.confirmPassword && (
               <div className="error">{formErrors.confirmPassword}</div>
@@ -293,11 +296,12 @@ const Registro = () => {
 
           <div className="term">
             <label htmlFor="customCheckbox">
-              <input type="checkbox"
-                     name="checkBox"
-                     id="customCheckbox"
-                     onChange={handleChange}
-                     checked={formData.checkBox}
+              <input
+                type="checkbox"
+                name="checkBox"
+                id="customCheckbox"
+                onChange={handleChange}
+                checked={formData.checkBox}
               />
               <div className="custom-checkbox"></div>
             </label>
@@ -309,14 +313,12 @@ const Registro = () => {
               </b>
               ?
             </a>
-
           </div>
           {formErrors.checkBox && (
-
-              <div className="error">
-                <br/>
-                {formErrors.checkBox}
-              </div>
+            <div className="error">
+              <br />
+              {formErrors.checkBox}
+            </div>
           )}
           <button
             id="button-create"
