@@ -6,16 +6,6 @@ body {
     overflow-x: hidden;
     background-color: #F4F5FF;
 }
-.wave-container-top {
-    z-index: 0;
-    min-height: 100vh;
-    overflow: hidden;
-    @media only screen and (max-width: 1023px) {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
-}
 
 .wave-svg-top {
     height: 100%;
@@ -23,11 +13,18 @@ body {
     fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
 .wave-container-top-left{
+    max-width: 490px;
+    min-height: 100vh;
     @media only screen and (max-width: 1023px) {
         width: 0;
         height: 0;
         visibility: hidden;
     }
+}
+.wave-left{
+    height: 100%;
+    width: 100%;
+    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
 .wave-svg-top-left {
     position: relative;
@@ -81,6 +78,7 @@ body {
 .container-main {
     margin: 0 auto;
     width: 100%;
+
     display: flex;
     justify-content: center; /* Agrega esta línea para centrar horizontalmente */
 
@@ -96,8 +94,8 @@ body {
     pointer-events: none;
     z-index: 3;
 }
-.wave-top{
-    height: 70px;
+.wave-container-top{
+    height: 100px;
     overflow: hidden;
     width: 100%;
     justify-content: flex-end;
@@ -107,6 +105,11 @@ body {
         visibility: hidden;
         height: 50px;
     }
+}
+.wave-top{
+    height: 100%;
+    width: 100%;
+    fill: url(#wave-gradient);
 }
 
 .drop{
@@ -138,8 +141,8 @@ body {
         margin: 0 0 0 auto;
     }
 }
-/* Logo styling */
-#logo-pawsly {
+
+.logo-pawsly {
     width: 0;
     height: 0;
     @media only screen and (max-width: 1023px) {
@@ -172,7 +175,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Text input styling */
 .text-inputs {
     margin-top: 24px;
     display: flex;
@@ -180,26 +182,28 @@ body {
     align-items: center;
 }
 
-.text-inputs > * {
-    font-family: 'Roboto Slab', serif;
-    margin-bottom: 16px;
-    font-size: 16px;
 
+.text-inputs input {
+    font-size: 16px;
     text-decoration: none;
     font-weight: normal;
     font-style: normal;
 }
-
-.text-inputs input {
+.input-text-form{
     height: 33px;
     width: 293px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     text-indent: 40px;
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 16px;
 }
-
 /* Background images for input fields */
+.email-1{
+    margin-top: 16px;
+
+}
 .email {
     background-image: url('../statics/icon_correo.svg');
     background-repeat: no-repeat;
@@ -207,55 +211,21 @@ body {
     background-size: 24px 23px;
 }
 
-#name {
+.name {
     background-image: url('../statics/icon_person.svg');
     background-repeat: no-repeat;
     background-position: 8px center;
     background-size: 24px 23px;
 }
 
-#city {
-    background-image: url('../statics/house_icon.svg');
-    background-repeat: no-repeat;
-    background-position: 8px center;
-    background-size: 24px 23px;
-}
+
 .select-box {
     width: 299px;
+    min-height: 33px;
     background-repeat: no-repeat;
     background-position: 8px center;
-}
-.select-box{
-    height: 33px;
-}
-
-.select-box .css-13cymwt-control {
-    /* Ruta del logo */
-    background-size: 24px 23px; /* Tamaño del logo */
-    padding-bottom: 19px;
-    padding-left: 40px;
-    text-align: left;
-    font-family: 'Roboto Slab', serif;
-    height: 33px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    background: #FFFFFF url('../statics/house_icon.svg') no-repeat 8px center;
-}
 
-.select-box .css-13cymwt-control .css-1fdsijx-ValueContainer .css-1dimb5e-singleValue{
-    margin: -9px 0 0 0;
-
-}
-
-.select-box .css-13cymwt-control .css-1jqq78o-placeholder{
-    margin: -9px 0 0 -4px !important;
-    font-size: 16px !important;
-
-}
-
-.select-box .css-13cymwt-control .css-qbdosj-Input input {
-    grid-area: unset !important;
-    min-width: unset !important;
-    margin: 0 !important;
 }
 
 
@@ -271,7 +241,7 @@ body {
     display: flex; /* Establece el contenedor como flexbox */
     align-items: center;
 }
-#term-text{
+.term-text{
     font-family: 'Roboto Slab', serif;
     color: #000000;
     text-decoration: none;
@@ -279,17 +249,16 @@ body {
     transition: color,font-size 1s .5s;
 
 }
-#term-text b {
+.term-text b {
     font-size: 16px;
 }
 
-#term-text:hover{
+.term-text:hover{
     color: rgba(0, 0, 0, 0.24);
     font-size: 17px;
 }
 
-
-#customCheckbox {
+.custom-checkbox-input {
     opacity: 0;
     position: absolute;
 }
@@ -304,14 +273,15 @@ body {
     margin-right: 24px;
 }
 
-
-#customCheckbox:checked + .custom-checkbox {
+.custom-checkbox-input:checked + .custom-checkbox {
     background-image: url('../statics/check_paw.svg');
     background-repeat: no-repeat;
     background-size: 20px 19px;
     background-position: center center;
 }
-#button-create{
+
+
+.button-create{
     width: 163px;
     height: 48px;
     border-radius: 15px;
@@ -322,7 +292,7 @@ body {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-#button-create.disabled {
+.button-create.disabled {
     opacity: 0.5; /* Reduce la opacidad del botón desactivado */
     cursor: not-allowed; /* Cambia el cursor cuando el botón está desactivado */
 }
@@ -353,18 +323,17 @@ body {
     background-position: center;
 }
 
-
-
-.wave-container {
+.wave-container-bottom {
     width: 100%; /* Ajusta el ancho del contenedor */
     height: 150px; /* Establece la altura deseada */
     overflow: hidden; /* Oculta el exceso de contenido */
+    margin-top: auto;
     @media only screen and (min-width: 1023px) {
         visibility: hidden;
     }
 }
 
-.wave-svg {
+.wave-svg-bottom {
     width: 100%; /* Ajusta el ancho del SVG al 100% del contenedor */
     height: 100%; /* Ajusta la altura del SVG al 100% del contenedor */
     fill: url(#wave-gradient); /* Aplica el gradiente lineal como fondo */
@@ -376,7 +345,10 @@ body {
     padding-bottom: 8px;
     margin: 0 auto;
 }
-#facebook {
+.error-1{
+    padding-top: 10px;
+}
+.facebook {
     background: #3b5998;
     border-radius: 50%;
     border-color: black;
@@ -385,7 +357,7 @@ body {
     width: 50px;
 }
 
-#facebook:after {
+.facebook:after {
     color: #ffffff;
     content: "f";
     display: block;
@@ -395,14 +367,14 @@ body {
     margin: 6% 0 0 5%;
 }
 
-#facebook:hover {
+.facebook:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     cursor: pointer;
 }
 
-#google {
+.google {
     position: relative;
     border-top: 10px solid #e34133;
     border-right: 10px solid #4285f4;
@@ -415,7 +387,7 @@ body {
     padding: 0;
 }
 
-#google::before {
+.google::before {
     content: "";
     z-index: 100;
     position: absolute;
@@ -426,7 +398,7 @@ body {
     height: 10px;
     background: #4285f4;
 }
-#google::after {
+.google::after {
     content: "";
     z-index: 101;
     position: absolute;
@@ -438,7 +410,7 @@ body {
     width: 0;
     height: 0;
 }
-#google:hover {
+.google:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
