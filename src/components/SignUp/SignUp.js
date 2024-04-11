@@ -35,6 +35,7 @@ const customStyles = {
     fontFamily: "Roboto, sans-serif", // Establece la fuente del texto
     fontSize: "16px", // Establece el tamaño de fuente del texto
     textAlign: "justify",
+    color:"#000000",
   }),
 };
 const CustomPlaceholder = (props) => (
