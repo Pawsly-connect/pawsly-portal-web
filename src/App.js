@@ -4,7 +4,7 @@ import Ingreso from "./components/LogIn/LogIn";
 function App() {
   return (
     <div className="App">
-      <Registro />
+      <Ingreso />
     </div>
   );
 }

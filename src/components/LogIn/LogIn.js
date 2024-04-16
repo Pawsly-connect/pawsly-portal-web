@@ -127,10 +127,12 @@ const Ingreso = () => {
           <div className={styles["google"]}></div>
           <div className={styles["facebook"]}></div>
         </div>
-        <div className={styles["dogs-bottom"]}>
-          <div className={styles["dog-bottom-left"]}></div>
-          <div className={styles["dog-bottom-center"]}></div>
-          <div className={styles["cat-bottom-right"]}></div>
+        <div className={styles["dogs-bottom-wrapper"]}>
+          <div className={styles["dogs-bottom"]}>
+            <div className={styles["dog-bottom-left"]}></div>
+            <div className={styles["dog-bottom-center"]}></div>
+            <div className={styles["cat-bottom-right"]}></div>
+          </div>
         </div>
       </div>
     </div>
