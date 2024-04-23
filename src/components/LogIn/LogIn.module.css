@@ -5,89 +5,22 @@ body {
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     background-color: #F4F5FF;
-}
-.wave-container-top {
-    z-index: 0;
-    min-height: 100vh;
-    overflow: hidden;
-    @media only screen and (max-width: 1023px) {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
+
+
 }
 
-.wave-svg-top {
-    height: 100%;
-    width: 100%;
-    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
-}
-.wave-container-top-left{
-    @media only screen and (max-width: 1023px) {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
-}
-.wave-svg-top-left {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
-    z-index: 1;
-}
-
-.big-logo {
-    width: 0;
-    height: 0;
-    position: relative; /* Agrega posicionamiento relativo */
-    z-index: 1; /* Asegúrate de que .big-logo esté detrás de .perros */
-    @media only screen and (min-width: 1023px) {
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        min-width: 368px;
-        min-height: 375px;
-        margin: 0;
-        background-image: url('../statics/pawsly_grade.png');
-        background-size: contain;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 53%;
-    }
-}
-
-.dogs {
-    width: 0;
-    height: 0;
-    position: absolute; /* Agrega posicionamiento absoluto */
-    top: 0;
-    left: 0;
-    z-index: 2; /* Asegúrate de que .perros esté delante de .big-logo */
-    @media only screen and (min-width: 1023px) {
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        min-width: 666px;
-        min-height: 570px;
-        margin: 0;
-        background-image: url('../statics/perros.svg');
-        top: 55%;
-        left: 52%;
-        transform: translate(-50%, -50%);
-    }
-}
 
 .container-main {
     margin: 0 auto;
     width: 100%;
     display: flex;
-    justify-content: center; /* Agrega esta línea para centrar horizontalmente */
-
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
 }
 .container-main::after {
     content: "";
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -96,17 +29,23 @@ body {
     pointer-events: none;
     z-index: 3;
 }
+
 .wave-top{
-    height: 70px;
+    height: 150px;
     overflow: hidden;
     width: 100%;
     justify-content: flex-end;
     display: flex;
-
     @media only screen and (min-width: 1023px) {
         visibility: hidden;
         height: 50px;
     }
+}
+
+.wave-svg-top {
+    min-height: 1500px;
+    width: 100%;
+    fill: url(#wave-gradient); /* Aplica el gradiente de color como relleno del SVG */
 }
 
 .drop{
@@ -115,44 +54,23 @@ body {
 
 }
 
-.container-1 {
-    visibility: hidden;
-    @media only screen and (min-width: 1023px) {
-        visibility: visible;
-        min-width: calc(100vw - 421px); /* Ajusta el ancho al 100% */
-        height: 100vh;
-        position: absolute;
-        left: 0;
-    }
-}
-
 .container-2 {
     margin: 0 auto 0 auto;
-    @media only screen and (max-width: 1023px) {
-        width: 100%;
-    }
-    @media only screen and (min-width: 1023px) {
-        width: 389px;
-        padding-right: 16px;
-        padding-left: 16px;
-        margin: 0 0 0 auto;
-    }
+    width: 100%;
+    z-index: 2;
 }
 /* Logo styling */
-#logo-pawsly {
-    width: 0;
-    height: 0;
-    @media only screen and (max-width: 1023px) {
-        margin: 0 auto 0 auto;
-        width: 80px;
-        height: 100px;
-        padding-right: 16px;
-        padding-left: 16px;
-        background-image: url('../statics/logo_pawsly.png');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-    }
+.logopawsly {
+    margin: 0 auto 0 auto;
+    width: 80px;
+    height: 100px;
+    padding-right: 16px;
+    padding-left: 16px;
+    background-image: url('../statics/logo_pawsly.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
 }
 
 /* Title styling */
@@ -199,63 +117,12 @@ body {
     text-indent: 40px;
 }
 
-/* Background images for input fields */
+
 .email {
     background-image: url('../statics/icon_correo.svg');
     background-repeat: no-repeat;
     background-position: 8px center;
     background-size: 24px 23px;
-}
-
-#name {
-    background-image: url('../statics/icon_person.svg');
-    background-repeat: no-repeat;
-    background-position: 8px center;
-    background-size: 24px 23px;
-}
-
-#city {
-    background-image: url('../statics/house_icon.svg');
-    background-repeat: no-repeat;
-    background-position: 8px center;
-    background-size: 24px 23px;
-}
-.select-box {
-    width: 299px;
-    background-repeat: no-repeat;
-    background-position: 8px center;
-}
-.select-box{
-    height: 33px;
-}
-
-.select-box .css-13cymwt-control {
-    /* Ruta del logo */
-    background-size: 24px 23px; /* Tamaño del logo */
-    padding-bottom: 19px;
-    padding-left: 40px;
-    text-align: left;
-    font-family: 'Roboto Slab', serif;
-    height: 33px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    background: #FFFFFF url('../statics/house_icon.svg') no-repeat 8px center;
-}
-
-.select-box .css-13cymwt-control .css-1fdsijx-ValueContainer .css-1dimb5e-singleValue{
-    margin: -9px 0 0 0;
-
-}
-
-.select-box .css-13cymwt-control .css-1jqq78o-placeholder{
-    margin: -9px 0 0 -4px !important;
-    font-size: 16px !important;
-
-}
-
-.select-box .css-13cymwt-control .css-qbdosj-Input input {
-    grid-area: unset !important;
-    min-width: unset !important;
-    margin: 0 !important;
 }
 
 
@@ -289,29 +156,7 @@ body {
 }
 
 
-#customCheckbox {
-    opacity: 0;
-    position: absolute;
-}
-
-.custom-checkbox {
-    display: inline-block;
-    background-size: cover;
-    border: 2px solid #3E4EFF;
-    border-radius: 5px;
-    width: 22px;
-    height: 22px;
-    margin-right: 24px;
-}
-
-
-#customCheckbox:checked + .custom-checkbox {
-    background-image: url('../statics/check_paw.svg');
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
-    background-position: center center;
-}
-#button-create{
+.button-in{
     width: 163px;
     height: 48px;
     border-radius: 15px;
@@ -322,7 +167,7 @@ body {
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-#button-create.disabled {
+.button-in.disabled {
     opacity: 0.5; /* Reduce la opacidad del botón desactivado */
     cursor: not-allowed; /* Cambia el cursor cuando el botón está desactivado */
 }
@@ -376,7 +221,7 @@ body {
     padding-bottom: 8px;
     margin: 0 auto;
 }
-#facebook {
+.facebook {
     background: #3b5998;
     border-radius: 50%;
     border-color: black;
@@ -385,7 +230,7 @@ body {
     width: 50px;
 }
 
-#facebook:after {
+.facebook:after {
     color: #ffffff;
     content: "f";
     display: block;
@@ -395,14 +240,14 @@ body {
     margin: 6% 0 0 5%;
 }
 
-#facebook:hover {
+.facebook:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     cursor: pointer;
 }
 
-#google {
+.google {
     position: relative;
     border-top: 10px solid #e34133;
     border-right: 10px solid #4285f4;
@@ -415,7 +260,7 @@ body {
     padding: 0;
 }
 
-#google::before {
+.google::before {
     content: "";
     z-index: 100;
     position: absolute;
@@ -426,7 +271,7 @@ body {
     height: 10px;
     background: #4285f4;
 }
-#google::after {
+.google::after {
     content: "";
     z-index: 101;
     position: absolute;
@@ -438,12 +283,81 @@ body {
     width: 0;
     height: 0;
 }
-#google:hover {
+.google:hover {
     -moz-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
     cursor: pointer;
 }
+.dogs-bottom-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+.dogs-bottom {
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Espacia los elementos igualmente */
+    align-items: flex-start; /* Alinea los elementos al principio */
+    @media only screen and (min-width: 1023px) {
+        margin: -150px 0 0 0;
+    }
+}
+
+
+.dog-bottom-center{
+    min-width: 362px;
+    min-height: 156px;
+    background-image: url("../statics/dog_center.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: auto 0 0 0;
+
+}
+
+.dog-bottom-left{
+    margin: auto 0 0 0;
+    max-width: 251px;
+    max-height: 303px;
+    min-width: 200px;
+    min-height: 242px;
+    background-size: cover;
+    background-image: url("../statics/dog_bottom_left.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    @media only screen and (max-width: 796px) {
+        min-width: 0;
+        min-height: 0;
+        width: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+}
+.cat-bottom-right{
+    margin: auto 0 0 0;
+    max-width: 293px;
+    max-height: 374px;
+    min-width: 234px;
+    min-height: 299px;
+    background-size: contain;
+    background-image: url("../statics/cat_right.png");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    @media only screen and (max-width: 796px) {
+        min-width: 0;
+        min-height: 0;
+        width: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+}
+
+
 
 
 

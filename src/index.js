@@ -12,7 +12,7 @@ root.render(
   </React.StrictMode>,
 );
 
-axios.defaults.baseURL="http://localhost:3000/";
+axios.defaults.baseURL = "http://localhost:3000/";
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
