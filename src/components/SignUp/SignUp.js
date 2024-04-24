@@ -4,7 +4,7 @@ import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import { ReactComponent as WaveBottom } from "../statics/wave_bottom.svg";
 import departamentos_colombia from "../statics/departamentos_colombia.json";
 import Select, { components } from "react-select";
-import registerService from "../../service/SingUp/SignUpService";
+import registerService from "../../service/authMngr/SignUpService";
 import styles from "./SignUp.module.css";
 import houseIcon from "../statics/house_icon.svg";
 
@@ -109,7 +109,7 @@ const Registro = () => {
   };
 
   const validatePassword = (password = formData.password) => {
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const passwordPattern = /^.*(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?=\S{8,}).*$/;
     const isValidPassword = !passwordPattern.test(password);
     let errors = { password: "" };
     if (password.trim() === "") {
@@ -124,7 +124,7 @@ const Registro = () => {
     }
     if (isValidPassword) {
       errors.password =
-        "Contraseña inválida. Use Mayuscula, miniscula y debe tener un largo minimo de 8 caracteres.";
+        "Contraseña inválida. Use Mayuscula, miniscula, un caracter especial y debe tener un largo minimo de 8 caracteres.";
     }
     setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
   };
@@ -158,11 +158,11 @@ const Registro = () => {
     setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    await e.preventDefault();
     if (validateForm()) {
       const request = await registerService(formData);
       if (request.isError) {
-        console.log("ERROR in request: ", request.response.data.msg);
+        console.error("ERROR in request: ", request.response.data.msg);
       } else {
         console.log("Request successfully: ", request.response.data.msg);
       }
