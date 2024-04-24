@@ -1,6 +1,7 @@
 import styles from "./LogIn.module.css";
 import React, { useState } from "react";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
+import loginService from "../../service/authMngr/loginService";
 
 const Ingreso = () => {
   const url_mientras =
@@ -16,7 +17,13 @@ const Ingreso = () => {
     e.preventDefault();
     const isFormValid = await validateForm();
     if (isFormValid) {
-      console.log("Formulario válido");
+      const request = await loginService(formData);
+      console.log(await loginService(formData))
+      if (request.isError) {
+        console.error("ERROR in request: ", request.response.data.msg);
+      } else {
+        console.log("Request successfully: ", request.response.data.msg);
+      }
     } else {
       console.log("Formulario inválido. Revise los campos.");
     }
