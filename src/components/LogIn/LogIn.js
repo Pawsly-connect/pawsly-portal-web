@@ -18,7 +18,6 @@ const Ingreso = () => {
     const isFormValid = await validateForm();
     if (isFormValid) {
       const request = await loginService(formData);
-      console.log(await loginService(formData))
       if (request.isError) {
         console.error("ERROR in request: ", request.response.data.msg);
       } else {
