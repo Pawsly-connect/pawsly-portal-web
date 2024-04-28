@@ -2,8 +2,8 @@ import axios from "axios";
 
 const instance = axios.create();
 
-instance.defaults.baseURL = process.env.REACT_APP_ENDPOINT_AUTH_MNGR;
+instance.defaults.baseURL = "https://1vd78290pl.execute-api.us-east-1.amazonaws.com";
 instance.defaults.headers.common["X-name"] = "Portal";
-instance.defaults.headers.common["X-api-key"] = process.env.REACT_APP_APIKEY_AUTH_MNGR;
+instance.defaults.headers.common["X-api-key"] = "";
 
 export default instance;
