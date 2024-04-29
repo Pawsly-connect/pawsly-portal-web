@@ -1,29 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import Ingreso from "./components/LogIn/LogIn";
-import Registro from "./components/SignUp/SignUp";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <Ingreso />
-  },
-  {
-    path: "/auth",
-    element: <Registro />
-  }
-]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>,
 );
 
