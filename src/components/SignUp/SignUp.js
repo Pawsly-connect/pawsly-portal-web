@@ -18,8 +18,6 @@ const options = [...optionsSet].map((value) => ({
   value,
   label: value,
 }));
-const url_mientras =
-  "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
 
 const maxLengthName = 90;
 const maxLengthEmail = 50;
@@ -348,7 +346,7 @@ const Registro = () => {
             )}
           </div>
 
-          <div className="term">
+          <div className={styles["term"]}>
             <label htmlFor="customCheckbox">
               <input
                 type="checkbox"
@@ -361,13 +359,13 @@ const Registro = () => {
               <div className={styles["custom-checkbox"]}></div>
             </label>
 
-            <a className={styles["term-text"]} href={url_mientras}>
+            <div className={styles["term-text"]}>
               ¿Aceptas nuestros{" "}
-              <b>
+              <a href="https://google.com">
                 terminos y <br /> condiciones
-              </b>
+              </a>
               ?
-            </a>
+            </div>
           </div>
           {formErrors.checkBox && (
             <div className={styles["error"]}>
@@ -386,13 +384,13 @@ const Registro = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className={styles["term-text-in"]} href={url_mientras}>
+          <a className={styles["term-text-in"]} href={"/login"} >
             ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
-          <a className={styles["term-text-in"]} href={url_mientras}>
+          <div className={styles["term-text-in"]}>
             <b>O ingresa con:</b>
-          </a>
+          </div>
         </div>
 
         <div className={styles["logos-in"]}>
