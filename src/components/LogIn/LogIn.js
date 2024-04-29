@@ -118,7 +118,7 @@ const Ingreso = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className="term-text-in" href={"/"}>
+          <a className="term-text-in" href={"/auth"}>
             ¿Aun no tienes una cuenta? Dale clic aquí
           </a>
           <br />
