@@ -4,6 +4,8 @@ import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import loginService from "../../service/authMngr/loginService";
 
 const Ingreso = () => {
+  const url_mientras =
+    "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -118,18 +120,18 @@ const Ingreso = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className="term-text-in" href={"/auth"}>
-            ¿Aun no tienes una cuenta? Dale clic aquí
+          <a className="term-text-in" href={url_mientras}>
+            ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
-          <div className="term-text-in">
+          <a className="term-text-in" href={url_mientras}>
             <b>O ingresa con:</b>
-          </div>
+          </a>
         </div>
 
         <div className={styles["logos-in"]}>
-          <div className={styles["google"]} ></div>
-          <div className={styles["facebook"]} ></div>
+          <div className={styles["google"]}></div>
+          <div className={styles["facebook"]}></div>
         </div>
         <div className={styles["dogs-bottom-wrapper"]}>
           <div className={styles["dogs-bottom"]}>
