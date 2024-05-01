@@ -1,5 +1,5 @@
 import instance from "./index";
-import hash from '../../utilities/cipher';
+import hash from "../../utilities/cipher";
 
 async function registerService(formData) {
   try {
@@ -12,12 +12,12 @@ async function registerService(formData) {
     return {
       response: res,
       isError: false,
-    }
+    };
   } catch (err) {
     return {
       response: err.response || err,
       isError: true,
-    }
+    };
   }
 }
 
