@@ -18,6 +18,8 @@ const options = [...optionsSet].map((value) => ({
   value,
   label: value,
 }));
+const url_mientras =
+  "https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false";
 
 const maxLengthName = 90;
 const maxLengthEmail = 50;
@@ -55,8 +57,16 @@ const CustomSingleValue = ({ children, ...props }) => (
 const Registro = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
-  const [formErrors, setFormErrors] = useState({});
-  const [isButtonDisabled] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    email: "",
+    confirmEmail: "",
+    password: "",
+    confirmPassword: "",
+    city: "",
+    name: "",
+    checkBox: "",
+  });
+  const [isButtonDisabled, setButton] = useState(true);
   const [isCheeked, setChecked] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -69,95 +79,112 @@ const Registro = () => {
   });
 
   const validateForm = () => {
-    let errors = {};
-    console.log(formData);
-    if (formData.name.trim() === "") {
-      errors.name = "Por favor, escriba su nombre.";
-    }
-    validateEmail();
-    validateConfirmEmail();
-    validatePassword();
-    validateConfirmPassword();
-    if (formData.city.trim() === "") {
-      errors.city = "Seleccione la ciudad";
-    }
-    validateCheck();
-
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
-    return Object.keys(errors).length === 0;
+    let errors = {
+      email: "",
+      confirmEmail: "",
+      password: "",
+      confirmPassword: "",
+      city: "",
+      name: "",
+      checkBox: "",
+    };
+   errors.name = validateName();
+   errors.email = validateEmail();
+   errors.confirmEmail = validateConfirmEmail();
+   errors.password = validatePassword();
+   errors.confirmPassword = validateConfirmPassword();
+   errors.checkBox = validateCheck();
+   errors.city = validateCity();
+    console.log(errors.city)
+   setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+   const errorValues = Object.values(errors).filter(
+        (element) => element !== "",
+    );
+    return errorValues.length === 0;
   };
+  const validateCity = (city = formData.city) => {
+    if (city.trim() === "") {
+      return "Seleccione la ciudad";
+    }
+    return "";
+  };
+  const validateName = (name = formData.name) => {
+    if (name.trim() === "") {
+      return "Por favor, escriba su nombre.";
+    }
+    if (name.length < 10) {
+      return "Por favor, escriba su nombre completo.";
+    }
+    return "";
+  };
+
   const validateConfirmPassword = (password = formData.confirmPassword) => {
-    let errors = { confirmPassword: "" };
     if (password && password.trim() === "") {
-      errors.confirmPassword = "Por favor, confirme su contraseña.";
+      return "Por favor, confirme su contraseña.";
     }
     if (password && formData.password && password !== formData.password) {
-      errors.confirmPassword = "Las contraseñas no coinciden";
+      return "Las contraseñas no coinciden";
     }
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    return "";
   };
 
   const validateCheck = (check = formData.checkBox) => {
-    let errors = { checkBox: "" };
     if (!check) {
-      errors.checkBox = "Por favor Acepte los terminos y condiciones";
+      return "Por favor Acepte los terminos y condiciones";
     }
-
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    return "";
   };
 
   const validatePassword = (password = formData.password) => {
-    const passwordPattern = /^.*(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?=\S{8,}).*$/;
+    const passwordPattern =
+      /^.*(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?=\S{8,}).*$/;
     const isValidPassword = !passwordPattern.test(password);
-    let errors = { password: "" };
     if (password.trim() === "") {
-      errors.password = "Por favor, cree su contraseña.";
+      return "Por favor, cree su contraseña.";
     }
     if (
       password &&
       formData.confirmPassword &&
       password !== formData.confirmPassword
     ) {
-      errors.password = "Las contraseñas no coinciden";
+      return "Las contraseñas no coinciden";
     }
     if (isValidPassword) {
-      errors.password =
-        "Contraseña inválida. Use Mayuscula, miniscula, un caracter especial y debe tener un largo minimo de 8 caracteres.";
+      return "Contraseña inválida. Use Mayuscula, miniscula, un caracter especial y debe tener un largo minimo de 8 caracteres.";
     }
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    return "";
   };
 
   const validateEmail = (email = formData.email) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errors = { email: "" };
     if (email && !emailPattern.test(email)) {
-      errors.email = "Correo electrónico inválido";
+      return "Correo electrónico inválido";
     }
     if (email.trim() === "") {
-      errors.email = "Por favor, escriba su correo electrónico.";
+      return "Por favor, escriba su correo electrónico.";
     }
     if (formData.confirmEmail && email !== formData.confirmEmail) {
-      errors.email = "Los correos electrónicos no coinciden";
+      return "Los correos electrónicos no coinciden";
     }
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    return "";
   };
   const validateConfirmEmail = (email = formData.confirmEmail) => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    let errors = { confirmEmail: "" };
     if (email && !emailPattern.test(email)) {
-      errors.confirmEmail = "Correo electrónico inválido";
+      return "Correo electrónico inválido";
     }
     if (email && email.trim() === "") {
-      errors.confirmEmail = "Por favor, escriba su correo electrónico.";
+      return "Por favor, escriba su correo electrónico.";
     }
     if (formData.email && email !== formData.email) {
-      errors.confirmEmail = "Los correos electrónicos no coinciden";
+      return "Los correos electrónicos no coinciden";
     }
-    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    return "";
   };
   const handleSubmit = async (e) => {
     await e.preventDefault();
     if (validateForm()) {
+      console.log("formulario enviado",formData);
       const request = await registerService(formData);
       if (request.isError) {
         console.error("ERROR in request: ", request.response.data.msg);
@@ -165,53 +192,82 @@ const Registro = () => {
         console.log("Request successfully: ", request.response.data.msg);
       }
     } else {
+      setButton(true);
       console.log("Formulario inválido. Revise los campos.");
     }
   };
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
+    let errors = {
+      email: "",
+      confirmEmail: "",
+      password: "",
+      confirmPassword: "",
+      city: "",
+      name: "",
+      checkBox: "",
+    };
     setFormData({ ...formData, [name]: value });
-    console.log(`${name} ${value} ${checked} ${formData.checkBox}`);
+
     if (name === "email") {
       const isEmailNotEmpty = value.trim() !== "";
       setShowConfirmEmail(isEmailNotEmpty);
-      validateEmail(value);
+      errors.email = validateEmail(value);
     }
     if (name === "confirmEmail") {
-      validateConfirmEmail(value);
+      errors.confirmEmail = validateConfirmEmail(value);
     }
     if (name === "name") {
       let filteredValue = value.replace(/\d/g, "");
       setFormData({ ...formData, [name]: filteredValue });
+      errors.name = validateName(value);
     }
     if (name === "password") {
       const isPasswordNotEmpty = value.trim() !== "";
       setShowConfirmPassword(isPasswordNotEmpty);
-      validatePassword(value);
+      errors.confirmPassword = validatePassword(value);
     }
     if (name === "confirmPassword") {
-      validateConfirmPassword(value);
+      errors.confirmPassword = validateConfirmPassword(value);
     }
 
     if (name === "checkBox") {
-      console.log(checked);
       setFormData({ ...formData, [name]: checked });
+      errors.checkBox = validateCheck(checked);
       setChecked(checked);
-      validateCheck(checked);
+    }
+    if (name === "city") {
+      errors.city = validateCity(value);
+
+    }
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    const errorValues = Object.values(errors).filter(
+      (element) => element !== "",
+    );
+    const dataValues = Object.values(formData).filter(
+        (element) => element !== "",
+    );
+    console.log(dataValues);
+    if (errorValues.length === 0 && dataValues.length === 7) {
+      setButton(false);
+    } else {
+      setButton(true);
     }
   };
 
   const handleSelectChange = (selectedOption) => {
+    console.log(`yo soy handle select ${selectedOption}`);
     setFormData({ ...formData, city: selectedOption.value });
+    handleChange({ target: { name: "city", value: selectedOption.value } });
   };
   const handleCopy = (e) => {
     e.preventDefault();
-    //console.log('Copiar está desactivado para este campo.');
+    //
   };
   const handlePaste = (e) => {
     e.preventDefault();
-    //console.log('Pegar está desactivado para este campo.');
+    //
   };
 
   return (
@@ -220,7 +276,7 @@ const Registro = () => {
         <WaveTopLeft className={styles["wave-left"]} />
       </div>
 
-      <div className={styles["container-1"]}>
+      <div className={styles["container-1"]} >
         <div className={styles["big-logo"]}></div>
         <div className={styles["dogs"]}></div>
       </div>
@@ -346,7 +402,7 @@ const Registro = () => {
             )}
           </div>
 
-          <div className={styles["term"]}>
+          <div className="term">
             <label htmlFor="customCheckbox">
               <input
                 type="checkbox"
@@ -359,13 +415,13 @@ const Registro = () => {
               <div className={styles["custom-checkbox"]}></div>
             </label>
 
-            <div className={styles["term-text"]}>
+            <a className={styles["term-text"]} href={url_mientras}>
               ¿Aceptas nuestros{" "}
-              <a href="https://google.com">
+              <b>
                 terminos y <br /> condiciones
-              </a>
+              </b>
               ?
-            </div>
+            </a>
           </div>
           {formErrors.checkBox && (
             <div className={styles["error"]}>
@@ -375,7 +431,7 @@ const Registro = () => {
           )}
           <button
             id="button-create"
-            className={`${styles["button-create"]} ${isButtonDisabled ? "disabled" : ""}`}
+            className={`${styles["button-create"]} ${isButtonDisabled ? styles["disabled"] : ""}`}
             type="submit"
             disabled={isButtonDisabled}
           >
@@ -384,13 +440,13 @@ const Registro = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className={styles["term-text-in"]} href={"/login"} >
+          <a className={styles["term-text-in"]} href={url_mientras}>
             ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
-          <div className={styles["term-text-in"]}>
+          <a className={styles["term-text-in"]} href={url_mientras}>
             <b>O ingresa con:</b>
-          </div>
+          </a>
         </div>
 
         <div className={styles["logos-in"]}>

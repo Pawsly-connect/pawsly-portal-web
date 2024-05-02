@@ -3,7 +3,7 @@ import cipher from '../../utilities/cipher';
 
 async function registerService(formData) {
   try {
-    const res = await instance.post("/V1/user/register", {
+    const res = await instance.post("step201", {
       email: formData.email,
       password: await cipher.hash(formData.password),
       city: formData.city,
@@ -12,12 +12,12 @@ async function registerService(formData) {
     return {
       response: res,
       isError: false,
-    }
+    };
   } catch (err) {
     return {
       response: err.response || err,
       isError: true,
-    }
+    };
   }
 }
 
