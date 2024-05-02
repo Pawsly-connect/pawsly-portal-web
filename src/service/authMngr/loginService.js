@@ -3,7 +3,7 @@ import cipher from '../../utilities/cipher';
 
 async function loginService(formData) {
     try {
-        const res = await instance.post("/V1/user/login", {
+        const res = await instance.post("/step202", {
           email: formData.email,
           password: await cipher.hash(formData.password)
         });
