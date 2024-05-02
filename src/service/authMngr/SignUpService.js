@@ -1,11 +1,11 @@
 import instance from "./index";
-import hash from '../../utilities/cipher';
+import cipher from '../../utilities/cipher';
 
 async function registerService(formData) {
   try {
     const res = await instance.post("/V1/user/register", {
       email: formData.email,
-      password: await hash(formData.password),
+      password: await cipher.hash(formData.password),
       city: formData.city,
       name: formData.name,
     });
