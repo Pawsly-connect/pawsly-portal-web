@@ -3,7 +3,7 @@ import hash from "../../utilities/cipher";
 
 async function registerService(formData) {
   try {
-    const res = await instance.post("/V1/user/register", {
+    const res = await instance.post("step201", {
       email: formData.email,
       password: await hash(formData.password),
       city: formData.city,
