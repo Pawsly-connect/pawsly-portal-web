@@ -49,11 +49,8 @@ function importPublicKey(pem) {
 
 async function encrypt(message) {
     const publicKey = await importPublicKey(keyPem);
-    const message2 = {
-        "key": "YjYxNGM3YWRmMTBjZWUxOWI5NjU1ODM2YWI4NTk4ZDc="
-    }
-    const msgUint8 = new TextEncoder().encode(JSON.stringify(message2));
-    let ciphertext = await crypto.subtle.encrypt(
+    const msgUint8 = new TextEncoder().encode(JSON.stringify(message));
+    const ciphertext = await crypto.subtle.encrypt(
         {
             name: "RSA-OAEP"
         },
