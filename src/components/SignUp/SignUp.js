@@ -185,12 +185,12 @@ const Registro = () => {
     await e.preventDefault();
     if (validateForm()) {
       console.log("formulario enviado",formData);
-      //const request = await registerService(formData);
-      //if (request.isError) {
-      //  console.error("ERROR in request: ", request.response.data.msg);
-      //} else {
-      //  console.log("Request successfully: ", request.response.data.msg);
-      //}
+      const request = await registerService(formData);
+      if (request.isError) {
+        console.error("ERROR in request: ", request.response.data.msg);
+      } else {
+        console.log("Request successfully: ", request.response.data.msg);
+      }
     } else {
       setButton(true);
       console.log("Formulario inválido. Revise los campos.");
@@ -276,7 +276,7 @@ const Registro = () => {
         <WaveTopLeft className={styles["wave-left"]} />
       </div>
 
-      <div className={styles["container-1"]}>
+      <div className={styles["container-1"]} >
         <div className={styles["big-logo"]}></div>
         <div className={styles["dogs"]}></div>
       </div>
