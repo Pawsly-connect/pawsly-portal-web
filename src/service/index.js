@@ -5,9 +5,7 @@ const newInstance = axios.create();
 
 newInstance.interceptors.request.use(
     async (config) => {
-        const contentCipher = await cipher.encrypt(JSON.stringify({
-            data: config.data
-        }));
+        const contentCipher = await cipher.encrypt(JSON.stringify(config.data));
         config.data = `${contentCipher}`;
         return config;
     },
