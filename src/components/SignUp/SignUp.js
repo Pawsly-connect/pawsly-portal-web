@@ -7,7 +7,7 @@ import Select, { components } from "react-select";
 import registerService from "../../service/authMngr/SignUpService";
 import styles from "./SignUp.module.css";
 import houseIcon from "../statics/house_icon.svg";
-
+import Loader from "../Loader/Loader";
 const optionsSet = new Set();
 
 departamentos_colombia.forEach((item) => {
@@ -57,6 +57,7 @@ const CustomSingleValue = ({ children, ...props }) => (
 const Registro = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showConfirmEmail, setShowConfirmEmail] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const [formErrors, setFormErrors] = useState({
     email: "",
     confirmEmail: "",
@@ -182,14 +183,21 @@ const Registro = () => {
     return "";
   };
   const handleSubmit = async (e) => {
-    await e.preventDefault();
+    e.preventDefault();
+
     if (validateForm()) {
-      console.log("formulario enviado",formData);
-      const request = await registerService(formData);
-      if (request.isError) {
-        console.error("ERROR in request: ", request.response.data.msg);
-      } else {
-        console.log("Request successfully: ", request.response.data.msg);
+      setShowLoader(true);
+      try {
+        const request = await registerService(formData);
+        if (request.isError) {
+          console.error("ERROR in request: ", request);
+        } else {
+          console.log("Request successful: ", request);
+        }
+      } catch (error) {
+        console.error("Error during request: ", error);
+      } finally {
+        setShowLoader(false); // Ocultar loader después de la solicitud
       }
     } else {
       setButton(true);
@@ -272,6 +280,12 @@ const Registro = () => {
 
   return (
     <div className={styles["container-main"]}>
+
+      {showLoader && (
+          <div className={styles["loader"]}>
+            <Loader  />
+          </div>
+      )}
       <div className={styles["wave-container-top-left"]}>
         <WaveTopLeft className={styles["wave-left"]} />
       </div>

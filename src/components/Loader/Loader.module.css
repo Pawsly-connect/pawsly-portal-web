@@ -1,0 +1,33 @@
+.container-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+}
+.loader-bone{
+    position: relative;
+    background-image: url('../statics/bone.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg); /* Desde 0 grados */
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg); /* Hasta 360 grados (una vuelta completa) */
+    }
+}
