@@ -459,7 +459,7 @@ const Registro = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className={styles["term-text-in"]} href={"/login"}>
+          <a className={styles["term-text-in"]} href={"/#/login"}>
             ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
