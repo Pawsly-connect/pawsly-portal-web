@@ -89,17 +89,17 @@ const Registro = () => {
       name: "",
       checkBox: "",
     };
-   errors.name = validateName();
-   errors.email = validateEmail();
-   errors.confirmEmail = validateConfirmEmail();
-   errors.password = validatePassword();
-   errors.confirmPassword = validateConfirmPassword();
-   errors.checkBox = validateCheck();
-   errors.city = validateCity();
+    errors.name = validateName();
+    errors.email = validateEmail();
+    errors.confirmEmail = validateConfirmEmail();
+    errors.password = validatePassword();
+    errors.confirmPassword = validateConfirmPassword();
+    errors.checkBox = validateCheck();
+    errors.city = validateCity();
     console.log(errors.city)
-   setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
-   const errorValues = Object.values(errors).filter(
-        (element) => element !== "",
+    setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
+    const errorValues = Object.values(errors).filter(
+      (element) => element !== "",
     );
     return errorValues.length === 0;
   };
@@ -254,7 +254,7 @@ const Registro = () => {
       (element) => element !== "",
     );
     const dataValues = Object.values(formData).filter(
-        (element) => element !== "",
+      (element) => element !== "",
     );
     console.log(dataValues);
     if (errorValues.length === 0 && dataValues.length === 7) {
@@ -282,9 +282,9 @@ const Registro = () => {
     <div className={styles["container-main"]}>
 
       {showLoader && (
-          <div className={styles["loader"]}>
-            <Loader  />
-          </div>
+        <div className={styles["loader"]}>
+          <Loader />
+        </div>
       )}
       <div className={styles["wave-container-top-left"]}>
         <WaveTopLeft className={styles["wave-left"]} />
@@ -416,7 +416,7 @@ const Registro = () => {
             )}
           </div>
 
-          <div className="term">
+          <div className={styles["term"]}>
             <label htmlFor="customCheckbox">
               <input
                 type="checkbox"
@@ -426,16 +426,21 @@ const Registro = () => {
                 onChange={handleChange}
                 checked={formData.checkBox}
               />
-              <div className={styles["custom-checkbox"]}></div>
+              <div className={styles["custom-checkbox"]}>
+                <div className={styles["paw"]}>
+                  <div className={styles["paw-inner"]}></div>
+                  <div className={styles["paw-bottom"]}></div>
+                </div>
+              </div>
             </label>
 
-            <a className={styles["term-text"]} href={url_mientras}>
+            <div className={styles["term-text"]}>
               ¿Aceptas nuestros{" "}
-              <b>
+              <a href={url_mientras}>
                 terminos y <br /> condiciones
-              </b>
+              </a>
               ?
-            </a>
+            </div>
           </div>
           {formErrors.checkBox && (
             <div className={styles["error"]}>
@@ -454,13 +459,13 @@ const Registro = () => {
         </form>
 
         <div className={styles["text-in"]}>
-          <a className={styles["term-text-in"]} href={url_mientras}>
+          <a className={styles["term-text-in"]} href={"/login"}>
             ¿Ya tienes una cuenta? Dale clic aquí
           </a>
           <br />
-          <a className={styles["term-text-in"]} href={url_mientras}>
+          <div className={styles["term-text-in"]}>
             <b>O ingresa con:</b>
-          </a>
+          </div>
         </div>
 
         <div className={styles["logos-in"]}>
