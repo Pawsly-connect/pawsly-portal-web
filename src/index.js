@@ -4,22 +4,22 @@ import "./index.css";
 import Ingreso from "./components/LogIn/LogIn";
 import Registro from "./components/SignUp/SignUp";
 import {
-  createBrowserRouter,
   RouterProvider,
+  createHashRouter
 } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "",
-    element: <Ingreso />
+    path: "/",
+    element: <Registro />
   },
   {
     path: "/login",
     element: <Ingreso />
   },
   {
-    path: "/auth",
+    path: "/singup",
     element: <Registro />
   }
 ]);
