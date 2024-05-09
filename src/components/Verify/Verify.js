@@ -7,7 +7,7 @@ import verifyService from "../../service/authMngr/verifyService";
 const Verify = () => {
     const navigate = useNavigate();
     const { key } = useParams();
-    const [showLoader, setShowLoader] = useState(false);
+    const [showLoader, setShowLoader] = useState(true);
     const [isError, setIsError] = useState(null);
     const [codeResponse, setCodeResponse] = useState(0);
 
@@ -20,7 +20,6 @@ const Verify = () => {
 
     useEffect(() => {
         try{
-            setShowLoader(true);
             verifyService(key).then((req) => {
                 if(req.response.data){
                     setCodeResponse(req.response.data.code);
@@ -36,10 +35,10 @@ const Verify = () => {
                 }else{
                     setIsError(true);
                 }
+                setShowLoader(false);
             })
         } catch (_err) {
             setIsError(true);
-        } finally {
             setShowLoader(false);
         }
     }, [key]);
@@ -80,7 +79,7 @@ const Verify = () => {
                 <div className={styles["result-container"]}>
                     <div className={styles["error"]}></div>
                     <h1 className={styles["title"]}>¡No fue posible verificar tu cuenta!</h1>
-                    <p className={styles["message"]}><br/>Por favor intentalo de nuevo mas tarde, si el error persiste, comunicate con nosotros.</p>
+                    <p className={styles["message"]}><br/>Por favor intentalo de nuevo mas tarde, si el error persiste, comunicate con nosotros. (Cod. Error: {codeResponse})</p>
                     <button
                         id="button-home"
                         className={styles["button"]}
