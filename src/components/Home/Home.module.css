@@ -3,4 +3,11 @@
     width: 100%;
     height: 100px;
 }
-ul
+.content{
+    display: flex;
+    justify-content: center;
+}
+.banner{
+    max-width: 319px;
+    max-height: 233px;
+}
