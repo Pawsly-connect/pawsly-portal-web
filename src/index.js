@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Ingreso from "./components/LogIn/LogIn";
 import Registro from "./components/SignUp/SignUp";
+import Home from "./components/Home/Home";
 import {
   RouterProvider,
   createHashRouter
@@ -12,7 +13,7 @@ import reportWebVitals from "./reportWebVitals";
 const router = createHashRouter([
   {
     path: "/",
-    element: <Registro />
+    element: <Home />
   },
   {
     path: "/login",
