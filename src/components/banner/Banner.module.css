@@ -3,9 +3,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 20px;
-    @media only screen and (max-width: 394px) {
-
-    }
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 .banner__text{
     color: #FFFFFF;
@@ -13,20 +11,25 @@
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 8px;
+    @media only screen and (min-width: 1023px) {
+        padding-left: 36px;
+        padding-right: 36px;
+        padding-top: 16px;
+    }
 }
 .text--title{
     font-family: "Roboto Slab", "Roboto", serif;
     font-size: 32px;
     font-weight: bold;
 
-    @media only screen and (min-width: 851px) {
+    @media only screen and (min-width: 1023px) {
         font-size: 64px;
     }
 }
 .text--paragraph{
     font-family: "Roboto", serif;
     font-size: 11px;
-    @media only screen and (min-width: 851px) {
+    @media only screen and (min-width: 1023px) {
         font-size: 20px;
     }
 }

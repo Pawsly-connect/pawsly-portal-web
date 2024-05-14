@@ -6,6 +6,9 @@ const ButtonContainer = styled.div`
     padding: 8px;
     display: flex;
     justify-content: ${props => props.buttonPosition === 'right' ? 'flex-end' : props.buttonPosition === 'center' ? 'center' : 'flex-start'};
+    @media only screen and (min-width: 1023px) {
+        padding: 10px 36px;
+    }
 `;
 
 const StyledButton = styled.button`
@@ -19,6 +22,7 @@ const StyledButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
+   
 `;
 
 const Banner = ({ title, text, button='', buttonPosition="center" ,handleClick=()=>{}}) => {
