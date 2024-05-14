@@ -3,6 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
+    padding: 8px;
     display: flex;
     justify-content: ${props => props.buttonPosition === 'right' ? 'flex-end' : props.buttonPosition === 'center' ? 'center' : 'flex-start'};
 `;
@@ -12,14 +13,15 @@ const StyledButton = styled.button`
     color: #FFFFFF;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
+    font-weight: bold;
     &:hover {
         background-color: #0056b3;
     }
 `;
 
-const Banner = ({ title, text, button='', buttonPosition="" }) => {
+const Banner = ({ title, text, button='', buttonPosition="center" ,handleClick=()=>{}}) => {
     console.log(buttonPosition);
 
     return (
@@ -31,7 +33,7 @@ const Banner = ({ title, text, button='', buttonPosition="" }) => {
                 {text}
             </div>
             <ButtonContainer buttonPosition={buttonPosition}>
-                {button.trim() !== "" && <StyledButton>{button}</StyledButton>}
+                {button.trim() !== "" && <StyledButton onClick={handleClick}>{button}</StyledButton>}
             </ButtonContainer>
         </div>
     );

@@ -2,6 +2,10 @@ import styles from "./Home.module.css";
 import React from "react";
 import Banner from "../banner/Banner";
 const Home = () => {
+    const handleButtonClick = (e) => {
+        console.log("Botón clickeado:", e.target.innerText);
+    };
+
     return (
 
         <div className={styles["container-main"]}>
@@ -14,6 +18,7 @@ const Home = () => {
                     text={"Conectando a las mascotas con los mejores servicios. Descubre todo lo que Pawsly tiene para ofrecer"}
                     button={"VAMOS"}
                     buttonPosition={"left"}
+                    handleClick={handleButtonClick}
                 />
             </div>
             <ul>
