@@ -1,0 +1,35 @@
+.header{
+    background-color: #3E4EFF;
+    width: 100%;
+    height: 100px;
+}
+.banner{
+    z-index: -1;
+    background-image: url('../statics/gato_mano.png');
+    background-repeat: no-repeat;
+    background-position:    top center;
+    background-size: cover;
+    width: 100%;
+    min-height: 350px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    @media only screen and (min-width: 1023px) {
+        min-height: 700px;
+
+    }
+}
+.banner__text{
+    padding-top: 22px;
+    position: relative;
+    z-index:0;
+    margin: 0 auto 0 auto;
+    max-width: 319px;
+    max-height: 280px;
+    @media only screen and (min-width: 1023px) {
+        max-width: 703px;
+        max-height: 467px;
+        padding-top: 100px;
+        margin: 0 auto 0 100px;
+
+    }
+}
