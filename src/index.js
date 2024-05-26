@@ -5,6 +5,7 @@ import Ingreso from "./components/LogIn/LogIn";
 import Registro from "./components/SignUp/SignUp";
 import Verify from "./components/Verify/Verify";
 import Home from "./components/Home/Home";
+import Services from "./components/Services/Services";
 import {
   RouterProvider,
   createHashRouter
@@ -27,6 +28,10 @@ const router = createHashRouter([
   {
     path: "/verify/:key",
     element: <Verify />
+  },
+  {
+    path: "/services",
+    element: <Services />
   }
 ]);
 

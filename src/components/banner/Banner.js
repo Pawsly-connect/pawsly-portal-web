@@ -3,18 +3,18 @@ import React from "react";
 import styled from 'styled-components';
 
 const ButtonContainer = styled.div`
-    padding: 8px;
+    padding: ${props => props.button !== '' ? '8px' : '0'};
     display: flex;
     justify-content: ${props => props.buttonPosition === 'right' ? 'flex-end' : props.buttonPosition === 'center' ? 'center' : 'flex-start'};
     @media only screen and (min-width: 1023px) {
-        padding: 10px 36px;
+        padding: ${props => props.button !== '' ? '32px 36px' : '0'};
     }
 `;
 
 const StyledButton = styled.button`
     background-color: #3E4EFF;
     color: #FFFFFF;
-    padding: 10px 20px;
+    padding: ${props => props.button !== '' ? '10px 20px' : '0'};
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -22,22 +22,23 @@ const StyledButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
-   
 `;
 
-const Banner = ({ title, text, button='', buttonPosition="center" ,handleClick=()=>{}}) => {
-    console.log(buttonPosition);
+const StyledTitle = styled.div`
+    text-align: ${props => props.titlePosition};
+`;
 
+const Banner = ({ title, text, button='', buttonPosition="center", titlePosition="left" ,handleClick=()=>{}}) => {
     return (
         <div className={styles["banner"]}>
-            <div className={`${styles["banner__text"]} ${styles["text--title"]}`}>
+            <StyledTitle className={`${styles["banner__text"]} ${styles["text--title"]}`} titlePosition={titlePosition}>
                 {title}
-            </div>
+            </StyledTitle>
             <div className={`${styles["banner__text"]} ${styles["text--paragraph"]}`}>
                 {text}
             </div>
-            <ButtonContainer buttonPosition={buttonPosition}>
-                {button.trim() !== "" && <StyledButton onClick={handleClick}>{button}</StyledButton>}
+            <ButtonContainer buttonPosition={buttonPosition} button={button}>
+                {button.trim() !== "" && <StyledButton button={button} onClick={handleClick}>{button}</StyledButton>}
             </ButtonContainer>
         </div>
     );

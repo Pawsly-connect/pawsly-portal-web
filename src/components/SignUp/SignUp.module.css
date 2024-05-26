@@ -162,7 +162,6 @@
     font-size: 32px;
     font-weight: bold;
     margin: 8px auto 0 auto;
-    font-family: 'Roboto Slab', serif;
 }
 
 /* Section text styling */
@@ -171,7 +170,6 @@
     height: 57px;
     margin: 8px auto 0 auto;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
 }
 
 .text-inputs {
@@ -195,7 +193,6 @@
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     text-indent: 40px;
-    font-family: 'Roboto Slab', serif;
     margin-bottom: 16px;
 }
 /* Background images for input fields */
@@ -241,7 +238,6 @@
     align-items: center;
 }
 .term-text{
-    font-family: 'Roboto Slab', serif;
     color: #000000;
     text-decoration: none;
     font-size: 16px;
