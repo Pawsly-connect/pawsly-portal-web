@@ -8,6 +8,7 @@ import registerService from "../../service/authMngr/SignUpService";
 import styles from "./SignUp.module.css";
 import houseIcon from "../statics/house_icon.svg";
 import Loader from "../Loader/Loader";
+import Button from "../Button/Button"
 const optionsSet = new Set();
 
 departamentos_colombia.forEach((item) => {
@@ -96,7 +97,6 @@ const Registro = () => {
     errors.confirmPassword = validateConfirmPassword();
     errors.checkBox = validateCheck();
     errors.city = validateCity();
-    console.log(errors.city)
     setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
     const errorValues = Object.values(errors).filter(
       (element) => element !== "",
@@ -190,18 +190,17 @@ const Registro = () => {
       try {
         const request = await registerService(formData);
         if (request.isError) {
-          console.error("ERROR in request: ", request);
+          console.error("Mostrar el error desde back: ", request);
         } else {
-          console.log("Request successful: ", request);
+          console.log("Redirigir al dashboard");
         }
       } catch (error) {
-        console.error("Error during request: ", error);
+        console.error("Mostrar error tecnico cliente: ", error);
       } finally {
-        setShowLoader(false); // Ocultar loader después de la solicitud
+        setShowLoader(false);
       }
     } else {
       setButton(true);
-      console.log("Formulario inválido. Revise los campos.");
     }
   };
 
@@ -256,7 +255,6 @@ const Registro = () => {
     const dataValues = Object.values(formData).filter(
       (element) => element !== "",
     );
-    console.log(dataValues);
     if (errorValues.length === 0 && dataValues.length === 7) {
       setButton(false);
     } else {
@@ -265,27 +263,19 @@ const Registro = () => {
   };
 
   const handleSelectChange = (selectedOption) => {
-    console.log(`yo soy handle select ${selectedOption}`);
     setFormData({ ...formData, city: selectedOption.value });
     handleChange({ target: { name: "city", value: selectedOption.value } });
   };
   const handleCopy = (e) => {
     e.preventDefault();
-    //
   };
   const handlePaste = (e) => {
     e.preventDefault();
-    //
   };
 
   return (
     <div className={styles["container-main"]}>
-
-      {showLoader && (
-        <div className={styles["loader"]}>
-          <Loader />
-        </div>
-      )}
+      <Loader show={showLoader} />
       <div className={styles["wave-container-top-left"]}>
         <WaveTopLeft className={styles["wave-left"]} />
       </div>
@@ -448,14 +438,11 @@ const Registro = () => {
               {formErrors.checkBox}
             </div>
           )}
-          <button
-            id="button-create"
-            className={`${styles["button-create"]} ${isButtonDisabled ? styles["disabled"] : ""}`}
-            type="submit"
-            disabled={isButtonDisabled}
-          >
-            Crear Cuenta
-          </button>
+          <Button
+              title="Crear cuenta"
+              disabled={isButtonDisabled}
+              type="submit"
+          />
         </form>
 
         <div className={styles["text-in"]}>

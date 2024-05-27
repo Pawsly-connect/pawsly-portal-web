@@ -5,7 +5,7 @@ const CardService = ({title, description, urlImage, orientation="left", altImage
   return (
     <div className={styles["cardService"]}>
       {orientation === 'left' ? (
-        <React.Fragment>
+        <>
           <img
             src={urlImage}
             className={`${styles["cardService__image"]} ${styles["cardService__image--left"]}`}
@@ -15,9 +15,9 @@ const CardService = ({title, description, urlImage, orientation="left", altImage
             <h1 className={styles["cardService__title"]}>{title}</h1>
             <p className={styles["cardService__description"]}>{description}</p>
           </div>
-        </React.Fragment>
+        </>
       ) : (
-        <React.Fragment>
+        <>
           <img
             src={urlImage}
             className={`${styles["cardService__image"]} ${styles["cardService__image--right"]}`}
@@ -27,7 +27,7 @@ const CardService = ({title, description, urlImage, orientation="left", altImage
             <h1 className={styles["cardService__title"]}>{title}</h1>
             <p className={styles["cardService__description"]}>{description}</p>
           </div>
-        </React.Fragment>
+        </>
       )}
     </div>
   )
