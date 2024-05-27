@@ -18,6 +18,10 @@ const router = createHashRouter([
     element: <Home />
   },
   {
+    path: "/home",
+    element: <Home />
+  },
+  {
     path: "/login",
     element: <Ingreso />
   },
