@@ -1,9 +1,9 @@
 import instance from "./index";
-import cipher from '../../utilities/cipher';
+import cipher from "../../utilities/cipher";
 
 async function registerService(formData) {
   try {
-    const res = await instance.post("/step201", {
+    const res = await instance.post(process.env.REACT_APP_PATH_STEP_201, {
       email: formData.email,
       password: await cipher.hash(formData.password),
       city: formData.city,
