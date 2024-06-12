@@ -2,86 +2,116 @@ import React, { useState, useEffect } from "react";
 import styles from "./Verify.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import Button from "../Button/Button"
+import Button from "../Button/Button";
 import verifyService from "../../service/authMngr/verifyService";
 
+const codesService = {
+  success: 1003,
+  already: 2004,
+  notExist: 2005,
+  genericError: 3003,
+  errorCipher: 3005,
+  noResponse: 0,
+};
+
+const okCodes = [codesService.success, codesService.already];
+
 const Verify = () => {
-    const navigate = useNavigate();
-    const { key } = useParams();
-    const [showLoader, setShowLoader] = useState(true);
-    const [isError, setIsError] = useState(null);
-    const [codeResponse, setCodeResponse] = useState(0);
+  const navigate = useNavigate();
+  const { key } = useParams();
+  const [showLoader, setShowLoader] = useState(true);
+  const [codeResponse, setCodeResponse] = useState(null);
 
-    const redirectLogin = () => {
-        return navigate("/login");
+  const redirectLogin = () => {
+    return navigate("/login");
+  };
+  const redirectHome = () => {
+    return navigate("/home");
+  };
+
+  useEffect(() => {
+    try {
+      const keysVerified =
+        JSON.parse(localStorage.getItem("keysVerified")) || [];
+      if (keysVerified.indexOf(key) >= 0) {
+        setCodeResponse(codesService.already);
+        setShowLoader(false);
+      } else {
+        verifyService(key).then((req) => {
+          let responseVerify = req.response.data
+            ? req.response.data.code
+            : codesService.noResponse;
+          setCodeResponse(responseVerify);
+          if (
+            responseVerify === codesService.already ||
+            responseVerify === codesService.success
+          ) {
+            localStorage.setItem(
+              "keysVerified",
+              JSON.stringify([...keysVerified, key]),
+            );
+          }
+          setShowLoader(false);
+        });
+      }
+    } catch (_err) {
+      setCodeResponse(codesService.noResponse);
+      setShowLoader(false);
     }
-    const redirectHome = () => {
-        return navigate("/home");
-    }
+  }, [key]);
 
-    useEffect(() => {
-        try{
-            verifyService(key).then((req) => {
-                if(req.response.data){
-                    setCodeResponse(req.response.data.code);
-                    if (req.isError) {
-                        if(req.response.data.code === 2004){
-                            setIsError(false);
-                        }else{
-                            setIsError(true);
-                        }
-                    }else{
-                        setIsError(false);
-                    }
-                }else{
-                    setIsError(true);
-                }
-                setShowLoader(false);
-            })
-        } catch (_err) {
-            setIsError(true);
-            setShowLoader(false);
-        }
-    }, [key]);
-
-    return (
-        <>
-            <Loader show={showLoader} />
-            {isError === false && (codeResponse === 1003 || codeResponse === 2004) ? (
-                <div className={styles["verify"]}>
-                    <div className={styles["icon__email"]}>
-                        <div className={styles["icon__check"]}></div>
-                    </div>
-                    {codeResponse === 1003 && (
-                        <div className={styles["verify"]}>
-                            <h1 className={styles["verify__title"]}><br/>¡Bienvenido a Pawsly!</h1>
-                            <p className={styles["verify__message"]}><br/>Tu correo electronico ha sido confirmado exitosamente.</p>
-                        </div>
-                    )}
-                    {codeResponse === 2004 && (
-                        <div className={styles["verify"]}>
-                            <h1 className={styles["verify__title"]}><br/>¡Tu cuenta ya fue verificada!</h1>
-                            <p className={styles["verify__message"]}><br/>Intenta iniciar sesion con tu correo y contraseña.</p>
-                        </div>
-                    )}
-                    <Button
-                        title="Iniciar sesion"
-                        handleClick={redirectLogin}
-                    />
-                </div>
-            ) : isError !== null && (
-                <div className={styles["verify"]}>
-                    <div className={styles["icon__error"]}></div>
-                    <h1 className={styles["verify__title"]}>¡No fue posible verificar tu cuenta!</h1>
-                    <p className={styles["verify__message"]}><br/>Por favor intentalo de nuevo mas tarde, si el error persiste, comunicate con nosotros. (Cod. Error: {codeResponse})</p>
-                    <Button
-                        title="Ir al inicio"
-                        handleClick={redirectHome}
-                    />
-                </div>
-            )}
-        </>
-    );
+  return (
+    <>
+      <Loader show={showLoader} />
+      {okCodes.indexOf(codeResponse) >= 0 ? (
+        <div className={styles["verify"]}>
+          <div className={styles["icon__email"]}>
+            <div className={styles["icon__check"]}></div>
+          </div>
+          {codeResponse === codesService.success && (
+            <>
+              <h1 className={styles["verify__title"]}>
+                <br />
+                ¡Bienvenido a Pawsly!
+              </h1>
+              <p className={styles["verify__message"]}>
+                <br />
+                Tu correo electronico ha sido confirmado exitosamente.
+              </p>
+            </>
+          )}
+          {codeResponse === codesService.already && (
+            <>
+              <h1 className={styles["verify__title"]}>
+                <br />
+                ¡Tu cuenta ya fue verificada!
+              </h1>
+              <p className={styles["verify__message"]}>
+                <br />
+                Intenta iniciar sesion con tu correo y contraseña.
+              </p>
+            </>
+          )}
+          <Button title="Iniciar sesion" handleClick={redirectLogin} />
+        </div>
+      ) : (
+        codeResponse !== null && (
+          <div className={styles["verify"]}>
+            <div className={styles["icon__error"]}></div>
+            <h1 className={styles["verify__title"]}>
+              ¡No fue posible verificar tu cuenta!
+            </h1>
+            <p className={styles["verify__message"]}>
+              <br />
+              Por favor intentalo de nuevo mas tarde, si el error persiste,
+              comunicate con nosotros. (Cod. Error: {codeResponse})
+            </p>
+            <Button title="Ir al inicio" handleClick={redirectHome} />
+          </div>
+        )
+      )}
+    </>
+  );
 };
 
 export default Verify;

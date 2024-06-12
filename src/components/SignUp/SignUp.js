@@ -8,7 +8,7 @@ import registerService from "../../service/authMngr/SignUpService";
 import styles from "./SignUp.module.css";
 import houseIcon from "../statics/house_icon.svg";
 import Loader from "../Loader/Loader";
-import Button from "../Button/Button"
+import Button from "../Button/Button";
 const optionsSet = new Set();
 
 departamentos_colombia.forEach((item) => {
@@ -246,7 +246,6 @@ const Registro = () => {
     }
     if (name === "city") {
       errors.city = validateCity(value);
-
     }
     setFormErrors((formErrors) => ({ ...formErrors, ...errors }));
     const errorValues = Object.values(errors).filter(
@@ -280,7 +279,7 @@ const Registro = () => {
         <WaveTopLeft className={styles["wave-left"]} />
       </div>
 
-      <div className={styles["container-1"]} >
+      <div className={styles["container-1"]}>
         <div className={styles["big-logo"]}></div>
         <div className={styles["dogs"]}></div>
       </div>
@@ -439,9 +438,9 @@ const Registro = () => {
             </div>
           )}
           <Button
-              title="Crear cuenta"
-              disabled={isButtonDisabled}
-              type="submit"
+            title="Crear cuenta"
+            disabled={isButtonDisabled}
+            type="submit"
           />
         </form>
 

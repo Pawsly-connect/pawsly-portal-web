@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.12.0",
     "axios": "^1.6.8",
+    "env-cmd": "^10.1.0",
     "package-name": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,10 +24,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:local": "env-cmd -e LOCAL react-scripts start",
+    "build:local": "env-cmd -e LOCAL react-scripts build",
+    "serve:local": "npm run build:local && serve -s build",
+    "build:qa": "env-cmd -e QA react-scripts build",
+    "build:stg": "env-cmd -e STG react-scripts build",
+    "build:prod": "env-cmd -e PROD react-scripts build",
     "test": "react-scripts test",
-    "start:production": "npm run build && serve -s build",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.js\""
   },
