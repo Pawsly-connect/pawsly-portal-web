@@ -21,45 +21,48 @@ async function hash(message) {
 }
 
 function str2ab(str) {
-    const buf = new ArrayBuffer(str.length);
-    const bufView = new Uint8Array(buf);
-    for (let i = 0, strLen = str.length; i < strLen; i++) {
-        bufView[i] = str.charCodeAt(i);
-    }
-    return buf;
+  const buf = new ArrayBuffer(str.length);
+  const bufView = new Uint8Array(buf);
+  for (let i = 0, strLen = str.length; i < strLen; i++) {
+    bufView[i] = str.charCodeAt(i);
+  }
+  return buf;
 }
 
 function importPublicKey(pem) {
-    const pemHeader = "-----BEGIN PUBLIC KEY-----";
-    const pemFooter = "-----END PUBLIC KEY-----";
-    const pemContents = pem.substring(pemHeader.length, pem.length - pemFooter.length);
-    const binaryDerString = atob(pemContents);
-    const binaryDer = str2ab(binaryDerString);
-    return crypto.subtle.importKey(
-        "spki",
-        binaryDer,
-        {
-            name: "RSA-OAEP",
-            hash: "SHA-256"
-        },
-        true,
-        ["encrypt"]
-    );
+  const pemHeader = "-----BEGIN PUBLIC KEY-----";
+  const pemFooter = "-----END PUBLIC KEY-----";
+  const pemContents = pem.substring(
+    pemHeader.length,
+    pem.length - pemFooter.length,
+  );
+  const binaryDerString = atob(pemContents);
+  const binaryDer = str2ab(binaryDerString);
+  return crypto.subtle.importKey(
+    "spki",
+    binaryDer,
+    {
+      name: "RSA-OAEP",
+      hash: "SHA-256",
+    },
+    true,
+    ["encrypt"],
+  );
 }
 
 async function encrypt(message) {
-    const publicKey = await importPublicKey(keyPem);
-    const msgUint8 = new TextEncoder().encode(JSON.stringify(message));
-    const ciphertext = await crypto.subtle.encrypt(
-        {
-            name: "RSA-OAEP"
-        },
-        publicKey,
-        msgUint8
-    );
-    return btoa(new Uint8Array(ciphertext));
+  const publicKey = await importPublicKey(keyPem);
+  const msgUint8 = new TextEncoder().encode(JSON.stringify(message));
+  const ciphertext = await crypto.subtle.encrypt(
+    {
+      name: "RSA-OAEP",
+    },
+    publicKey,
+    msgUint8,
+  );
+  return btoa(new Uint8Array(ciphertext));
 }
 
-const ciphers = { hash, encrypt }
+const ciphers = { hash, encrypt };
 
 export default ciphers;

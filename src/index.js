@@ -6,44 +6,41 @@ import Registro from "./components/SignUp/SignUp";
 import Verify from "./components/Verify/Verify";
 import Home from "./components/Home/Home";
 import Services from "./components/Services/Services";
-import {
-  RouterProvider,
-  createHashRouter
-} from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 const router = createHashRouter([
   {
     path: "/",
-    element: <Home />
+    element: <Home />,
   },
   {
     path: "/home",
-    element: <Home />
+    element: <Home />,
   },
   {
     path: "/login",
-    element: <Ingreso />
+    element: <Ingreso />,
   },
   {
     path: "/singup",
-    element: <Registro />
+    element: <Registro />,
   },
   {
     path: "/verify/:key",
-    element: <Verify />
+    element: <Verify />,
   },
   {
     path: "/services",
-    element: <Services />
-  }
+    element: <Services />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
