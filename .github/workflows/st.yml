@@ -13,6 +13,7 @@ jobs:
             node-version: 20.x
             bucket-name: st-portal-web
             frontend-name: portal
+            build-command: npm run build:stg
             build-folder: build
             distribution-id: E1HXBINK0W5YKC
             version: $(jq -r '.version' package.json)

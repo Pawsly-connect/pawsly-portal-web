@@ -10,7 +10,6 @@ import ImagePetServiceBusiness from "../statics/service_business.png";
 const Services = () => {
   const [toggle, setToggle] = useState(true);
   const handleButtonClick = (e) => {
-    console.log("Botón clickeado:", e.target.innerText);
     setToggle(!toggle);
   };
 

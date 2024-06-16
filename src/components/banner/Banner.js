@@ -17,6 +17,9 @@ const BannerContainer = styled.div`
 `;
 
 // Estilo CSS para el contenedor del botón
+import React from "react";
+import styled from "styled-components";
+
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: ${(props) => props.$buttonPosition};
@@ -45,6 +48,16 @@ const StyledButton = styled.button`
   width: fit-content;
   transition: all 0.3s ease;
 
+  &:hover {
+    background-color: #0056b3;
+  }
+  background-color: #3e4eff;
+  color: #ffffff;
+  padding: ${(props) => (props.button !== "" ? "10px 20px" : "0")};
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
   &:hover {
     background-color: #0056b3;
   }

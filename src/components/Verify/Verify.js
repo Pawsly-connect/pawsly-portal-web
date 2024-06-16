@@ -5,12 +5,22 @@ import Loader from "../Loader/Loader";
 import Button from "../Button/Button";
 import verifyService from "../../service/authMngr/verifyService";
 
+const codesService = {
+  success: 1003,
+  already: 2004,
+  notExist: 2005,
+  genericError: 3003,
+  errorCipher: 3005,
+  noResponse: 0,
+};
+
+const okCodes = [codesService.success, codesService.already];
+
 const Verify = () => {
   const navigate = useNavigate();
   const { key } = useParams();
   const [showLoader, setShowLoader] = useState(true);
-  const [isError, setIsError] = useState(null);
-  const [codeResponse, setCodeResponse] = useState(0);
+  const [codeResponse, setCodeResponse] = useState(null);
 
   const redirectLogin = () => {
     return navigate("/login");
@@ -21,25 +31,31 @@ const Verify = () => {
 
   useEffect(() => {
     try {
-      verifyService(key).then((req) => {
-        if (req.response.data) {
-          setCodeResponse(req.response.data.code);
-          if (req.isError) {
-            if (req.response.data.code === 2004) {
-              setIsError(false);
-            } else {
-              setIsError(true);
-            }
-          } else {
-            setIsError(false);
-          }
-        } else {
-          setIsError(true);
-        }
+      const keysVerified =
+        JSON.parse(localStorage.getItem("keysVerified")) || [];
+      if (keysVerified.indexOf(key) >= 0) {
+        setCodeResponse(codesService.already);
         setShowLoader(false);
-      });
+      } else {
+        verifyService(key).then((req) => {
+          let responseVerify = req.response.data
+            ? req.response.data.code
+            : codesService.noResponse;
+          setCodeResponse(responseVerify);
+          if (
+            responseVerify === codesService.already ||
+            responseVerify === codesService.success
+          ) {
+            localStorage.setItem(
+              "keysVerified",
+              JSON.stringify([...keysVerified, key]),
+            );
+          }
+          setShowLoader(false);
+        });
+      }
     } catch (_err) {
-      setIsError(true);
+      setCodeResponse(codesService.noResponse);
       setShowLoader(false);
     }
   }, [key]);
@@ -47,13 +63,13 @@ const Verify = () => {
   return (
     <>
       <Loader show={showLoader} />
-      {isError === false && (codeResponse === 1003 || codeResponse === 2004) ? (
+      {okCodes.indexOf(codeResponse) >= 0 ? (
         <div className={styles["verify"]}>
           <div className={styles["icon__email"]}>
             <div className={styles["icon__check"]}></div>
           </div>
-          {codeResponse === 1003 && (
-            <div className={styles["verify"]}>
+          {codeResponse === codesService.success && (
+            <>
               <h1 className={styles["verify__title"]}>
                 <br />
                 ¡Bienvenido a Pawsly!
@@ -62,10 +78,10 @@ const Verify = () => {
                 <br />
                 Tu correo electronico ha sido confirmado exitosamente.
               </p>
-            </div>
+            </>
           )}
-          {codeResponse === 2004 && (
-            <div className={styles["verify"]}>
+          {codeResponse === codesService.already && (
+            <>
               <h1 className={styles["verify__title"]}>
                 <br />
                 ¡Tu cuenta ya fue verificada!
@@ -74,12 +90,12 @@ const Verify = () => {
                 <br />
                 Intenta iniciar sesion con tu correo y contraseña.
               </p>
-            </div>
+            </>
           )}
           <Button title="Iniciar sesion" handleClick={redirectLogin} />
         </div>
       ) : (
-        isError !== null && (
+        codeResponse !== null && (
           <div className={styles["verify"]}>
             <div className={styles["icon__error"]}></div>
             <h1 className={styles["verify__title"]}>
