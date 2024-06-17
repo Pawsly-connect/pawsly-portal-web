@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Services.module.css";
-import Banner from "../banner/Banner";
+import Banner from "../Banner/Banner";
 import Switch from "../Switch/Switch";
 import CardService from "../CardService/CardService";
 import ImagePetServiceLocation from "../statics/service_location.png";
@@ -17,7 +17,7 @@ const Services = () => {
     <div className={styles["services"]}>
       <div className={styles["image"]}>
         <div className={styles["banner-container"]}>
-          <Banner title="SERVICIOS" titlePosition="center" />
+          <Banner title="SERVICIOS" titlePosition="center" verticalAlign="center" />
         </div>
       </div>
       <Switch

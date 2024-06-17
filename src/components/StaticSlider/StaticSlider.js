@@ -1,12 +1,12 @@
 import React from "react";
 import "./StaticSlider.scss";
-import Banner from "../banner/Banner";
+import Banner from "../Banner/Banner";
 
 const StaticSlider = ({ images }) => {
   return (
-    <div className="slider-container">
-      <header className="sliderMain">
-        <ul className="slider">
+    <div className="slider">
+      <header className="slider__header">
+        <ul className="slider__ul">
           {images.map((image, index) => (
             <li
               key={index}

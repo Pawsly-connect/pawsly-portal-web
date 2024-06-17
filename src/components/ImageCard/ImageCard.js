@@ -1,5 +1,5 @@
 import "./card.scss";
-import Banner from "../banner/Banner";
+import Banner from "../Banner/Banner";
 import React, { useState } from "react";
 
 const ImageCard = ({ data }) => {

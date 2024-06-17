@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import React from "react";
-import Banner from "../banner/Banner";
+import Banner from "../Banner/Banner";
 import StaticSlider from "../StaticSlider/StaticSlider";
 import ImageCard from "../ImageCard/ImageCard";
 import imagenCelular from "../statics/imagenCelular.png";
@@ -10,6 +10,7 @@ import alimentoMascota from "../statics/StaticSlider/alimentoMascota.png";
 import banoMascota from "../statics/StaticSlider/banoMascota.png";
 import paseoMascota from "../statics/StaticSlider/paseoMascota.png";
 import peinadoMascota from "../statics/StaticSlider/peinadoMascota.png";
+import ImageCircleGrid from "../ImageCircleGrid/ImageCircleGrid"
 const Home = () => {
   const handleButtonClick = (e) => {
     console.log("Botón clickeado:", e.target.innerText);
@@ -64,6 +65,14 @@ const Home = () => {
         "Descubre los mejores juegos y actividades para mantener a tu mascota activa, feliz y en forma.",
     },
   ];
+
+  const items = [
+    { image: paseoMascota, title: 'Title 1', text: 'Description 1' },
+    { image: paseoMascota, title: 'Title 2', text: 'Description 2' },
+    { image: paseoMascota, title: 'Title 3', text: 'Description 3' },
+    { image: paseoMascota, title: 'Title 4', text: 'Description 4' },
+    { image: paseoMascota, title: 'Title 5', text: 'Description 5' }
+  ];
   function hola() {
     console.log("hola mundo");
   }
@@ -91,6 +100,9 @@ const Home = () => {
       </div>
       <div className={styles["slider"]}>
         <StaticSlider images={imagesBanner} />
+      </div>
+      <div className={styles["imageCircle"]}>
+        <ImageCircleGrid items={items} />
       </div>
     </div>
   );
