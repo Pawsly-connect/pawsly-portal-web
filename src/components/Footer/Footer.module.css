@@ -106,19 +106,19 @@ body, div, ul, nav, header, footer, a, li, label {
 }
 
 .icon-facebook {
-    background-image: url('icons/facebook.svg');
+    background-image: url('../statics/facebook.svg');
 }
 
 .icon-twitter {
-    background-image: url('icons/twitter.svg');
+    background-image: url('../statics/twitter.svg');
 }
 
 .icon-tiktok {
-    background-image: url('icons/tiktok.svg');
+    background-image: url('../statics/tiktok.svg');
 }
 
 .icon-instagram {
-    background-image: url('icons/instagram.svg');
+    background-image: url('../statics/instagram.svg');
 }
 
 /* -------- FOOTER QUERIES ------------- */

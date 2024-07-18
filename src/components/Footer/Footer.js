@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className={styles["footer__line"]}></div>
                 <div className={styles["footer__logo-container"]}>
                     <div className={styles["footer__logo-title"]}><strong>Pawsly</strong></div>
-                    <img className={styles["footer__logo-img"]} src="./pawsly.png" alt="Pawsly Logo" />
+                    <img className={styles["footer__logo-img"]} src="../statics/pawsly_claro.png" alt="Pawsly Logo" />
                 </div>
                 <div className={styles["footer__line"]}></div>
             </div>

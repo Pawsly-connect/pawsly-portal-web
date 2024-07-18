@@ -6,7 +6,7 @@ const Header = () => {
         <header className={styles["header"]}>
             <div className={styles["header__logo-container"]}>
                 <div className={styles["header__logo-title"]}><strong>Pawsly</strong></div>
-                <img className={styles["header__logo-img"]} src="./pawsly.png" alt="Pawsly logo" />
+                <img className={styles["header__logo-img"]} src="../statics/pawsly_claro.png" alt="Pawsly logo" />
             </div>
             <input type="checkbox" className={styles["header__checkbox"]} id="open-menu" />
             <label htmlFor="open-menu" className={styles["header__open-nav-button"]} role="button">=</label>
