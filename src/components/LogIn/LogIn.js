@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { ReactComponent as WaveTop } from "../statics/wave_top.svg";
 import loginService from "../../service/authMngr/loginService";
 import Button from "../Button/Button";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const Ingreso = () => {
   const [formData, setFormData] = useState({
@@ -71,6 +73,7 @@ const Ingreso = () => {
 
   return (
     <div className={styles["container-main"]}>
+      <Header/>
       <div className={styles["container-2"]}>
         <div className={styles["wave-top"]}>
           <WaveTop className={styles["wave-svg"]} />
@@ -138,6 +141,7 @@ const Ingreso = () => {
           </div>
         </div>
       </div>
+      <Footer/>  
     </div>
   );
 };
