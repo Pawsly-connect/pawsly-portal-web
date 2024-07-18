@@ -71,7 +71,7 @@ body {
 
 /* Title styling */
 .title {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: bold;
     margin: 8px auto 0 auto;
 }
@@ -144,7 +144,7 @@ body {
 
 #term-text:hover{
     color: rgba(0, 0, 0, 0.24);
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .text-in {
