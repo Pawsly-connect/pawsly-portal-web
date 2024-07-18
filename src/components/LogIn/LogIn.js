@@ -72,8 +72,9 @@ const Ingreso = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className={styles["container-main"]}>
-      <Header/>
       <div className={styles["container-2"]}>
         <div className={styles["wave-top"]}>
           <WaveTop className={styles["wave-svg"]} />
@@ -141,8 +142,9 @@ const Ingreso = () => {
           </div>
         </div>
       </div>
-      <Footer/>  
     </div>
+    <Footer/>
+    </>
   );
 };
 export default Ingreso;
