@@ -81,9 +81,6 @@ const Home = () => {
     { image: simon, title: 'SIMÓN', text: '¡Pawsly es increíble! Encontré un spa para mi gato en minutos. ¡Ahora luce tan elegante como un rey felino!' },
     { image: max, title: 'MAX', text: '¡Excelente servicio! Encontré una guardería para mi perro rápidamente. ¡Mi amigo peludo está feliz y yo también!' }
   ];
-  function hola() {
-    console.log("hola mundo");
-  }
 
   return (
     <div className={styles["container-main"]}>

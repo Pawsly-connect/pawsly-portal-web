@@ -13,15 +13,15 @@ const Header = () => {
             <label htmlFor="open-menu" className={styles["header__open-nav-button"]} role="button">=</label>
             <nav className={styles["header__nav"]}>
                 <ul className={styles["header__nav-list"]}>
-                    <li className={styles["header__nav-item"]}><a href="#" className={`${styles["header__nav-link"]} ${styles["link--inicio"]}`}>Inicio</a></li>
-                    <li className={styles["header__nav-item"]}><a href="#" className={`${styles["header__nav-link"]} ${styles["link--servicios"]}`}>Servicios</a></li>
-                    <li className={styles["header__nav-item"]}><a href="#" className={`${styles["header__nav-link"]} ${styles["link--blog"]}`}>Blog</a></li>
-                    <li className={styles["header__nav-item"]}><a href="#" className={`${styles["header__nav-link"]} ${styles["link--acerca_de"]}`}>Acerca de</a></li>
-                    <li className={styles["header__nav-item"]}><a href="#" className={`${styles["header__nav-link"]} ${styles["link--contacto"]}`}>Contacto</a></li>
+                    <li className={styles["header__nav-item"]}><a href="#/home" className={`${styles["header__nav-link"]} ${styles["link--inicio"]}`}>Inicio</a></li>
+                    <li className={styles["header__nav-item"]}><a href="#/services" className={`${styles["header__nav-link"]} ${styles["link--servicios"]}`}>Servicios</a></li>
+                    <li className={styles["header__nav-item"]}><a href="#/" className={`${styles["header__nav-link"]} ${styles["link--blog"]}`}>Blog</a></li>
+                    <li className={styles["header__nav-item"]}><a href="#/" className={`${styles["header__nav-link"]} ${styles["link--acerca_de"]}`}>Acerca de</a></li>
+                    <li className={styles["header__nav-item"]}><a href="#/" className={`${styles["header__nav-link"]} ${styles["link--contacto"]}`}>Contacto</a></li>
                 </ul>
                 <div className={styles["header__nav-button"]}>
-                    <a href="#" className={`${styles["header__button"]} ${styles["link--inicia_sesion"]}`}>Inicia Sesión</a>
-                    <a href="#" className={`${styles["header__button"]} ${styles["link--registrate"]}`}>Regístrate</a>
+                    <a href="#/login" className={`${styles["header__button"]} ${styles["link--inicia_sesion"]}`}>Inicia Sesión</a>
+                    <a href="#/singup" className={`${styles["header__button"]} ${styles["link--registrate"]}`}>Regístrate</a>
                 </div>
                 <div className={styles["header__nav-line"]}></div>
             </nav>
