@@ -12,8 +12,6 @@
   width: 100%;
   font-size: 0.6em;
 }
-
-  
   .slider {
     position: relative;
     width: 100%;
@@ -22,23 +20,28 @@
     z-index: 1;
     max-height: 660px;
     padding: 12px auto;
+    @media (max-width: 768px) {      
+      min-height: 700px;      
+    }
     &__header{
       width: 100%;
-      height: 100%;
-      background-color: whitesmoke;
+      height: 100%;      
       position: relative;
     }
     &__ul{
       width: 100%;
-      height: 100%;
-      
+      height: 100%;      
       position: relative;
-      display: flex;
+      display: flex;      
       transition: all 0.5s;
       overflow: hidden;            
       padding: 0;
       justify-content: center; 
       align-items: center;
+      @media (max-width: 768px) {
+        flex-wrap: wrap;                
+        max-height: 600px;
+      }
     }
   }
   
@@ -52,21 +55,29 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0 6px; /* Horizontal margin for separation */
-    border-radius: 12px; /* Rounded corners */
+    margin: 0 6px; 
+    border-radius: 12px; 
     overflow: hidden;
+    @media (max-width: 768px) {      
+        min-width: calc((100% / 2) - 12px); 
+        height: 40%;     
+        margin: 12px 6px;      
+        font-size: .7em; 
+    }
   }
   
   .slider .slide:hover {
-    font-size: 1.3em;
-    width: calc(60% - 12px); /* Adjust width to accommodate margin */
-    cursor: pointer;
+    @media (min-width: 768px) {    
+      font-size: 1.3em;
+      width: calc(60% - 12px); 
+      cursor: pointer;
+    }    
   }
   
   .slider .slide::before {
     content: "";
     display: block;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 56.25%; 
   }
   
   .slider .slide img {
@@ -80,4 +91,4 @@
     transform: scale(1.1);
   }
   
-  
+ 

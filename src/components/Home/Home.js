@@ -10,7 +10,13 @@ import alimentoMascota from "../statics/StaticSlider/alimentoMascota.png";
 import banoMascota from "../statics/StaticSlider/banoMascota.png";
 import paseoMascota from "../statics/StaticSlider/paseoMascota.png";
 import peinadoMascota from "../statics/StaticSlider/peinadoMascota.png";
-import ImageCircleGrid from "../ImageCircleGrid/ImageCircleGrid"
+import ImageCircleGrid from "../ImageCircleGrid/ImageCircleGrid";
+import mia from "../statics/home/mia.png";
+import roko from "../statics/home/roko.png";
+import max from "../statics/home/max.png";
+import luna from "../statics/home/luna.png";
+import simon from "../statics/home/simon.png";
+
 const Home = () => {
   const handleButtonClick = (e) => {
     console.log("Botón clickeado:", e.target.innerText);
@@ -67,11 +73,11 @@ const Home = () => {
   ];
 
   const items = [
-    { image: paseoMascota, title: 'Title 1', text: 'Description 1' },
-    { image: paseoMascota, title: 'Title 2', text: 'Description 2' },
-    { image: paseoMascota, title: 'Title 3', text: 'Description 3' },
-    { image: paseoMascota, title: 'Title 4', text: 'Description 4' },
-    { image: paseoMascota, title: 'Title 5', text: 'Description 5' }
+    { image: mia, title: 'MIA', text: '¡Increíble descubrimiento! Encontré un lugar para bañar a mi gata con facilidad. ¡Ahora luce impecable y feliz!' },
+    { image: roko, title: 'ROKO', text: '¡Pawsly simplificó mi vida! Encontré un veterinario cerca en un abrir y cerrar de ojos. ¡Recomendado al 100%!' },
+    { image: luna, title: 'LUNA', text: '¡Pawsly es genial! Encontré una tienda de mascotas cercana para comprar juguetes nuevos para mi cachorro. ¡Ahora juega sin parar!' },
+    { image: simon, title: 'SIMÓN', text: '¡Pawsly es increíble! Encontré un spa para mi gato en minutos. ¡Ahora luce tan elegante como un rey felino!' },
+    { image: max, title: 'MAX', text: '¡Excelente servicio! Encontré una guardería para mi perro rápidamente. ¡Mi amigo peludo está feliz y yo también!' }
   ];
   function hola() {
     console.log("hola mundo");

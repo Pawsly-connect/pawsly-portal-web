@@ -32,7 +32,6 @@
         max-height: 467px;
         padding-top: 100px;
         margin: 0 auto 0 100px;
-
     }
 }
 .imageCard{
@@ -50,7 +49,20 @@
     font-size: 12px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra horizontalmente el contenido del slider */
-    align-items: center; /* Centra verticalmente el contenido del slider si hay altura definida */
+    justify-content: center;
+    align-items: center;
     margin: 16px 0 0 0;
+    @media (max-width: 768px) { 
+        min-height: 650px;             
+    }
+}
+.imageCircle{
+    font-size: 10px;
+    @media (min-width:393px ) and (max-width: 600px) { 
+        font-size: 5px;         
+    }
+    @media (min-width:600px ) and (max-width: 850px) { 
+        font-size: 8px;         
+    }
+   
 }
