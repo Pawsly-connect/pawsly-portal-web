@@ -1,6 +1,8 @@
 import styles from "./Home.module.css";
 import React from "react";
 import Banner from "../Banner/Banner";
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 import StaticSlider from "../StaticSlider/StaticSlider";
 import ImageCard from "../ImageCard/ImageCard";
 import imagenCelular from "../statics/imagenCelular.png";
@@ -86,7 +88,7 @@ const Home = () => {
   return (
     <div className={styles["container-main"]}>
       <div className={styles["header"]}>
-        <button onClick={hola}> holis </button>
+        <Header/>
       </div>
       <div className={styles["banner"]}>
         <div className={styles["banner__text"]}>
@@ -109,6 +111,9 @@ const Home = () => {
       </div>
       <div className={styles["imageCircle"]}>
         <ImageCircleGrid items={items} />
+      </div>
+      <div className={styles["footer"]}>
+        <Footer/>
       </div>
     </div>
   );
