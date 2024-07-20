@@ -8,23 +8,6 @@ $card-width: 80%;
 $card-hover-offset-x: 40px;
 $card-hover-offset-y: 60px;
 
-// Global Styles
-
-body {
-    color: #676767;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-    line-height: inherit;
-}
-
-// Clearfix
 %clearfix {
     &:after {
         clear: both;

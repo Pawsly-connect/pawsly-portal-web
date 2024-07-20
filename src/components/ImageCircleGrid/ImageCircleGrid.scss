@@ -1,84 +1,72 @@
 .image-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  &-row {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  
-    &-row {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-  
-    &-item {
-      flex: 1 1 30%;
-      max-width: 30%;
-      margin: 0 10px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      max-width: 300px;
-      max-height: 300px;
-      height: 300px;
-      color: white;
-      position: relative;
-  
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4); /* Color de fondo semitransparente */
-        border-radius: 50%;
-        z-index: 1;
-      }
-  
-      &:last-child {
-        margin-right: 0;
-      }
-  
-      .image-grid-banner {
-        position: relative;
-        z-index: 2; /* Asegura que el banner esté sobre el fondo */
-      }
-  
-      &-background-wrapper {
-        width: 100%;
-        height: 0;
-        padding-bottom: 100%;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-      }
-  
-      &-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        border-radius: 50%;
-      }
-    }
-  
-    @media (max-width: 768px) {
-      &-item {
-        max-width: 45%;
-      }
-  
-      &-row {
-        justify-content: space-around;
-      }
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    &:not(:last-child) {
+      margin-bottom: 40px;
     }
   }
-  
+
+  &-item {
+    width: 300px; // Ancho fijo para mantener la forma esférica
+    height: 300px; // Altura fija para mantener la forma esférica
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    color: white;
+
+    &:nth-last-child(1):nth-child(odd) {
+      //margin: auto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .image-grid-banner {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &-item {
+      width: 40vw; // Usa un porcentaje del ancho de la ventana para tamaños más pequeños
+      height: 40vw; // Mantiene la relación de aspecto 1:1
+      max-width: 300px;
+      max-height: 300px;
+      margin: 10px;
+    }
+
+    &-row {
+      justify-content: space-around;
+    }
+  }
+}
