@@ -1,6 +1,8 @@
 /* --- HEADER SECTION --- */
 
 .header {
+    position: relative;
+    z-index: 9999999999;
     background: linear-gradient(to right, #3E4EFF, #252F99);
     display: flex;
     justify-content: space-between;
