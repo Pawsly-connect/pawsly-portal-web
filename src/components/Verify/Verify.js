@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import styles from './Verify.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import verifyService from '../../service/authMngr/verifyService';
+=======
+import React, { useState, useEffect } from "react";
+import styles from "./Verify.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
+import Button from "../Button/Button";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import verifyService from "../../service/authMngr/verifyService";
+>>>>>>> 3fd002e8fbd083df6dd40236dc15578f86c9a769
 
 const codesService = {
   success: 1003,
@@ -53,6 +64,7 @@ const Verify = () => {
 
   return (
     <>
+      <Header/>
       <Loader show={showLoader} />
       {okCodes.indexOf(codeResponse) >= 0 ? (
         <div className={styles['verify']}>
@@ -99,6 +111,7 @@ const Verify = () => {
           </div>
         )
       )}
+      <Footer/>
     </>
   );
 };
