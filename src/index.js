@@ -1,46 +1,46 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import Ingreso from "./components/LogIn/LogIn";
-import Registro from "./components/SignUp/SignUp";
-import Verify from "./components/Verify/Verify";
-import Home from "./components/Home/Home";
-import Services from "./components/Services/Services";
-import { RouterProvider, createHashRouter } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import Ingreso from './components/LogIn/LogIn';
+import Registro from './components/SignUp/SignUp';
+import Verify from './components/Verify/Verify';
+import Home from './components/Home/Home';
+import Services from './components/Services/Services';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 
 const router = createHashRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/home",
+    path: '/home',
     element: <Home />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Ingreso />,
   },
   {
-    path: "/singup",
+    path: '/singup',
     element: <Registro />,
   },
   {
-    path: "/verify/:key",
+    path: '/verify/:key',
     element: <Verify />,
   },
   {
-    path: "/services",
+    path: '/services',
     element: <Services />,
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

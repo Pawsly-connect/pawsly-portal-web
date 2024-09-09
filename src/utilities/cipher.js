@@ -2,11 +2,9 @@ const keyPem = process.env.REACT_APP_PUBLIC_KEY;
 
 async function hash(message) {
   const msgUint8 = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
+  const hashHex = hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
   return hashHex;
 }
 
@@ -23,14 +21,14 @@ function importPublicKey(pem) {
   const binaryDerString = atob(pem);
   const binaryDer = str2ab(binaryDerString);
   return crypto.subtle.importKey(
-    "spki",
+    'spki',
     binaryDer,
     {
-      name: "RSA-OAEP",
-      hash: "SHA-256",
+      name: 'RSA-OAEP',
+      hash: 'SHA-256',
     },
     true,
-    ["encrypt"],
+    ['encrypt']
   );
 }
 
@@ -39,10 +37,10 @@ async function encrypt(message) {
   const msgUint8 = new TextEncoder().encode(JSON.stringify(message));
   const ciphertext = await crypto.subtle.encrypt(
     {
-      name: "RSA-OAEP",
+      name: 'RSA-OAEP',
     },
     publicKey,
-    msgUint8,
+    msgUint8
   );
   return btoa(new Uint8Array(ciphertext));
 }

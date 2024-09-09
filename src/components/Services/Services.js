@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import styles from "./Services.module.css";
-import Banner from "../Banner/Banner";
-import Switch from "../Switch/Switch";
-import CardService from "../CardService/CardService";
-import ImagePetServiceLocation from "../statics/service_location.png";
-import ImagePetServiceHealth from "../statics/service_health.png";
-import ImagePetServiceBusiness from "../statics/service_business.png";
+import React, { useState } from 'react';
+import styles from './Services.module.css';
+import Banner from '../Banner/Banner';
+import Switch from '../Switch/Switch';
+import CardService from '../CardService/CardService';
+import ImagePetServiceLocation from '../statics/service_location.png';
+import ImagePetServiceHealth from '../statics/service_health.png';
+import ImagePetServiceBusiness from '../statics/service_business.png';
 
 const Services = () => {
   const [toggle, setToggle] = useState(true);
@@ -14,17 +14,13 @@ const Services = () => {
   };
 
   return (
-    <div className={styles["services"]}>
-      <div className={styles["image"]}>
-        <div className={styles["banner-container"]}>
+    <div className={styles['services']}>
+      <div className={styles['image']}>
+        <div className={styles['banner-container']}>
           <Banner title="SERVICIOS" titlePosition="center" verticalAlign="center" />
         </div>
       </div>
-      <Switch
-        option1="Mascotas"
-        option2="Negocios"
-        handleClick={handleButtonClick}
-      />
+      <Switch option1="Mascotas" option2="Negocios" handleClick={handleButtonClick} />
       {toggle ? (
         <React.Fragment>
           <CardService

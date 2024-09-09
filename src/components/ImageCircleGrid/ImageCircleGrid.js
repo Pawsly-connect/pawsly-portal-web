@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ImageCircleGrid.scss';
-import Banner from '../Banner/Banner'
+import Banner from '../Banner/Banner';
 
 const ImageCircleGrid = ({ items }) => {
   const rows = [];
@@ -14,13 +14,9 @@ const ImageCircleGrid = ({ items }) => {
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className="image-grid-row">
           {row.map((item, index) => (
-            <div
-              key={index}
-              className="image-grid-item"
-              style={{ backgroundImage: `url(${item.image})` }}
-            >
-              <div className="image-grid-banner">                                
-                <Banner title={item.title} text={item.text} backgroundColor={'rgba(0, 0, 0, 0)'} boxShadow={'none'}/>
+            <div key={index} className="image-grid-item" style={{ backgroundImage: `url(${item.image})` }}>
+              <div className="image-grid-banner">
+                <Banner title={item.title} text={item.text} backgroundColor={'rgba(0, 0, 0, 0)'} boxShadow={'none'} />
               </div>
             </div>
           ))}
