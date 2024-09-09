@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // Importar PropTypes
 import styles from './Banner.module.css';
 import styled from 'styled-components';
 
@@ -13,7 +14,6 @@ const BannerContainer = styled.div`
   padding: 20px;
   box-sizing: border-box;
   background-color: ${(props) => props.$backgroundColor};
-  border-radius: 20px;
   box-shadow: ${(props) => props.$boxShadow};
 `;
 
@@ -35,7 +35,7 @@ const ButtonContainer = styled.div`
 const StyledButton = styled.button`
   background-color: #3e4eff;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: ${(props) => (props.button !== '' ? '10px 20px' : '0')};
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -43,16 +43,6 @@ const StyledButton = styled.button`
   width: fit-content;
   transition: all 0.3s ease;
 
-  &:hover {
-    background-color: #0056b3;
-  }
-  background-color: #3e4eff;
-  color: #ffffff;
-  padding: ${(props) => (props.button !== '' ? '10px 20px' : '0')};
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
   &:hover {
     background-color: #0056b3;
   }
@@ -93,6 +83,19 @@ const Banner = ({
       )}
     </BannerContainer>
   );
+};
+
+// Agregar validación de PropTypes
+Banner.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  button: PropTypes.string,
+  buttonPosition: PropTypes.oneOf(['left', 'center', 'right']),
+  titlePosition: PropTypes.oneOf(['left', 'center', 'right']),
+  handleClick: PropTypes.func,
+  verticalAlign: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
+  backgroundColor: PropTypes.string,
+  boxShadow: PropTypes.string,
 };
 
 export default Banner;
