@@ -1,5 +1,5 @@
-import instance from "./index";
-import cipher from "../../utilities/cipher";
+import instance from './index';
+import cipher from '../../utilities/cipher';
 
 async function registerService(formData) {
   try {
