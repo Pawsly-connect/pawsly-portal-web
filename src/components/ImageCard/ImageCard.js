@@ -1,6 +1,7 @@
 import './card.scss';
 import Banner from '../Banner/Banner';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ImageCard = ({ data }) => {
   const [current, setCurrent] = useState(0);
@@ -45,6 +46,18 @@ const ImageCard = ({ data }) => {
       </div>
     </div>
   );
+};
+
+ImageCard.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string,
+      button: PropTypes.string,
+      buttonPosition: PropTypes.string,
+      imageUrl: PropTypes.string.isRequired,
+    })
+  ).isRequired
 };
 
 export default ImageCard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './CardService.module.css';
 
 const CardService = ({ title, description, urlImage, orientation = 'left', altImage = '' }) => {
@@ -31,6 +32,14 @@ const CardService = ({ title, description, urlImage, orientation = 'left', altIm
       )}
     </div>
   );
+};
+
+CardService.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  urlImage: PropTypes.string.isRequired,
+  orientation: PropTypes.oneOf(['left', 'right']),
+  altImage: PropTypes.string
 };
 
 export default CardService;
