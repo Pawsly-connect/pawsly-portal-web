@@ -6,15 +6,15 @@ on:
       - master
 
 jobs:
-    deploy-prod:
-        uses: Pawsly-connect/pawsly-pipeline/.github/workflows/deploy_frontend.yml@feature/add_pipeline
-        with:
-            environment: pr
-            node-version: 20.x
-            bucket-name: pr-portal-web
-            frontend-name: portal
-            build-command: npm run build:prod
-            build-folder: build
-            distribution-id: ""
-            version: $(node -p "require('./package.json').version")
-        secrets: inherit
+  deploy-prod:
+    uses: Pawsly-connect/pawsly-pipeline/.github/workflows/deploy_frontend.yml@feature/add_pipeline
+    with:
+      environment: pr
+      node-version: 20.x
+      bucket-name: pr-portal-web
+      frontend-name: portal
+      build-command: npm run build:prod
+      build-folder: build
+      distribution-id: ''
+      version: $(node -p "require('./package.json').version")
+    secrets: inherit

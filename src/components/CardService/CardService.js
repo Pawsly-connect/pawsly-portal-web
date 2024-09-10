@@ -39,7 +39,7 @@ CardService.propTypes = {
   description: PropTypes.string.isRequired,
   urlImage: PropTypes.string.isRequired,
   orientation: PropTypes.oneOf(['left', 'right']),
-  altImage: PropTypes.string
+  altImage: PropTypes.string,
 };
 
 export default CardService;
