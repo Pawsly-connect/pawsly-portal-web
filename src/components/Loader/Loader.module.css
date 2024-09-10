@@ -1,43 +1,44 @@
 .loader {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    opacity: 0.5;
-    z-index: 99999;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.5;
+  z-index: 99999;
 }
-.loader__icon{
-    position: absolute;
-    background: white;
-    max-width: 90px;
-    height: 40px;
-    width: 50%;
-    top: 50%;
-    left: 50%;
-    animation: spin 2.5s linear infinite;
+.loader__icon {
+  position: absolute;
+  background: white;
+  max-width: 90px;
+  height: 40px;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  animation: spin 2.5s linear infinite;
 }
-.loader__icon::before, .loader__icon::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    top: -20px;
-    width: 40px;
-    height: 40px;
-    background: white;
-    box-shadow: 0 40px 0 white;
+.loader__icon::before,
+.loader__icon::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  box-shadow: 0 40px 0 white;
 }
 .loader__icon::before {
-    left: -20px;
+  left: -20px;
 }
 .loader__icon::after {
-    right: -20px;
+  right: -20px;
 }
 
 @keyframes spin {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg); /* Desde 0 grados */
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg); /* Hasta 360 grados (una vuelta completa) */
-    }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg); /* Desde 0 grados */
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg); /* Hasta 360 grados (una vuelta completa) */
+  }
 }

@@ -57,7 +57,7 @@ ImageCard.propTypes = {
       buttonPosition: PropTypes.string,
       imageUrl: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default ImageCard;

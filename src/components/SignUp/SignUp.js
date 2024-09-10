@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as WaveTopLeft } from '../statics/wave_top_left.svg';
 import { ReactComponent as WaveTop } from '../statics/wave_top.svg';
 import { ReactComponent as WaveBottom } from '../statics/wave_bottom.svg';
-import departamentos_colombia from '../statics/departamentos_colombia.json';
+import departamentosColombia from '../statics/departamentosColombia.json';
 import Select, { components } from 'react-select';
 import registerService from '../../service/authMngr/SignUpService';
 import styles from './SignUp.module.css';
@@ -13,7 +13,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 const optionsSet = new Set();
 
-departamentos_colombia.forEach((item) => {
+departamentosColombia.forEach((item) => {
   optionsSet.add(item.departamento);
 });
 
@@ -21,7 +21,7 @@ const options = [...optionsSet].map((value) => ({
   value,
   label: value,
 }));
-const url_mientras =
+const urlMientras =
   'https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false';
 
 const maxLengthName = 90;
@@ -395,7 +395,7 @@ const Registro = () => {
 
             <div className={styles['term-text']}>
               ¿Aceptas nuestros{' '}
-              <a href={url_mientras}>
+              <a href={urlMientras}>
                 terminos y <br /> condiciones
               </a>
               ?
