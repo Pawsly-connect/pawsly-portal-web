@@ -101,9 +101,7 @@ const Home = () => {
 
   return (
     <div className={styles['container-main']}>
-      <div className={styles['header']}>
-        <Header />
-      </div>
+      <Header />
       <div className={styles['banner']}>
         <div className={styles['banner__text']}>
           <Banner
@@ -124,9 +122,7 @@ const Home = () => {
       <div className={styles['imageCircle']}>
         <ImageCircleGrid items={items} />
       </div>
-      <div className={styles['footer']}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
