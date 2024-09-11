@@ -261,171 +261,168 @@ const Registro = () => {
   };
 
   return (
-    <div className={styles['container-main']}>
-      <div className={styles['header']}>
-        <Header />
-      </div>
-      <Loader show={showLoader} />
-
-      <div className={styles['container-1']}>
-        <div className={styles['big-logo']}></div>
-        <div className={styles['dogs']}></div>
-      </div>
-
-      <div className={styles['container-2']}>
-        <div className={styles['logo-pawsly']}></div>
-        <div className={styles['title']}>Regístrate</div>
-        <div className={styles['section-text']}>
-          Y haz parte de este gran proyecto que busca unirte a ti y a tu mascota con los mejores expertos.
+    <>
+      <Header />
+      <div className={styles['container-main']}>
+        <Loader show={showLoader} />
+        <div className={styles['container-1']}>
+          <div className={styles['big-logo']}></div>
+          <div className={styles['dogs']}></div>
         </div>
 
-        <form onSubmit={handleSubmit} className="form">
-          <div className={styles['text-inputs']}>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className={`${styles['name']} ${styles['input-text-form']}`}
-              placeholder="Nombre"
-              value={formData.name}
-              onChange={handleChange}
-              maxLength={maxLengthName}
-              autoComplete="off"
-              aria-autocomplete="none"
-            />
-            {formErrors.name && <div className={styles['error']}>{formErrors.name}</div>}
+        <div className={styles['container-2']}>
+          <div className={styles['logo-pawsly']}></div>
+          <div className={styles['title']}>Regístrate</div>
+          <div className={styles['section-text']}>
+            Y haz parte de este gran proyecto que busca unirte a ti y a tu mascota con los mejores expertos.
+          </div>
 
-            <Select
-              name="city"
-              className={`${styles['select-box']}`}
-              onChange={handleSelectChange}
-              options={options}
-              isSearchable={true}
-              components={{
-                Placeholder: CustomPlaceholder,
-                SingleValue: CustomSingleValue,
-              }}
-              autoComplete="off"
-              aria-autocomplete="none"
-              styles={customStyles}
-            />
-
-            {formErrors.city && <div className={`${styles['error']} ${styles['error-1']}`}>{formErrors.city}</div>}
-            <input
-              type="text"
-              id="email"
-              className={`${styles['email']} ${styles['input-text-form']} ${styles['email-1']}`}
-              name="email"
-              placeholder="Correo"
-              value={formData.email}
-              onChange={handleChange}
-              onCopy={handleCopy}
-              onPaste={handlePaste}
-              maxLength={maxLengthEmail}
-              autoComplete="off"
-              aria-autocomplete="none"
-            />
-            {formErrors.email && <div className={styles['error']}>{formErrors.email}</div>}
-            {showConfirmEmail && (
+          <form onSubmit={handleSubmit} className="form">
+            <div className={styles['text-inputs']}>
               <input
                 type="text"
-                id="confirmEmail"
-                className={`${styles['email']} ${styles['input-text-form']}`}
-                name="confirmEmail"
-                placeholder="Confirme su correo"
-                value={formData.confirmEmail}
+                id="name"
+                name="name"
+                className={`${styles['name']} ${styles['input-text-form']}`}
+                placeholder="Nombre"
+                value={formData.name}
+                onChange={handleChange}
+                maxLength={maxLengthName}
+                autoComplete="off"
+                aria-autocomplete="none"
+              />
+              {formErrors.name && <div className={styles['error']}>{formErrors.name}</div>}
+
+              <Select
+                name="city"
+                className={`${styles['select-box']}`}
+                onChange={handleSelectChange}
+                options={options}
+                isSearchable={true}
+                components={{
+                  Placeholder: CustomPlaceholder,
+                  SingleValue: CustomSingleValue,
+                }}
+                autoComplete="off"
+                aria-autocomplete="none"
+                styles={customStyles}
+              />
+
+              {formErrors.city && <div className={`${styles['error']} ${styles['error-1']}`}>{formErrors.city}</div>}
+              <input
+                type="text"
+                id="email"
+                className={`${styles['email']} ${styles['input-text-form']} ${styles['email-1']}`}
+                name="email"
+                placeholder="Correo"
+                value={formData.email}
+                onChange={handleChange}
                 onCopy={handleCopy}
                 onPaste={handlePaste}
-                onChange={handleChange}
                 maxLength={maxLengthEmail}
                 autoComplete="off"
                 aria-autocomplete="none"
               />
-            )}
+              {formErrors.email && <div className={styles['error']}>{formErrors.email}</div>}
+              {showConfirmEmail && (
+                <input
+                  type="text"
+                  id="confirmEmail"
+                  className={`${styles['email']} ${styles['input-text-form']}`}
+                  name="confirmEmail"
+                  placeholder="Confirme su correo"
+                  value={formData.confirmEmail}
+                  onCopy={handleCopy}
+                  onPaste={handlePaste}
+                  onChange={handleChange}
+                  maxLength={maxLengthEmail}
+                  autoComplete="off"
+                  aria-autocomplete="none"
+                />
+              )}
 
-            {formErrors.confirmEmail && <div className={styles['error']}>{formErrors.confirmEmail}</div>}
-            <input
-              type="password"
-              className={`${styles['password']} ${styles['input-text-form']}`}
-              name="password"
-              placeholder="Contraseña"
-              value={formData.password}
-              onChange={handleChange}
-              maxLength={maxLengthPassword}
-              autoComplete="off"
-              aria-autocomplete="none"
-            />
-            {formErrors.password && <div className={styles['error']}>{formErrors.password}</div>}
-            {showConfirmPassword && (
+              {formErrors.confirmEmail && <div className={styles['error']}>{formErrors.confirmEmail}</div>}
               <input
                 type="password"
                 className={`${styles['password']} ${styles['input-text-form']}`}
-                name="confirmPassword"
-                placeholder="Confirme su Contraseña"
-                value={formData.confirmPassword}
+                name="password"
+                placeholder="Contraseña"
+                value={formData.password}
                 onChange={handleChange}
                 maxLength={maxLengthPassword}
                 autoComplete="off"
                 aria-autocomplete="none"
               />
-            )}
-            {formErrors.confirmPassword && <div className={styles['error']}>{formErrors.confirmPassword}</div>}
-          </div>
+              {formErrors.password && <div className={styles['error']}>{formErrors.password}</div>}
+              {showConfirmPassword && (
+                <input
+                  type="password"
+                  className={`${styles['password']} ${styles['input-text-form']}`}
+                  name="confirmPassword"
+                  placeholder="Confirme su Contraseña"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  maxLength={maxLengthPassword}
+                  autoComplete="off"
+                  aria-autocomplete="none"
+                />
+              )}
+              {formErrors.confirmPassword && <div className={styles['error']}>{formErrors.confirmPassword}</div>}
+            </div>
 
-          <div className={styles['term']}>
-            <label htmlFor="customCheckbox">
-              <input
-                type="checkbox"
-                name="checkBox"
-                id="customCheckbox"
-                className={styles['custom-checkbox-input']}
-                onChange={handleChange}
-                checked={formData.checkBox}
-              />
-              <div className={styles['custom-checkbox']}>
-                <div className={styles['paw']}>
-                  <div className={styles['paw-inner']}></div>
-                  <div className={styles['paw-bottom']}></div>
+            <div className={styles['term']}>
+              <label htmlFor="customCheckbox">
+                <input
+                  type="checkbox"
+                  name="checkBox"
+                  id="customCheckbox"
+                  className={styles['custom-checkbox-input']}
+                  onChange={handleChange}
+                  checked={formData.checkBox}
+                />
+                <div className={styles['custom-checkbox']}>
+                  <div className={styles['paw']}>
+                    <div className={styles['paw-inner']}></div>
+                    <div className={styles['paw-bottom']}></div>
+                  </div>
                 </div>
+              </label>
+
+              <div className={styles['term-text']}>
+                ¿Aceptas nuestros{' '}
+                <a href={urlMientras}>
+                  terminos y <br /> condiciones
+                </a>
+                ?
               </div>
-            </label>
+            </div>
+            {formErrors.checkBox && (
+              <div className={styles['error']}>
+                <br />
+                {formErrors.checkBox}
+              </div>
+            )}
+            <Button title="Crear cuenta" disabled={isButtonDisabled} type="submit" />
+          </form>
 
-            <div className={styles['term-text']}>
-              ¿Aceptas nuestros{' '}
-              <a href={urlMientras}>
-                terminos y <br /> condiciones
-              </a>
-              ?
+          <div className={styles['text-in']}>
+            <a className={styles['term-text-in']} href={'/#/login'}>
+              ¿Ya tienes una cuenta? Dale clic aquí
+            </a>
+            <br />
+            <div className={styles['term-text-in']}>
+              <b>O ingresa con:</b>
             </div>
           </div>
-          {formErrors.checkBox && (
-            <div className={styles['error']}>
-              <br />
-              {formErrors.checkBox}
-            </div>
-          )}
-          <Button title="Crear cuenta" disabled={isButtonDisabled} type="submit" />
-        </form>
 
-        <div className={styles['text-in']}>
-          <a className={styles['term-text-in']} href={'/#/login'}>
-            ¿Ya tienes una cuenta? Dale clic aquí
-          </a>
-          <br />
-          <div className={styles['term-text-in']}>
-            <b>O ingresa con:</b>
+          <div className={styles['logos-in']}>
+            <div className={styles['google']}></div>
+            <div className={styles['facebook']}></div>
           </div>
         </div>
-
-        <div className={styles['logos-in']}>
-          <div className={styles['google']}></div>
-          <div className={styles['facebook']}></div>
-        </div>
       </div>
-      <div className={styles['footer']}>
-        <Footer />
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

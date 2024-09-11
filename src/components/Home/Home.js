@@ -100,34 +100,34 @@ const Home = () => {
   ];
 
   return (
-    <div className={styles['container-main']}>
-      <div className={styles['header']}>
-        <Header />
-      </div>
-      <div className={styles['banner']}>
-        <div className={styles['banner__text']}>
-          <Banner
-            title={'Descubre un Mundo de Cuidado para tu Mascota'}
-            text={'Conectando a las mascotas con los mejores servicios. Descubre todo lo que Pawsly tiene para ofrecer'}
-            button={'VAMOS'}
-            buttonPosition={'left'}
-            handleClick={handleButtonClick}
-          />
+    <>
+      <Header />
+      <div className={styles['container-main']}>
+        <div className={styles['banner']}>
+          <div className={styles['banner__text']}>
+            <Banner
+              title={'Descubre un Mundo de Cuidado para tu Mascota'}
+              text={
+                'Conectando a las mascotas con los mejores servicios. Descubre todo lo que Pawsly tiene para ofrecer'
+              }
+              button={'VAMOS'}
+              buttonPosition={'left'}
+              handleClick={handleButtonClick}
+            />
+          </div>
+        </div>
+        <div className={styles['imageCard']}>
+          <ImageCard data={cardData} />
+        </div>
+        <div className={styles['slider']}>
+          <StaticSlider images={imagesBanner} />
+        </div>
+        <div className={styles['imageCircle']}>
+          <ImageCircleGrid items={items} />
         </div>
       </div>
-      <div className={styles['imageCard']}>
-        <ImageCard data={cardData} />
-      </div>
-      <div className={styles['slider']}>
-        <StaticSlider images={imagesBanner} />
-      </div>
-      <div className={styles['imageCircle']}>
-        <ImageCircleGrid items={items} />
-      </div>
-      <div className={styles['footer']}>
-        <Footer />
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 export default Home;
