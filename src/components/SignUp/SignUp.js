@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { ReactComponent as WaveTopLeft } from '../statics/wave_top_left.svg';
-import { ReactComponent as WaveTop } from '../statics/wave_top.svg';
-import { ReactComponent as WaveBottom } from '../statics/wave_bottom.svg';
 import departamentosColombia from '../statics/departamentosColombia.json';
 import Select, { components } from 'react-select';
 import registerService from '../../service/authMngr/SignUpService';
