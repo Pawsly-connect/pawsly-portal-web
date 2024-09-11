@@ -48,6 +48,7 @@ const Verify = () => {
         });
       }
     } catch (_err) {
+      console.error('Error during verification:', _err);
       setCodeResponse(codesService.noResponse);
       setShowLoader(false);
     }
