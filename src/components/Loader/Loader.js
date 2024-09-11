@@ -1,5 +1,6 @@
-import styles from './Loader.module.css';
 import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './Loader.module.css';
 
 const Loader = ({ show = false }) => {
   return (
@@ -12,4 +13,9 @@ const Loader = ({ show = false }) => {
     </>
   );
 };
+
+Loader.propTypes = {
+  show: PropTypes.bool,
+};
+
 export default Loader;

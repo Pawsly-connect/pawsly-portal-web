@@ -34,8 +34,7 @@
     "build:stg": "env-cmd -e STG react-scripts build",
     "build:prod": "env-cmd -e PROD react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.js\" && npx prettier --write .",
+    "eject": "react-scripts eject",   
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix"
   },
@@ -85,7 +84,6 @@
     "husky": "^9.1.5",
     "jest": "^27.5.1",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
     "serve": "^14.2.3",
     "typescript-eslint": "^8.5.0"
   }
