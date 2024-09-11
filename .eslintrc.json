@@ -14,9 +14,10 @@
     "no-console": [
       {
         "rules": {
-          "no-console":  [{ "allow": ["log", "warn","error"] }]
+          "no-console": ["error", { "allow": ["log", "warn", "error"] }]
         }
       }
+      
     ],
     "no-undef": ["error"],
     "camelcase": [
