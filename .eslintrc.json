@@ -11,14 +11,6 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "comma-dangle": ["off"],
-    "no-console": [
-      {
-        "rules": {
-          "no-console": ["error", { "allow": ["log", "warn", "error"] }]
-        }
-      }
-      
-    ],
     "no-undef": ["error"],
     "camelcase": [
       "error",
