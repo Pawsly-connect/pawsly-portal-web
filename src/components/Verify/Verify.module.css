@@ -1,119 +1,120 @@
 .verify {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    left: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  margin-bottom: 80px;
 }
 
 .icon__email {
-    margin-top: 100px;
-    display: inline-block;
-    position: relative;
-    width: 230px;
-    height: 178px;
-    border-radius: 10px;
-    border-top: 18px solid #3E4EFF;
-    border-left: 18px solid #3E4EFF;
+  margin-top: 100px;
+  display: inline-block;
+  position: relative;
+  width: 230px;
+  height: 178px;
+  border-radius: 10px;
+  border-top: 18px solid #3e4eff;
+  border-left: 18px solid #3e4eff;
 }
 
 .icon__email:before,
 .icon__email:after {
-    content: '';
-    position: absolute;
-    border-radius: 6px;
-    top: -65px;
-    width: 18px;
-    height: 150px;
-    background-color: #3E4EFF;
-    -webkit-transform-origin: bottom;
-    transform-origin: bottom;
+  content: '';
+  position: absolute;
+  border-radius: 6px;
+  top: -65px;
+  width: 18px;
+  height: 150px;
+  background-color: #3e4eff;
+  -webkit-transform-origin: bottom;
+  transform-origin: bottom;
 }
 
 .icon__email:before {
-    left: 104px;
-    -webkit-transform: rotate(-54deg);
-    transform: rotate(-54deg);
+  left: 104px;
+  -webkit-transform: rotate(-54deg);
+  transform: rotate(-54deg);
 }
 
 .icon__email:after {
-    left: 94px;
-    -webkit-transform: rotate(54deg);
-    transform: rotate(54deg);
+  left: 94px;
+  -webkit-transform: rotate(54deg);
+  transform: rotate(54deg);
 }
 
 .icon__check {
-    position: relative;
-    transform: rotate(45deg);
-    height: 70px;
-    margin-top: 96px;
-    width: 32px;
-    margin-left: 160px;
-    border-bottom: 18px solid #3E4EFF;
-    border-right: 18px solid #3E4EFF;
-    border-radius: 8px;
-    background-color: white;
+  position: relative;
+  transform: rotate(45deg);
+  height: 70px;
+  margin-top: 96px;
+  width: 32px;
+  margin-left: 160px;
+  border-bottom: 18px solid #3e4eff;
+  border-right: 18px solid #3e4eff;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .icon__check:before {
-    content: '';
-    position: fixed;
-    transform: rotate(-45deg);
-    top: -108px;
-    left: -28px;
-    width: 18px;
-    height: 110px;
-    border-radius: 10px;
-    background-color: #3E4EFF;
+  content: '';
+  position: fixed;
+  transform: rotate(-45deg);
+  top: -108px;
+  left: -28px;
+  width: 18px;
+  height: 110px;
+  border-radius: 10px;
+  background-color: #3e4eff;
 }
 
 .icon__check:after {
-    content: '';
-    position: fixed;
-    transform: rotate(45deg);
-    top: 98px;
-    left: -60px;
-    width: 18px;
-    height: 130px;
-    border-radius: 10px;
-    background-color: #3E4EFF;
+  content: '';
+  position: fixed;
+  transform: rotate(45deg);
+  top: 98px;
+  left: -60px;
+  width: 18px;
+  height: 130px;
+  border-radius: 10px;
+  background-color: #3e4eff;
 }
 
 .icon__error {
-    display: inline-block;
-    position: relative;
-    transform: rotate(45deg);
-    width: 40px;
-    height: 290px;
-    background-color: #B0A4E3;
+  display: inline-block;
+  position: relative;
+  transform: rotate(45deg);
+  width: 40px;
+  height: 290px;
+  background-color: #b0a4e3;
 }
 
 .icon__error:after {
-    content: '';
-    position: absolute;
-    transform: rotate(-90deg);
-    width: 40px;
-    height: 290px;
-    right: -5px;
-    background-color: #B0A4E3;
+  content: '';
+  position: absolute;
+  transform: rotate(-90deg);
+  width: 40px;
+  height: 290px;
+  right: -5px;
+  background-color: #b0a4e3;
 }
 
 .verify__title {
-    word-wrap: break-word;
-    max-width: 350px;
-    font-weight: 700;
-    font-size: 35px;
-    font-style: normal;
-    margin: 0;
+  word-wrap: break-word;
+  max-width: 350px;
+  font-weight: 700;
+  font-size: 35px;
+  font-style: normal;
+  margin: 0;
 }
 
 .verify__message {
-    word-wrap: break-word;
-    max-width: 350px;
-    font-weight: 500;
-    font-size: 20px;
-    font-style: normal;
-    margin: 0;
+  word-wrap: break-word;
+  max-width: 350px;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  margin: 0;
 }

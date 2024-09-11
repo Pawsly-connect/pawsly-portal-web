@@ -8,17 +8,15 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.12.0",
     "axios": "^1.6.8",
-    "env-cmd": "^10.1.0",
     "css-loader": "^7.1.2",
+    "env-cmd": "^10.1.0",
     "package-name": "^0.1.0",
     "postcss-loader": "^8.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
@@ -36,8 +34,15 @@
     "build:stg": "env-cmd -e STG react-scripts build",
     "build:prod": "env-cmd -e PROD react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.js\""
+    "eject": "react-scripts eject",   
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint:fix"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -58,8 +63,28 @@
     ]
   },
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.7",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "prettier": "^3.2.5",
-    "serve": "^14.2.3"
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@eslint/js": "^9.10.0",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^28.8.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.2",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "jest": "^27.5.1",
+    "lint-staged": "^15.2.10",
+    "serve": "^14.2.3",
+    "typescript-eslint": "^8.5.0"
   }
 }

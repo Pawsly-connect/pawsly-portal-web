@@ -1,5 +1,5 @@
-import axios from "axios";
-import cipher from "../utilities/cipher";
+import axios from 'axios';
+import cipher from '../utilities/cipher';
 
 const newInstance = axios.create();
 
@@ -11,7 +11,7 @@ newInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  },
+  }
 );
 
 export default newInstance;

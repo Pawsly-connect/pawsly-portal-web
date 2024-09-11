@@ -1,12 +1,13 @@
-import "./card.scss";
-import Banner from "../Banner/Banner";
-import React, { useState } from "react";
+import './card.scss';
+import Banner from '../Banner/Banner';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ImageCard = ({ data }) => {
   const [current, setCurrent] = useState(0);
 
   const handlePlayClick = () => {
-    console.log("hicieron clic en ver todos");
+    console.log('hicieron clic en ver todos');
   };
 
   const handleNavigationClick = (index) => {
@@ -17,10 +18,7 @@ const ImageCard = ({ data }) => {
     <div className="card-image-wrapper card-image-wrapper--centered">
       <div className="card-image-carousel">
         {data.map((image, index) => (
-          <div
-            key={index}
-            className={`card-image ${index === current ? "card-image--active" : ""}`}
-          >
+          <div key={index} className={`card-image ${index === current ? 'card-image--active' : ''}`}>
             <div className="card-image__content">
               <Banner
                 title={image.title}
@@ -29,11 +27,7 @@ const ImageCard = ({ data }) => {
                 buttonPosition={image.buttonPosition}
               />
             </div>
-            <img
-              className="card-image__image"
-              src={image.imageUrl}
-              alt={image.title}
-            />
+            <img className="card-image__image" src={image.imageUrl} alt={image.title} />
           </div>
         ))}
       </div>
@@ -43,7 +37,7 @@ const ImageCard = ({ data }) => {
           {data.map((_, index) => (
             <li
               key={index}
-              className={index === current ? "is-active" : ""}
+              className={index === current ? 'is-active' : ''}
               onClick={() => handleNavigationClick(index)}
             ></li>
           ))}
@@ -52,6 +46,18 @@ const ImageCard = ({ data }) => {
       </div>
     </div>
   );
+};
+
+ImageCard.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string,
+      button: PropTypes.string,
+      buttonPosition: PropTypes.string,
+      imageUrl: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ImageCard;
