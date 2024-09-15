@@ -1,0 +1,53 @@
+.carrousel {
+  position: absolute;
+  left: 44%;
+  margin-top: 56px;
+  max-width: 500px;
+  overflow-x: hidden;
+}
+
+.slides {
+  height: 200px;
+  max-height: 200px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  height: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.image .inactive {
+  display: none;
+}
+
+.bullets {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.bullets .inactive {
+  background-color: #D8F7FF;
+  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.35);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.bullets .active {
+  background-color: #D8F7FF;
+  box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.35);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 4px;
+  cursor: pointer;
+}

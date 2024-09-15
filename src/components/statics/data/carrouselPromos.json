@@ -1,0 +1,25 @@
+{
+  "slides": [
+    {
+      "src": "https://picsum.photos/1920/1080?random=1",
+      "name": "Pet Shop Suba",
+      "description": "Descuentos durante todo el mes de hasta el 30% todos los fines de semana",
+      "address": "Cra 89#147-14, Centro Suba",
+      "cellphone": "3123456789"
+    },
+    {
+      "src": "https://picsum.photos/1920/1080?random=2",
+      "name": "Image 1 for carousel",
+      "description": "",
+      "address": "",
+      "cellphone": ""
+    },
+    {
+      "src": "https://picsum.photos/1920/1080?random=3",
+      "name": "Image 1 for carousel",
+      "description": "",
+      "address": "",
+      "cellphone": ""
+    }
+  ]
+}

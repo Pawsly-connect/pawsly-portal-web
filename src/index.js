@@ -6,9 +6,10 @@ import Registro from './components/SignUp/SignUp';
 import Verify from './components/Verify/Verify';
 import Home from './components/Home/Home';
 import Services from './components/Services/Services';
+import Dashboard from './components/Dashboard/Dashboard';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-// prueba
+
 const router = createHashRouter([
   {
     path: '/',
@@ -33,6 +34,10 @@ const router = createHashRouter([
   {
     path: '/services',
     element: <Services />,
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
   },
 ]);
 
