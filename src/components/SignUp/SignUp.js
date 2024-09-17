@@ -8,6 +8,8 @@ import Loader from '../Loader/Loader';
 import Button from '../Button/Button';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Modal from '../Modal/Modal';
+
 const optionsSet = new Set();
 
 departamentosColombia.forEach((item) => {
@@ -18,8 +20,6 @@ const options = [...optionsSet].map((value) => ({
   value,
   label: value,
 }));
-const urlMientras =
-  'https://steamuserimages-a.akamaihd.net/ugc/942826643706462589/BDE05CCADD81935640D1AE18FB8FB54A84D41BD9/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false';
 
 const maxLengthName = 90;
 const maxLengthEmail = 50;
@@ -259,7 +259,10 @@ const Registro = () => {
   const handlePaste = (e) => {
     e.preventDefault();
   };
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  
   return (
     <>
       <Header />
@@ -390,11 +393,40 @@ const Registro = () => {
 
               <div className={styles['term-text']}>
                 ¿Aceptas nuestros{' '}
-                <a href={urlMientras}>
-                  terminos y <br /> condiciones
-                </a>
+                <span className={styles['link']} onClick={openModal}>
+                  términos y <br /> condiciones
+                </span>
                 ?
               </div>
+              <Modal isOpen={isModalOpen} closeModal={closeModal}>
+                <h2>Términos y Condiciones</h2>
+                <p>1. Aceptación de los Términos
+Al acceder y utilizar este sitio web, aceptas y te comprometes a cumplir con los siguientes Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, te recomendamos no utilizar nuestro sitio web.
+
+2. Uso del Sitio
+Este sitio web y su contenido están destinados únicamente para el uso personal y no comercial de los usuarios. Está prohibido copiar, modificar, distribuir, transmitir, exhibir, ejecutar, reproducir, publicar, licenciar, crear trabajos derivados, transferir o vender cualquier contenido de este sitio sin autorización expresa.
+
+3. Propiedad Intelectual
+Todos los derechos de propiedad intelectual, incluidos los derechos de autor, marcas comerciales, nombres comerciales y otros derechos relacionados con el contenido de este sitio web, pertenecen a [Nombre de la empresa o titular del sitio] o a sus respectivos titulares. Está prohibido el uso no autorizado de cualquier contenido sin el permiso explícito del titular de los derechos.
+
+4. Privacidad
+Tu privacidad es importante para nosotros. Al usar este sitio web, aceptas nuestra política de privacidad, que establece cómo recopilamos, usamos y protegemos la información personal que nos proporcionas. Puedes consultar nuestra [Política de Privacidad] para obtener más información.
+
+5. Exención de Responsabilidad
+Este sitio web se proporciona "tal cual" sin ninguna garantía, expresa o implícita. [Nombre de la empresa o titular del sitio] no garantiza que la información en este sitio web sea precisa, completa o actual. No seremos responsables por cualquier daño o pérdida derivada del uso o la imposibilidad de uso de este sitio web.
+
+6. Modificaciones
+Nos reservamos el derecho de modificar o actualizar estos Términos y Condiciones en cualquier momento sin previo aviso. Es tu responsabilidad revisar estos términos periódicamente para estar al tanto de cualquier cambio.
+
+7. Enlaces a Sitios Externos
+Este sitio web puede contener enlaces a otros sitios que no son operados por [Nombre de la empresa o titular del sitio]. No somos responsables por el contenido o las prácticas de privacidad de estos sitios externos. Te recomendamos que leas los términos y condiciones de cada sitio que visites.
+
+8. Ley Aplicable
+Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de [País], sin tener en cuenta sus disposiciones sobre conflictos de leyes.
+
+9. Contacto
+Si tienes alguna pregunta sobre estos Términos y Condiciones, puedes contactarnos a través de [correo electrónico o método de contacto].</p>
+              </Modal>
             </div>
             {formErrors.checkBox && (
               <div className={styles['error']}>
