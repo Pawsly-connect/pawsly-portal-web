@@ -479,3 +479,8 @@
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
   cursor: pointer;
 }
+.link {
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+}

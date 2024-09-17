@@ -10,6 +10,47 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Modal from '../Modal/Modal';
 
+
+const termsAndConditionsText = `
+Bienvenido a nuestra página web. Si continúas navegando y utilizando este sitio web, estás de acuerdo en cumplir y estar sujeto a los siguientes términos y condiciones de uso, que junto con nuestra política de privacidad rigen la relación de [Nombre de la Empresa] contigo en relación con este sitio web. Si no estás de acuerdo con alguna parte de estos términos y condiciones, por favor no utilices nuestro sitio web.
+
+El término '[Nombre de la Empresa]' o 'nosotros' se refiere al propietario del sitio web. El término 'tú' se refiere al usuario o visitante de nuestro sitio web.
+
+### Uso del sitio web
+1. El contenido de las páginas de este sitio web es para tu información general y uso exclusivo. Está sujeto a cambios sin previo aviso.
+2. Ni nosotros ni ningún tercero proporcionamos ninguna garantía en cuanto a la exactitud, oportunidad, rendimiento, integridad o idoneidad de la información y los materiales encontrados u ofrecidos en este sitio web para ningún propósito en particular. Reconoces que dicha información y materiales pueden contener inexactitudes o errores y excluimos expresamente la responsabilidad por tales inexactitudes o errores en la mayor medida permitida por la ley.
+3. El uso de cualquier información o materiales en este sitio web es completamente bajo tu propio riesgo, por lo cual no seremos responsables. Será tu propia responsabilidad asegurarte de que cualquier producto, servicio o información disponible a través de este sitio web cumpla con tus requisitos específicos.
+
+### Propiedad intelectual
+Este sitio web contiene material que es de nuestra propiedad o licenciado. Este material incluye, pero no se limita a, el diseño, la disposición, la apariencia y los gráficos. La reproducción está prohibida salvo de acuerdo con el aviso de copyright, que forma parte de estos términos y condiciones.
+
+### Enlaces a otros sitios web
+De vez en cuando, este sitio web también puede incluir enlaces a otros sitios web. Estos enlaces se proporcionan para tu conveniencia y para proporcionar más información. No significan que respaldemos el(los) sitio(s) web. No tenemos responsabilidad sobre el contenido de los sitios web enlazados.
+
+### Ley aplicable
+El uso de este sitio web y cualquier disputa que surja de dicho uso del sitio web está sujeto a las leyes de [país].
+
+### Modificaciones a los Términos
+Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento, por lo que te recomendamos revisarlos periódicamente.
+### Uso del sitio web
+1. El contenido de las páginas de este sitio web es para tu información general y uso exclusivo. Está sujeto a cambios sin previo aviso.
+2. Ni nosotros ni ningún tercero proporcionamos ninguna garantía en cuanto a la exactitud, oportunidad, rendimiento, integridad o idoneidad de la información y los materiales encontrados u ofrecidos en este sitio web para ningún propósito en particular. Reconoces que dicha información y materiales pueden contener inexactitudes o errores y excluimos expresamente la responsabilidad por tales inexactitudes o errores en la mayor medida permitida por la ley.
+3. El uso de cualquier información o materiales en este sitio web es completamente bajo tu propio riesgo, por lo cual no seremos responsables. Será tu propia responsabilidad asegurarte de que cualquier producto, servicio o información disponible a través de este sitio web cumpla con tus requisitos específicos.
+
+### Propiedad intelectual
+Este sitio web contiene material que es de nuestra propiedad o licenciado. Este material incluye, pero no se limita a, el diseño, la disposición, la apariencia y los gráficos. La reproducción está prohibida salvo de acuerdo con el aviso de copyright, que forma parte de estos términos y condiciones.
+
+### Enlaces a otros sitios web
+De vez en cuando, este sitio web también puede incluir enlaces a otros sitios web. Estos enlaces se proporcionan para tu conveniencia y para proporcionar más información. No significan que respaldemos el(los) sitio(s) web. No tenemos responsabilidad sobre el contenido de los sitios web enlazados.
+
+### Ley aplicable
+El uso de este sitio web y cualquier disputa que surja de dicho uso del sitio web está sujeto a las leyes de [país].
+
+### Modificaciones a los Términos
+Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento, por lo que te recomendamos revisarlos periódicamente.
+`;
+
+
 const optionsSet = new Set();
 
 departamentosColombia.forEach((item) => {
@@ -400,32 +441,7 @@ const Registro = () => {
               </div>
               <Modal isOpen={isModalOpen} closeModal={closeModal}>
                 <h2>Términos y Condiciones</h2>
-                <p>1. Aceptación de los Términos
-Al acceder y utilizar este sitio web, aceptas y te comprometes a cumplir con los siguientes Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, te recomendamos no utilizar nuestro sitio web.
-
-2. Uso del Sitio
-Este sitio web y su contenido están destinados únicamente para el uso personal y no comercial de los usuarios. Está prohibido copiar, modificar, distribuir, transmitir, exhibir, ejecutar, reproducir, publicar, licenciar, crear trabajos derivados, transferir o vender cualquier contenido de este sitio sin autorización expresa.
-
-3. Propiedad Intelectual
-Todos los derechos de propiedad intelectual, incluidos los derechos de autor, marcas comerciales, nombres comerciales y otros derechos relacionados con el contenido de este sitio web, pertenecen a [Nombre de la empresa o titular del sitio] o a sus respectivos titulares. Está prohibido el uso no autorizado de cualquier contenido sin el permiso explícito del titular de los derechos.
-
-4. Privacidad
-Tu privacidad es importante para nosotros. Al usar este sitio web, aceptas nuestra política de privacidad, que establece cómo recopilamos, usamos y protegemos la información personal que nos proporcionas. Puedes consultar nuestra [Política de Privacidad] para obtener más información.
-
-5. Exención de Responsabilidad
-Este sitio web se proporciona "tal cual" sin ninguna garantía, expresa o implícita. [Nombre de la empresa o titular del sitio] no garantiza que la información en este sitio web sea precisa, completa o actual. No seremos responsables por cualquier daño o pérdida derivada del uso o la imposibilidad de uso de este sitio web.
-
-6. Modificaciones
-Nos reservamos el derecho de modificar o actualizar estos Términos y Condiciones en cualquier momento sin previo aviso. Es tu responsabilidad revisar estos términos periódicamente para estar al tanto de cualquier cambio.
-
-7. Enlaces a Sitios Externos
-Este sitio web puede contener enlaces a otros sitios que no son operados por [Nombre de la empresa o titular del sitio]. No somos responsables por el contenido o las prácticas de privacidad de estos sitios externos. Te recomendamos que leas los términos y condiciones de cada sitio que visites.
-
-8. Ley Aplicable
-Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de [País], sin tener en cuenta sus disposiciones sobre conflictos de leyes.
-
-9. Contacto
-Si tienes alguna pregunta sobre estos Términos y Condiciones, puedes contactarnos a través de [correo electrónico o método de contacto].</p>
+                <p>{termsAndConditionsText}</p>
               </Modal>
             </div>
             {formErrors.checkBox && (
