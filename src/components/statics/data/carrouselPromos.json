@@ -9,17 +9,17 @@
     },
     {
       "src": "https://picsum.photos/1920/1080?random=2",
-      "name": "Image 1 for carousel",
-      "description": "",
-      "address": "",
-      "cellphone": ""
+      "name": "Animals Suba",
+      "description": "Descuentos durante todo el mes de hasta el 30% todos los fines de semana",
+      "address": "Cra 151B#136A-15, Centro Suba",
+      "cellphone": "3111111111"
     },
     {
       "src": "https://picsum.photos/1920/1080?random=3",
-      "name": "Image 1 for carousel",
-      "description": "",
-      "address": "",
-      "cellphone": ""
+      "name": "Pet Shop Engativa",
+      "description": "Descuentos durante todo el mes de hasta el 30% todos los fines de semana",
+      "address": "Cra 12#123-12, Calle 80",
+      "cellphone": "3098765432"
     }
   ]
 }

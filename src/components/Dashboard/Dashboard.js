@@ -43,10 +43,13 @@ const Dashboard = () => {
         </nav>
       </aside>
       <div className={styles['dashboard__options-container']}>
-        <WaveTop className={styles['wave-svg']} />
-        <button className={styles['user-icon']} onClick={handleClick}></button>
+        <div className={styles['corner-menu']}>
+          <WaveTop className={styles['wave-svg']} />
+          <button className={styles['user-icon']} onClick={handleClick}></button>
+        </div>
+        <Carrousel data={data.slides} delayTranslate={5000} />
+        <div className={styles['line-separator']}></div>
       </div>
-      <Carrousel data={data.slides} delayTranslate={5000} />
     </div>
   );
 };

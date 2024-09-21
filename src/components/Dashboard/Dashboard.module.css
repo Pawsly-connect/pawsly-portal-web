@@ -14,18 +14,18 @@ body {
   display: flex;
   justify-content: center;
   background: linear-gradient(180deg, #3e4eff 0%, #252f99 100%);
-  width: 320px;
+  width: 300px;
 }
 
 .dashboard__menu-items {
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .menu__logo-container {
   margin-top: 48px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   color: #d8f7ff;
   display: flex;
   font-size: 40px;
@@ -51,7 +51,7 @@ body {
 .menu__item-options {
   color: white;
   text-decoration: none;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .menu__item-business {
@@ -118,4 +118,18 @@ body {
   left: 0.13em;
   top: 0em;
   border-radius: 2em 2em 0 0;
+}
+
+.line-separator {
+  border-bottom: solid 1px #929399;
+  margin-top: 24px;
+  width: 95%;
+}
+
+.dashboard__options-container {
+  margin-top: 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
