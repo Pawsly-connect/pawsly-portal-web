@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Switch.module.css';
 
 const Switch = ({ option1, option2, handleClick = () => {} }) => {
@@ -13,6 +14,12 @@ const Switch = ({ option1, option2, handleClick = () => {} }) => {
       </span>
     </label>
   );
+};
+
+Switch.propTypes = {
+  option1: PropTypes.string.isRequired,
+  option2: PropTypes.string.isRequired,
+  handleClick: PropTypes.func
 };
 
 export default Switch;
