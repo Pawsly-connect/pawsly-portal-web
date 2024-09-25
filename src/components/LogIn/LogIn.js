@@ -1,6 +1,5 @@
 import styles from './LogIn.module.css';
 import React, { useState } from 'react';
-import { ReactComponent as WaveTop } from '../statics/wave_top.svg';
 import loginService from '../../service/authMngr/loginService';
 import Button from '../Button/Button';
 import Footer from '../Footer/Footer';
