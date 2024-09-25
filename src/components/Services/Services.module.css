@@ -1,3 +1,7 @@
+.header {
+  height: 100px;
+}
+
 .services {
   display: flex;
   flex-direction: column;

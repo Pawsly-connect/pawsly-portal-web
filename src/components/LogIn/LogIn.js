@@ -73,12 +73,11 @@ const Ingreso = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['container-main']}>
         <div className={styles['container-2']}>
-          <div className={styles['wave-top']}>
-            <WaveTop className={styles['wave-svg']} />
-          </div>
 
           <div className={styles.logopawsly}></div>
           <div className={styles.title}>Inicia Sesion</div>

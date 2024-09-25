@@ -6,6 +6,10 @@ body {
   background-color: #f4f5ff;
 }
 
+.header {
+  height: 100px;
+}
+
 .container-main {
   margin: 0 auto;
   width: 100%;
