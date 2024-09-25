@@ -262,7 +262,9 @@ const Registro = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['container-main']}>
         <Loader show={showLoader} />
         <div className={styles['container-1']}>
