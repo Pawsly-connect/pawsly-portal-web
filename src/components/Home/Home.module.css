@@ -1,3 +1,7 @@
+.header {
+  height: 100px;
+}
+
 .banner {
   z-index: -1;
   background-image: url('../statics/gato_mano.png');
