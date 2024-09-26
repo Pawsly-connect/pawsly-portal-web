@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Carrousel.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const Carrousel = ({ data, delayTranslate = 5000 }) => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -63,8 +66,14 @@ const Carrousel = ({ data, delayTranslate = 5000 }) => {
             >
               <p className={styles['overlay__text-name']}>{image.name}</p>
               <p className={styles['overlay__text-description']}>{image.description}</p>
-              <p className={styles['overlay__text-details']}>{image.address}</p>
-              <p className={styles['overlay__text-details']}>{image.cellphone}</p>
+              <p className={styles['overlay__text-details']}>
+                <FontAwesomeIcon icon={faHouse} className={styles['overlay__icons']} />
+                {image.address}
+              </p>
+              <p className={styles['overlay__text-details']}>
+                <FontAwesomeIcon icon={faWhatsapp} className={styles['overlay__icons']} />
+                {image.cellphone}
+              </p>
             </div>
           </>
         ))}

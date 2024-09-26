@@ -15,6 +15,7 @@
   height: 210px;
   max-height: 210px;
   border-radius: 8px;
+  pointer-events: none;
 }
 
 .bullets {
@@ -90,4 +91,10 @@
   margin-top: 16px;
   font-size: 14px;
   font-family: 'Roboto-regular';
+}
+
+.overlay__icons  {
+  margin-right: 11px;
+  height: 17px;
+  width: 17px;
 }
