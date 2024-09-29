@@ -101,7 +101,9 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['container-main']}>
         <div className={styles['banner']}>
           <div className={styles['banner__text']}>

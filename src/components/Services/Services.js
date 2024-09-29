@@ -17,7 +17,9 @@ const Services = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['services']}>
         <div className={styles['image']}>
           <div className={styles['banner-container']}>
