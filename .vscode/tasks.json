@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start:local",
+			"problemMatcher": [],
+			"label": "npm: start:local",
+			"detail": "env-cmd -e LOCAL react-scripts start",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

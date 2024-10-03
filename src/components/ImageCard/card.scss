@@ -7,6 +7,8 @@ $card-height: 440px;
 $card-width: 80%;
 $card-hover-offset-x: 40px;
 $card-hover-offset-y: 60px;
+$card-hover-offset-x-mobile: 30px;
+$card-hover-offset-y-mobile: 40px;
 
 %clearfix {
   &:after {
@@ -18,18 +20,27 @@ $card-hover-offset-y: 60px;
 
 // Card Movie Wrapper
 .card-image-wrapper {
-  //box-shadow: 0px 0px 100px 25px rgba($color-black, 0.2);
   height: $card-height;
   position: relative;
   width: $card-width;
   border-radius: $mi-border-radius;
 
+  &.hovered .card-image-carousel, 
   &:hover .card-image-carousel {
     -webkit-transition: all $transition-time $transition-method;
     -moz-transition: all $transition-time $transition-method;
     transition: all $transition-time $transition-method;
     bottom: $card-hover-offset-y;
     right: $card-hover-offset-x;
+
+    @media only screen and (max-width: 850px) {
+      bottom: $card-hover-offset-y-mobile;
+      right: $card-hover-offset-x-mobile;
+    }
+  }
+
+  &.hovered {
+    background-color: #bbb; // O cualquier cambio visual que necesites
   }
 }
 
@@ -39,15 +50,20 @@ $card-hover-offset-y: 60px;
 
 // Card Movie Carousel
 .card-image-carousel {
-  -webkit-transition: all $transition-time $transition-method 250ms;
-  -moz-transition: all $transition-time $transition-method 250ms;
-  transition: all $transition-time $transition-method 250ms;
+  -webkit-transition: transform $transition-time $transition-method;
+  -moz-transition: transform $transition-time $transition-method;
+  transition: transform $transition-time $transition-method;
+  display: flex;
   height: $card-height;
   width: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
   overflow: hidden;
+
+  @media only screen and (max-width: 850px) {
+    width: 90%;
+  }
 }
 
 // Card Movie Navigation
@@ -62,22 +78,24 @@ $card-hover-offset-y: 60px;
   border-radius: $mi-border-radius;
   z-index: 15;
 
+  @media only screen and (max-width: 850px) {
+    width: 90%;
+  }
+
   &__list {
     $item-size: 12px;
     $item-size-active: $item-size * 1.5;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
     transform: translateY(-50%);
     position: absolute;
     right: ($card-hover-offset-x - $item-size) / 2;
     top: 50%;
     width: $item-size-active;
 
+    @media only screen and (max-width: 850px) {
+      right: ($card-hover-offset-x-mobile - $item-size) / 2;
+    }
+
     li {
-      -webkit-transition: all $transition-time $transition-method;
-      -moz-transition: all $transition-time $transition-method;
       transition: all $transition-time $transition-method;
       background-color: #ccc;
       border-radius: 100%;
@@ -103,8 +121,6 @@ $card-hover-offset-y: 60px;
 
   button {
     $arrow-size: 6px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     background-color: transparent;
     border: none;
@@ -112,26 +128,28 @@ $card-hover-offset-y: 60px;
     color: #aac8ca;
     cursor: pointer;
     font-size: 14px;
-    line-height: $card-hover-offset-y;
     margin: 0;
     outline: none;
     padding: 0;
     position: absolute;
+    line-height: $card-hover-offset-y;
     right: $card-hover-offset-x;
+
+    @media only screen and (max-width: 850px) {
+      line-height: $card-hover-offset-y-mobile;
+      right: $card-hover-offset-x-mobile;
+    }
 
     &:before {
       content: 'Ver Todos';
     }
+
     &.is-playing {
       &:before {
         content: 'Hide Trailer';
       }
 
       &:after {
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
         transform: rotate(-90deg);
         margin-top: -$arrow-size;
       }
@@ -141,8 +159,6 @@ $card-hover-offset-y: 60px;
 
 // Card Movie
 .card-image {
-  -webkit-transition: all ($transition-time * 2) $transition-method;
-  -moz-transition: all ($transition-time * 2) $transition-method;
   transition: all ($transition-time * 2) $transition-method;
   background-size: contain;
   bottom: 0;
@@ -159,7 +175,7 @@ $card-hover-offset-y: 60px;
     position: absolute;
     max-width: 535px;
     max-height: 305px;
-    width: 80%;
+    width: 90%;
     height: 50%;
     transform: translate(-50%, 50%);
     left: 50%;
@@ -180,101 +196,6 @@ $card-hover-offset-y: 60px;
     object-fit: cover;
     border-radius: $mi-border-radius;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  &__title {
-    font-size: 60px;
-    font-weight: 700;
-    line-height: 1;
-    margin-left: -4px;
-    text-transform: uppercase;
-  }
-
-  &__details {
-    @extend %clearfix;
-    margin-bottom: 30px;
-    margin-top: 15px;
-
-    &-item {
-      display: block;
-      float: left;
-      margin-right: 20px;
-    }
-
-    &-list {
-      @extend %clearfix;
-
-      li {
-        float: left;
-        margin-right: 5px;
-        padding-right: 6px;
-        position: relative;
-
-        &:after {
-          content: '|';
-          position: absolute;
-          right: 0;
-        }
-
-        &:last-child {
-          margin-right: 0;
-
-          &:after {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-
-  &__description {
-    font-size: 14px;
-    max-width: 390px;
-  }
-
-  &__rating {
-    $size: 50px;
-    bottom: $size / 3;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: $size;
-    position: absolute;
-    right: $size / 3;
-    text-align: center;
-    width: $size;
-
-    &:after {
-      border-radius: 100%;
-      border: 2px solid #ee927b;
-      content: '';
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-  }
-
-  &__player {
-    -webkit-transition: all ($transition-time * 2) $transition-method;
-    -moz-transition: all ($transition-time * 2) $transition-method;
-    transition: all ($transition-time * 2) $transition-method;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    height: 0;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    width: 0;
-    z-index: 20;
-
-    .card-image--playing & {
-      height: $card-height;
-      width: $card-width;
-    }
   }
 
   &--active {
