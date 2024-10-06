@@ -44,6 +44,13 @@
     font-size: 8px;
   }
 }
+.carousel{
+  width: 100%;
+  font-size: 6.5px;
+  @media only screen and (min-width: 850px) {
+    font-size: 8px;
+  }
+}
 .slider {
   font-size: 12px;
   width: 100%;

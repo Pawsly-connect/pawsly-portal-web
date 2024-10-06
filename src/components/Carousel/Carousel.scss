@@ -1,0 +1,80 @@
+.card-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh; /* Ajusta la altura según sea necesario */
+}
+
+.card-image-carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Asegúrate de que el contenedor se ajuste al 100% */
+}
+
+.card-image {
+  position: relative; /* Necesario para el banner */
+  flex: 0 0 70%; /* La imagen central ocupa el 70% */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.5; /* Opacidad para las imágenes laterales */
+  cursor: pointer; /* Cambia el cursor a pointer para hacer clic */
+}
+
+.card-image--active {
+  opacity: 1; /* Aumenta la opacidad de la imagen activa */
+}
+
+.card-image__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.card-image__content {
+  position: absolute; /* Para que el banner se superponga correctamente */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translate(-50%, -50%); /* Mover a la mitad */
+  text-align: center; /* Centrar el texto dentro del banner */
+  z-index: 1; /* Asegúrate de que el banner esté por encima de la imagen */
+}
+
+.card-image-navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      width: 12px;
+      height: 12px;
+      background-color: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.is-active {
+        background-color: #000;
+      }
+    }
+  }
+}
+
+[data-play] {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
