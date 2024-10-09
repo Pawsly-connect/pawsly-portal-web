@@ -1,45 +1,33 @@
-import './Carousel.scss';
-import Banner from '../Banner/Banner';
-import React, { useState } from 'react';
+import React from 'react';
+import Slider from 'react-slick';
 import PropTypes from 'prop-types';
+import Banner from '../Banner/Banner';
+import './Carousel.scss';
 
 const Carousel = ({ data }) => {
-  const [current, setCurrent] = useState(0);
-
-  const handlePlayClick = () => {
-    console.log('hicieron clic en ver todos');
+  const settings = {
+    centerMode: true, // Activa el modo centrado
+    centerPadding: '15%', // Ajusta el padding alrededor de la imagen central
+    slidesToShow: 1, // Muestra un slide a la vez
+    speed: 500, // Velocidad de la transición
+    infinite: true, // Carrusel infinito
+    arrows: true, // Muestra flechas de navegación
+    dots: true, // Muestra puntos de navegación
+    swipe: true, // Permite deslizar para cambiar de imagen
+    touchMove: true, // Permite mover con el dedo en dispositivos táctiles
+    adaptiveHeight: true, // Ajusta la altura del carrusel según el contenido
   };
-
-  const handleNavigationClick = (index) => {
-    setCurrent(index);
-  };
-
-  const handleImageClick = (index) => {
-    setCurrent(index);
-  };
+  
+  
 
   return (
-    <div className="card-image-wrapper">
-      <div 
-        className="card-image-carousel" 
-        style={{ 
-          transform: `translateX(-${(current * 100) / data.length}%)`, 
-          width: `${data.length * 100}%`
-        }}
-      >
+    <div className="carousel-wrapper">
+      <Slider {...settings}>
         {data.map((image, index) => (
-          <div 
-            key={index} 
-            className={`card-image ${index === current ? 'card-image--active' : ''}`}
-            onClick={() => handleImageClick(index)}
-            style={{ 
-              marginLeft: index === current ? '0' : '10%', // Margen para imágenes laterales
-              marginRight: index === current ? '0' : '10%',
-            }}
-          >
-            <img className="card-image__image" src={image.imageUrl} alt={image.title} />
-            {index === current && (
-              <div className="card-image__content">
+          <div key={index} className="carousel-slide">
+            <div className="carousel-image-container">
+              <img src={image.imageUrl} alt={image.title} />
+              <div className="carousel-banner">
                 <Banner
                   title={image.title}
                   text={image.text}
@@ -47,23 +35,10 @@ const Carousel = ({ data }) => {
                   buttonPosition={image.buttonPosition}
                 />
               </div>
-            )}
+            </div>
           </div>
         ))}
-      </div>
-
-      <div className="card-image-navigation">
-        <ul className="card-image-navigation__list" data-navigation>
-          {data.map((_, index) => (
-            <li
-              key={index}
-              className={index === current ? 'is-active' : ''}
-              onClick={() => handleNavigationClick(index)}
-            ></li>
-          ))}
-        </ul>
-        <button type="button" data-play onClick={handlePlayClick}></button>
-      </div>
+      </Slider>
     </div>
   );
 };
