@@ -17,8 +17,6 @@ const Carousel = ({ data }) => {
     touchMove: true, // Permite mover con el dedo en dispositivos táctiles
     adaptiveHeight: true, // Ajusta la altura del carrusel según el contenido
   };
-  
-  
 
   return (
     <div className="carousel-wrapper">
