@@ -88,6 +88,8 @@
 }
 
 .overlay__text-details {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   margin-top: 16px;
   font-size: 14px;
   font-family: 'Roboto-regular';
@@ -97,4 +99,23 @@
   margin-right: 11px;
   height: 17px;
   width: 17px;
+}
+
+@media only screen and (max-width: 700px) {
+  .carrousel {
+    width: 80vw;
+    max-width: 500px;
+    min-width: 0px;
+  }
+  .slides,
+  .image,
+  .overlay {
+    height: 210px;
+
+  }
+
+  .bullets .active,
+  .bullets .inactive {
+    margin: 8px 4px 0 4px;
+  }
 }
