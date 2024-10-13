@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import StaticSlider from '../StaticSlider/StaticSlider';
 import ImageCard from '../ImageCard/ImageCard';
+import Carousel from '../Carousel/Carousel';
 import imagenCelular from '../statics/imagenCelular.png';
 import imagenVeterinaria from '../statics/imagenVeterinaria.png';
 import imagenEscriotorio from '../statics/imagenEscriotorio.jpg';
@@ -117,6 +118,9 @@ const Home = () => {
               handleClick={handleButtonClick}
             />
           </div>
+        </div>
+        <div className={styles['carousel']}>
+          <Carousel data={cardData} />
         </div>
         <div className={styles['imageCard']}>
           <ImageCard data={cardData} />

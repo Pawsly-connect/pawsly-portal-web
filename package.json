@@ -31,6 +31,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.77.2",
     "sass-loader": "^14.2.1",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
   },
@@ -44,7 +45,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix"
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -71,13 +73,15 @@
     ]
   },
   "devDependencies": {
-    "@arkweid/lefthook": "^0.7.7",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-methods": "^7.18.6",
+    "@babel/plugin-transform-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.10.0",
+    "@evilmartians/lefthook": "1.7.18",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
@@ -89,7 +93,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.35.2",
     "globals": "^15.9.0",
-    "husky": "^9.1.5",
+    "husky": "^8.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^15.2.10",
     "serve": "^14.2.3",

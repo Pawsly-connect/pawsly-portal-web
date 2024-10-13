@@ -1,0 +1,82 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+// Definición de variables
+$carousel-image-width: 50%; // Ajusta el ancho de la imagen
+$carousel-image-height: auto; // Ajusta el alto de la imagen automáticamente
+
+.carousel-wrapper {
+  max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+  width: 100%; /* Permite que el carrusel ocupe todo el ancho disponible hasta el máximo */
+  margin: 0 auto; /* Centra el carrusel */
+  padding: 30px; /* Agrega padding de 30px alrededor del carrusel */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.slick-slide {
+  padding: 0 15px; /* Agrega padding lateral a cada slide */
+  height: auto; /* Asegura que la altura se ajuste automáticamente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5; /* Reduce la opacidad de las imágenes no activas */
+  transition: opacity 0.5s ease;
+}
+
+.slick-active {
+  opacity: 1; /* Asegura que la imagen activa sea completamente visible */
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image-container {
+  position: relative;
+  width: 100%;
+  max-height: 600px; /* Establece una altura máxima para el contenedor de la imagen */
+  overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el contenedor */
+}
+
+.carousel-image-container img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+  object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Agrega efectos de transición */
+}
+
+.carousel-banner {
+  position: absolute;
+  bottom: 20px; /* Coloca el banner cerca de la parte inferior */
+  left: 50%;
+  transform: translate(-50%, 0); /* Centra el banner horizontalmente */
+  text-align: center;
+  z-index: 1;
+  color: white; /* Asegúrate de que el texto sea legible */
+  padding: 10px; /* Espaciado interno del banner */
+  border-radius: 5px; /* Bordes redondeados del banner */
+  min-width: 90%;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    padding: 15px; /* Reduce el padding en pantallas pequeñas */
+  }
+
+  .slick-slide {
+    padding: 0 5px; /* Reduce el padding de los slides en pantallas pequeñas */
+  }
+
+  .carousel-image-container {
+    max-height: 300px; /* Ajusta la altura máxima para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 393px) {
+  .carousel-wrapper {
+    padding: 10px; /* Reduce el padding en pantallas muy pequeñas */
+  }
+}

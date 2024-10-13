@@ -1,7 +1,7 @@
-import './card.scss';
-import Banner from '../Banner/Banner';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Banner from '../Banner/Banner';
+import styles from './card.module.scss'; // Importamos los módulos CSS
 
 const ImageCard = ({ data }) => {
   const [current, setCurrent] = useState(0);
@@ -15,11 +15,14 @@ const ImageCard = ({ data }) => {
   };
 
   return (
-    <div className="card-image-wrapper card-image-wrapper--centered">
-      <div className="card-image-carousel">
+    <div className={`${styles.cardImageWrapper} ${styles.cardImageWrapperCentered}`}>
+      <div className={styles.cardImageCarousel}>
         {data.map((image, index) => (
-          <div key={index} className={`card-image ${index === current ? 'card-image--active' : ''}`}>
-            <div className="card-image__content">
+          <div
+            key={index}
+            className={`${styles.cardImage} ${index === current ? styles['cardImage--active'] : ''}`}
+          >
+            <div className={styles.cardImage__content}>
               <Banner
                 title={image.title}
                 text={image.text}
@@ -27,22 +30,22 @@ const ImageCard = ({ data }) => {
                 buttonPosition={image.buttonPosition}
               />
             </div>
-            <img className="card-image__image" src={image.imageUrl} alt={image.title} />
+            <img className={styles.cardImage__image} src={image.imageUrl} alt={image.title} />
           </div>
         ))}
       </div>
 
-      <div className="card-image-navigation">
-        <ul className="card-image-navigation__list" data-navigation>
+      <div className={styles.cardImageNavigation}>
+        <ul className={styles.cardImageNavigation__list} data-navigation>
           {data.map((_, index) => (
             <li
               key={index}
-              className={index === current ? 'is-active' : ''}
+              className={index === current ? styles.isActive : ''}
               onClick={() => handleNavigationClick(index)}
             ></li>
           ))}
         </ul>
-        <button type="button" data-play onClick={handlePlayClick}></button>
+        <button type="button" className={styles.isPlaying} data-play onClick={handlePlayClick}></button>
       </div>
     </div>
   );

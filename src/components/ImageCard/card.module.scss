@@ -1,0 +1,191 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --transition-time: 250ms;
+  --transition-method: ease-in-out;
+  --mi-border-radius: 20px;
+  --card-height: 440px;
+  --card-width: 80%;
+  --card-hover-offset-x: 40px;
+  --card-hover-offset-y: 60px;
+  --card-hover-offset-x-mobile: 30px;
+  --card-hover-offset-y-mobile: 40px;
+}
+
+/* Card Movie Wrapper */
+.cardImageWrapper {
+  height: var(--card-height);
+  position: relative;
+  width: var(--card-width);
+  border-radius: var(--mi-border-radius);
+
+  &.hovered .cardImageCarousel,
+  &:hover .cardImageCarousel {
+    transition: all var(--transition-time) var(--transition-method);
+    bottom: var(--card-hover-offset-y);
+    right: var(--card-hover-offset-x);
+
+    @media only screen and (max-width: 850px) {
+      bottom: var(--card-hover-offset-y-mobile);
+      right: var(--card-hover-offset-x-mobile);
+    }
+  }
+
+  &.hovered {
+    background-color: #bbb;
+  }
+}
+
+.cardImageWrapperCentered {}
+
+/* Card Movie Carousel */
+.cardImageCarousel {
+  transition: transform var(--transition-time) var(--transition-method);
+  display: flex;
+  height: var(--card-height);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  @media only screen and (max-width: 850px) {
+    width: 90%;
+  }
+}
+
+/* Card Movie Navigation */
+.cardImageNavigation {
+  background-color: #3e4eff;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  border-radius: var(--mi-border-radius);
+  z-index: 15;
+
+  @media only screen and (max-width: 850px) {
+    width: 90%;
+  }
+
+  &__list {
+    --item-size: 12px;
+    --item-size-active: calc(var(--item-size) * 1.5);
+    transform: translateY(-50%);
+    position: absolute;
+    right: calc((var(--card-hover-offset-x) - var(--item-size)) / 2);
+    top: 50%;
+    width: var(--item-size-active);
+
+    @media only screen and (max-width: 850px) {
+      right: calc((var(--card-hover-offset-x-mobile) - var(--item-size)) / 2);
+    }
+
+    li {
+      transition: all var(--transition-time) var(--transition-method);
+      background-color: #ccc;
+      border-radius: 100%;
+      cursor: pointer;
+      height: var(--item-size);
+      margin: 0 auto calc(var(--item-size) / 2);
+      width: var(--item-size);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.isActive {
+        height: var(--item-size-active);
+        width: var(--item-size-active);
+      }
+
+      &:hover {
+        background-color: #bbb;
+      }
+    }
+  }
+
+  button {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    bottom: 0;
+    color: #aac8ca;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    line-height: var(--card-hover-offset-y);
+    right: var(--card-hover-offset-x);
+
+    @media only screen and (max-width: 850px) {
+      line-height: var(--card-hover-offset-y-mobile);
+      right: var(--card-hover-offset-x-mobile);
+    }
+
+    &:before {
+      content: 'Ver Todos';
+    }
+
+    &.isPlaying {
+      &:before {
+        content: 'ver todos';
+      }
+
+      &:after {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+/* Card Movie */
+.cardImage {
+  transition: all calc(var(--transition-time) * 2) var(--transition-method);
+  background-size: contain;
+  bottom: 0;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  width: 100%;
+  z-index: 20;
+
+  &__content {
+    font-size: 1em;
+    position: absolute;
+    max-width: 535px;
+    max-height: 305px;
+    width: 90%;
+    height: 50%;
+    transform: translate(-50%, 50%);
+    left: 50%;
+
+    @media only screen and (min-width: 850px) {
+      right: 1.5em;
+      left: auto;
+      font-size: 8px;
+      height: 60%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--mi-border-radius);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &--active {
+    opacity: 1;
+    z-index: 25;
+  }
+}
