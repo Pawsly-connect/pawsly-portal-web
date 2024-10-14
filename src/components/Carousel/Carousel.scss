@@ -1,0 +1,106 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+// Definición de variables
+$carousel-image-width: 50%; // Ajusta el ancho de la imagen
+$carousel-image-height: auto; // Ajusta el alto de la imagen automáticamente
+$carousel-max-width: 800px;
+$carousel-padding: 30px;
+$carousel-min-height: 350px;
+$carousel-slide-padding: 15px;
+$carousel-slide-opacity: 0.5;
+$carousel-transition: 0.5s ease;
+$carousel-banner-color: white;
+$carousel-banner-padding: 10px;
+$carousel-banner-radius: 5px;
+$carousel-banner-min-width: 90%;
+$carousel-image-min-height: 300px;
+$carousel-image-max-height: 600px;
+$carousel-wrapper-padding-small: 15px;
+$carousel-wrapper-min-height-small: 300px;
+$carousel-slide-padding-small: 5px;
+$carousel-image-min-height-small: 300px;
+$carousel-wrapper-padding-xsmall: 10px;
+$carousel-wrapper-min-height-xsmall: 200px;
+$carousel-image-min-height-xsmall: 200px;
+
+.carousel-wrapper {
+  max-width: $carousel-max-width;
+  min-width: 100%;
+  margin: 0 auto;
+  padding: $carousel-padding;
+  box-sizing: border-box;
+  min-height: $carousel-min-height;
+  @media (max-width: 768px) {
+    padding: $carousel-wrapper-padding-small;
+    min-height: $carousel-wrapper-min-height-small;
+  }
+
+  @media (max-width: 393px) {
+    padding: $carousel-wrapper-padding-xsmall;
+    min-height: $carousel-wrapper-min-height-xsmall;
+  }
+}
+
+.slick-slide {
+  padding: 0 $carousel-slide-padding;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: $carousel-slide-opacity;
+  transition: opacity $carousel-transition;
+
+  @media (max-width: 768px) {
+    padding: 0 $carousel-slide-padding-small;
+  }
+}
+
+.slick-active {
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image-container {
+  position: relative;
+  width: 100%;
+  max-height: $carousel-image-max-height;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    min-height: $carousel-image-min-height;
+    object-fit: cover;
+    transition: transform $carousel-transition, opacity $carousel-transition;
+
+    @media (max-width: 768px) {
+      min-height: $carousel-image-min-height-small;
+    }
+
+    @media (max-width: 393px) {
+      min-height: $carousel-image-min-height-xsmall;
+    }
+  }
+}
+
+.carousel-banner {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  z-index: 1;
+  color: $carousel-banner-color;
+  padding: $carousel-banner-padding;
+  border-radius: $carousel-banner-radius;
+  min-width: $carousel-banner-min-width;
+}

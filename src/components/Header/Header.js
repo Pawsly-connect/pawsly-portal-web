@@ -1,16 +1,11 @@
 import React from 'react';
 import styles from './Header.module.css';
-import pawslyClaro from '../statics/pawsly_claro.png';
+import LogoPawsly from '../LogoPawsly/LogoPawsly';
 
 const Header = () => {
   return (
     <header className={styles['header']}>
-      <div className={styles['header__logo-container']}>
-        <div className={styles['header__logo-title']}>
-          <strong>Pawsly</strong>
-        </div>
-        <img className={styles['header__logo-img']} src={pawslyClaro} alt="Pawsly logo" />
-      </div>
+      <LogoPawsly size='medium' className={styles['header__logo-container']}/>
       <input type="checkbox" className={styles['header__checkbox']} id="open-menu" />
       <label htmlFor="open-menu" className={styles['header__open-nav-button']} role="button">
         =

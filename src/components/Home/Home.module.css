@@ -1,3 +1,7 @@
+.header {
+  height: 100px;
+}
+
 .banner {
   z-index: -1;
   background-image: url('../statics/gato_mano.png');
@@ -30,12 +34,25 @@
 .imageCard {
   position: relative;
   z-index: 1;
-  padding-top: 50px;
+  top: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 6.5px;
+  @media only screen and (min-width: 850px) {
+    font-size: 8px;
+  }
+}
+.carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6.5px;
+  max-height: 650px;
+  min-height: 400px;
+  width: 100%;
   @media only screen and (min-width: 850px) {
     font-size: 8px;
   }

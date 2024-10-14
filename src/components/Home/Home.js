@@ -1,10 +1,11 @@
 import styles from './Home.module.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Banner from '../Banner/Banner';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import StaticSlider from '../StaticSlider/StaticSlider';
 import ImageCard from '../ImageCard/ImageCard';
+import Carousel from '../Carousel/Carousel';
 import imagenCelular from '../statics/imagenCelular.png';
 import imagenVeterinaria from '../statics/imagenVeterinaria.png';
 import imagenEscriotorio from '../statics/imagenEscriotorio.jpg';
@@ -20,9 +21,23 @@ import luna from '../statics/home/luna.png';
 import simon from '../statics/home/simon.png';
 
 const Home = () => {
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
   const handleButtonClick = (e) => {
     console.log('Botón clickeado:', e.target.innerText);
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileOrTablet(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check initial screen size
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const cardData = [
     {
       title: 'Impulsa tu Negocio',
@@ -101,7 +116,9 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['container-main']}>
         <div className={styles['banner']}>
           <div className={styles['banner__text']}>
@@ -116,9 +133,15 @@ const Home = () => {
             />
           </div>
         </div>
+        {isMobileOrTablet ? (
+        <div className={styles['carousel']}>
+          <Carousel data={cardData} />
+        </div>
+      ) : (
         <div className={styles['imageCard']}>
           <ImageCard data={cardData} />
         </div>
+      )}
         <div className={styles['slider']}>
           <StaticSlider images={imagesBanner} />
         </div>

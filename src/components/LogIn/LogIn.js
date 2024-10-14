@@ -1,6 +1,5 @@
 import styles from './LogIn.module.css';
 import React, { useState } from 'react';
-import { ReactComponent as WaveTop } from '../statics/wave_top.svg';
 import loginService from '../../service/authMngr/loginService';
 import Button from '../Button/Button';
 import Footer from '../Footer/Footer';
@@ -73,12 +72,11 @@ const Ingreso = () => {
 
   return (
     <>
-      <Header />
+      <div className={styles['header']}>
+        <Header />
+      </div>
       <div className={styles['container-main']}>
         <div className={styles['container-2']}>
-          <div className={styles['wave-top']}>
-            <WaveTop className={styles['wave-svg']} />
-          </div>
 
           <div className={styles.logopawsly}></div>
           <div className={styles.title}>Inicia Sesion</div>

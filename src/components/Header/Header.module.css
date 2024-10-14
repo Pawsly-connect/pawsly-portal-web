@@ -1,7 +1,7 @@
 /* --- HEADER SECTION --- */
 
 .header {
-  position: relative;
+  position: fixed;
   z-index: 9999999999;
   background: linear-gradient(to right, #3e4eff, #252f99);
   display: flex;
@@ -9,6 +9,7 @@
   align-items: center;
   box-shadow: 0 5px 8px #333;
   height: 100px;
+  width: 100%;
   container-type: inline-size;
   container-name: header;
 }
@@ -20,7 +21,6 @@
   height: 100vh;
   width: 100vw;
   top: 0;
-  z-index: -1;
   flex-direction: column-reverse;
 }
 
@@ -30,6 +30,7 @@
   font-weight: 600;
   position: absolute;
   right: 10px;
+  cursor: pointer;
 }
 
 .header__checkbox {
@@ -46,35 +47,20 @@
   margin-top: 0px;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
 }
 
 .header__checkbox:checked ~ .header__nav {
   display: flex;
+  z-index: -1; /* Asegúrate de que el menú esté encima del overlay */
 }
 
 .header__logo-container {
-  color: #d8f7ff;
-  display: flex;
-  font-size: 24px;
-  max-width: 100%;
-  width: 64px;
   margin: 10px 20px;
-  align-items: baseline;
-  padding: 10px;
-}
-
-.header__logo-title {
-  text-shadow: 0 2px 4px #333;
-}
-
-.header__logo-img {
-  width: 13px;
-  height: 18px;
-  filter: drop-shadow(0 10px 20px #333);
 }
 
 .header__nav-item {
-  list-style: none;
+  list-style-type: none;
   order: 2;
 }
 
@@ -174,7 +160,6 @@
   }
 
   .header__logo-container {
-    font-size: 48px;
     padding: 45px;
   }
 
