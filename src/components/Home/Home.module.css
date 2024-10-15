@@ -50,7 +50,9 @@
   justify-content: center;
   align-items: center;
   font-size: 6.5px;
-  max-height: 600px;
+  max-height: 650px;
+  min-height: 400px;
+  width: 100%;
   @media only screen and (min-width: 850px) {
     font-size: 8px;
   }

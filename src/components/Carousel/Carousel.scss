@@ -4,27 +4,63 @@
 // Definición de variables
 $carousel-image-width: 50%; // Ajusta el ancho de la imagen
 $carousel-image-height: auto; // Ajusta el alto de la imagen automáticamente
+$carousel-max-width: 800px;
+$carousel-padding: 30px;
+$carousel-min-height: 350px;
+$carousel-slide-padding: 15px;
+$carousel-slide-opacity: 0.5;
+$carousel-transition: 0.5s ease;
+$carousel-banner-color: white;
+$carousel-banner-padding: 10px;
+$carousel-banner-radius: 5px;
+$carousel-banner-min-width: 90%;
+$carousel-image-min-height: 300px;
+$carousel-image-max-height: 600px;
+$carousel-wrapper-padding-small: 15px;
+$carousel-wrapper-min-height-small: 300px;
+$carousel-slide-padding-small: 5px;
+$carousel-image-min-height-small: 300px;
+$carousel-wrapper-padding-xsmall: 10px;
+$carousel-wrapper-min-height-xsmall: 200px;
+$carousel-image-min-height-xsmall: 200px;
 
 .carousel-wrapper {
-  max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
-  width: 100%; /* Permite que el carrusel ocupe todo el ancho disponible hasta el máximo */
-  margin: 0 auto; /* Centra el carrusel */
-  padding: 30px; /* Agrega padding de 30px alrededor del carrusel */
-  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  max-width: $carousel-max-width;
+  min-width: 100%;
+  margin: 0 auto;
+  padding: $carousel-padding;
+  box-sizing: border-box;
+  min-height: $carousel-min-height;
+  @media (max-width: 768px) {
+    padding: $carousel-wrapper-padding-small;
+    min-height: $carousel-wrapper-min-height-small;
+  }
+
+  @media (max-width: 393px) {
+    padding: $carousel-wrapper-padding-xsmall;
+    min-height: $carousel-wrapper-min-height-xsmall;
+  }
 }
 
 .slick-slide {
-  padding: 0 15px; /* Agrega padding lateral a cada slide */
-  height: auto; /* Asegura que la altura se ajuste automáticamente */
+  padding: 0 $carousel-slide-padding;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.5; /* Reduce la opacidad de las imágenes no activas */
-  transition: opacity 0.5s ease;
+  opacity: $carousel-slide-opacity;
+  transition: opacity $carousel-transition;
+
+  @media (max-width: 768px) {
+    padding: 0 $carousel-slide-padding-small;
+  }
 }
 
 .slick-active {
-  opacity: 1; /* Asegura que la imagen activa sea completamente visible */
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-slide {
@@ -36,47 +72,35 @@ $carousel-image-height: auto; // Ajusta el alto de la imagen automáticamente
 .carousel-image-container {
   position: relative;
   width: 100%;
-  max-height: 600px; /* Establece una altura máxima para el contenedor de la imagen */
-  overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el contenedor */
-}
+  max-height: $carousel-image-max-height;
+  overflow: hidden;
 
-.carousel-image-container img {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  height: auto; /* Mantiene la relación de aspecto de la imagen */
-  object-fit: cover; /* Asegura que la imagen se ajuste bien al contenedor */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Agrega efectos de transición */
+  img {
+    width: 100%;
+    height: auto;
+    min-height: $carousel-image-min-height;
+    object-fit: cover;
+    transition: transform $carousel-transition, opacity $carousel-transition;
+
+    @media (max-width: 768px) {
+      min-height: $carousel-image-min-height-small;
+    }
+
+    @media (max-width: 393px) {
+      min-height: $carousel-image-min-height-xsmall;
+    }
+  }
 }
 
 .carousel-banner {
   position: absolute;
-  bottom: 20px; /* Coloca el banner cerca de la parte inferior */
+  bottom: 20px;
   left: 50%;
-  transform: translate(-50%, 0); /* Centra el banner horizontalmente */
+  transform: translate(-50%, 0);
   text-align: center;
   z-index: 1;
-  color: white; /* Asegúrate de que el texto sea legible */
-  padding: 10px; /* Espaciado interno del banner */
-  border-radius: 5px; /* Bordes redondeados del banner */
-  min-width: 90%;
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-  .carousel-wrapper {
-    padding: 15px; /* Reduce el padding en pantallas pequeñas */
-  }
-
-  .slick-slide {
-    padding: 0 5px; /* Reduce el padding de los slides en pantallas pequeñas */
-  }
-
-  .carousel-image-container {
-    max-height: 300px; /* Ajusta la altura máxima para pantallas pequeñas */
-  }
-}
-
-@media (max-width: 393px) {
-  .carousel-wrapper {
-    padding: 10px; /* Reduce el padding en pantallas muy pequeñas */
-  }
+  color: $carousel-banner-color;
+  padding: $carousel-banner-padding;
+  border-radius: $carousel-banner-radius;
+  min-width: $carousel-banner-min-width;
 }
